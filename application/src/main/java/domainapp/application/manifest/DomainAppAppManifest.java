@@ -32,7 +32,8 @@ public class DomainAppAppManifest extends AppManifestAbstract {
     public static final Builder BUILDER = Builder.forModules(
                     SimpleModuleDomSubmodule.class,
                     DomainAppApplicationModuleFixtureSubmodule.class,
-                    DomainAppApplicationModuleServicesSubmodule.class
+                    DomainAppApplicationModuleServicesSubmodule.class,
+                    org.isisaddons.module.security.SecurityModule.class
             )
             .withConfigurationPropertiesFile(DomainAppAppManifest.class,
                     "isis.properties",
@@ -40,7 +41,11 @@ public class DomainAppAppManifest extends AppManifestAbstract {
                     "persistor_datanucleus.properties",
                     "viewer_restfulobjects.properties",
                     "viewer_wicket.properties"
-            ).withAuthMechanism("shiro");
+            ).withAuthMechanism("shiro")
+            .withAdditionalServices(
+            		org.isisaddons.module.security.dom.password.PasswordEncryptionServiceUsingJBcrypt.class,
+                    org.isisaddons.module.security.dom.permission.PermissionsEvaluationServiceAllowBeatsVeto.class
+            );
 
     public DomainAppAppManifest() {
         super(BUILDER);

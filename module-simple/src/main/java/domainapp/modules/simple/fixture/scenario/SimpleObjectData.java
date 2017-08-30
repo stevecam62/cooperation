@@ -19,8 +19,8 @@
 
 package domainapp.modules.simple.fixture.scenario;
 
-import domainapp.modules.simple.dom.impl.SimpleObject;
-import domainapp.modules.simple.dom.impl.SimpleObjectMenu;
+import domainapp.modules.simple.dom.impl.simple.SimpleObject;
+import domainapp.modules.simple.dom.impl.simple.SimpleObjectMenu;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

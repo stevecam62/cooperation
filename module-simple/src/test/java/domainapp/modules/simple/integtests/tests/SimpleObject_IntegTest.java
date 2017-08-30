@@ -33,8 +33,8 @@ import org.apache.isis.applib.services.xactn.TransactionService;
 import org.apache.isis.core.metamodel.services.jdosupport.Persistable_datanucleusIdLong;
 import org.apache.isis.core.metamodel.services.jdosupport.Persistable_datanucleusVersionTimestamp;
 
-import domainapp.modules.simple.dom.impl.SimpleObject;
-import domainapp.modules.simple.dom.impl.SimpleObjectMenu;
+import domainapp.modules.simple.dom.impl.simple.SimpleObject;
+import domainapp.modules.simple.dom.impl.simple.SimpleObjectMenu;
 import domainapp.modules.simple.fixture.scenario.CreateSimpleObjects;
 import domainapp.modules.simple.fixture.scenario.SimpleObjectData;
 import domainapp.modules.simple.fixture.teardown.SimpleModuleTearDown;

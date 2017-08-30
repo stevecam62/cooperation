@@ -25,10 +25,11 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
 
+import domainapp.modules.simple.dom.impl.simple.SimpleObject;
+import domainapp.modules.simple.dom.impl.simple.SimpleObjectMenu;
+
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-import domainapp.modules.simple.dom.impl.SimpleObject;
-import domainapp.modules.simple.dom.impl.SimpleObjectMenu;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;

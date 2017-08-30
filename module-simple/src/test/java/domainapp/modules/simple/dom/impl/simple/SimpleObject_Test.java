@@ -14,10 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package domainapp.modules.simple.dom.impl;
+package domainapp.modules.simple.dom.impl.simple;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import domainapp.modules.simple.dom.impl.simple.SimpleObject;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

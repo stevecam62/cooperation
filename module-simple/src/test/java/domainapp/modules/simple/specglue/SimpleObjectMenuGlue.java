@@ -23,8 +23,9 @@ import org.apache.isis.core.specsupport.specs.CukeGlueAbstract;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-import domainapp.modules.simple.dom.impl.SimpleObject;
-import domainapp.modules.simple.dom.impl.SimpleObjectMenu;
+import domainapp.modules.simple.dom.impl.simple.SimpleObject;
+import domainapp.modules.simple.dom.impl.simple.SimpleObjectMenu;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor 
+	license agreements. See the NOTICE file distributed with this work for additional 
+	information regarding copyright ownership. The ASF licenses this file to 
+	you under the Apache License, Version 2.0 (the "License"); you may not use 
+	this file except in compliance with the License. You may obtain a copy of 
+	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+<bs3:grid
+	xsi:schemaLocation="http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/grid/bootstrap3 http://isis.apache.org/applib/layout/grid/bootstrap3/bootstrap3.xsd"
+	xmlns:c="http://isis.apache.org/applib/layout/component" xmlns:bs3="http://isis.apache.org/applib/layout/grid/bootstrap3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<bs3:row>
+		<bs3:col span="12" unreferencedActions="true">
+			<c:domainObject bookmarking="AS_ROOT" />
+			<c:action id="updatePassword" />
+			<c:action id="resetPassword" />
+			<c:action id="lock" />
+			<c:action id="unlock" />
+		</bs3:col>
+	</bs3:row>
+	<bs3:row>
+		<bs3:col span="6">
+			<c:fieldSet name="Name" unreferencedProperties="true">
+				<c:action id="updateName">
+					<c:named>Update Names</c:named>
+				</c:action>
+				<c:property id="familyName" />
+				<c:property id="givenName" />
+				<c:property id="knownAs" />
+				<c:property id="dateOfBirth" />
+				<c:property id="accountType" hidden="EVERYWHERE" />
+				<c:property id="hasPassword" hidden="EVERYWHERE" />
+				<c:property id="faxNumber" hidden="EVERYWHERE" />
+				<c:property id="status" hidden="EVERYWHERE" />
+				<c:property id="atPath" hidden="EVERYWHERE" />
+			</c:fieldSet>
+			<c:fieldSet name="Address">
+				<c:property id="streetAddress">
+					<c:action id="updateStreetAddress" />
+				</c:property>
+				<c:property id="mailAddress">
+					<c:action id="updateMailAddress" />
+				</c:property>
+			</c:fieldSet>
+		</bs3:col>
+		<bs3:col span="6">
+			<c:fieldSet name="Security">
+				<c:property id="username">
+					<c:action id="updateUsername" position="PANEL" />
+				</c:property>
+				<c:property id="emailAddress">
+					<c:action id="updateEmailAddress" position="PANEL" />
+				</c:property>
+				<c:property id="rescueEmailAddress" hidden="EVERYWHERE">
+					<c:action id="updateRescueEmailAddress" position="PANEL_DROPDOWN" />
+				</c:property>
+				<c:property id="recoveryQuestionsViewModel">
+					<c:named>Recovery Questions</c:named>
+				</c:property>
+			</c:fieldSet>
+			<c:fieldSet name="Phone">
+				<c:action id="updateTelephoneNumbers" />
+				<c:property id="phoneNumber">
+					<c:named>Home Phone Number</c:named>
+				</c:property>
+				<c:property id="mobileNumber" />
+			</c:fieldSet>
+		</bs3:col>
+	</bs3:row>
+	<bs3:row>
+		<bs3:col span="6">
+			<c:fieldSet name="Account">
+				<c:property id="state">
+					<c:action id="updateState" position="RIGHT" />
+				</c:property>
+				<c:property id="whiteCardNumber">
+					<c:action id="updateWhiteCardNumber" position="RIGHT" />
+				</c:property>
+				<c:property id="inductionNumber">
+					<c:action id="updateInductionNumber" position="RIGHT" />
+				</c:property>
+			</c:fieldSet>
+		</bs3:col>
+		<bs3:col span="6">
+			<c:collection id="tradeLicences" defaultView="table">
+				<c:named>Trade Licences</c:named>
+				<c:action id="addTradeLicence">
+					<c:named>Add Licence</c:named>
+				</c:action>
+				<c:action id="removeTradeLicence">
+					<c:named>Remove Licence</c:named>
+				</c:action>
+			</c:collection>
+		</bs3:col>
+	</bs3:row>
+	<bs3:row>
+		<bs3:col span="12" unreferencedCollections="true">
+			<c:collection id="projectAccess" defaultView="table" />
+			<c:collection id="recoveryQuestions" hidden="EVERYWHERE" />
+		</bs3:col>
+	</bs3:row>
+</bs3:grid>

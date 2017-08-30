@@ -16,7 +16,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package domainapp.modules.simple.dom.impl;
+package domainapp.modules.simple.dom.impl.simple;
 
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
@@ -40,19 +40,19 @@ import lombok.Setter;
 
 @javax.jdo.annotations.PersistenceCapable(
         identityType=IdentityType.DATASTORE,
-        schema = "simple"
+        schema = "cooperation"
 )
 @javax.jdo.annotations.DatastoreIdentity(
         strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY,
         column="id")
 @javax.jdo.annotations.Version(
-        strategy= VersionStrategy.DATE_TIME,
+        strategy= VersionStrategy.VERSION_NUMBER,
         column="version")
 @javax.jdo.annotations.Queries({
         @javax.jdo.annotations.Query(
                 name = "findByName",
                 value = "SELECT "
-                        + "FROM domainapp.modules.simple.dom.impl.SimpleObject "
+                        + "FROM domainapp.modules.simple.dom.impl.simple.SimpleObject "
                         + "WHERE name.indexOf(:name) >= 0 ")
 })
 @javax.jdo.annotations.Unique(name="SimpleObject_name_UNQ", members = {"name"})
