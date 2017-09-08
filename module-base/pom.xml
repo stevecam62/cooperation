@@ -25,8 +25,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cooperation-module-simple</artifactId>
-    <name>SimpleApp Simple Module</name>
+    <artifactId>cooperation-module-base</artifactId>
+    <name>Cooperation Base Module</name>
 
     <properties>
         <isis-maven-plugin.validate.appManifest>domainapp.modules.simple.SimpleModuleManifest</isis-maven-plugin.validate.appManifest>
