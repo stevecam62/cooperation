@@ -1,14 +1,14 @@
 <!-- Tufts VUE 3.2.2 concept-map (cooperation.vue) 2017-09-08 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/D:/apps/VUE/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Fri Sep 08 16:45:22 EST 2017 by stevec on platform Windows 8 6.2 in JVM 1.7.0_21-b11 -->
+<!-- Do Not Remove: Saved date Fri Sep 08 18:02:04 EST 2017 by stevec on platform Windows 8 6.2 in JVM 1.7.0_21-b11 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="cooperation.vue"
     created="1504828659801" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1504853122524" size="26133"
+    <resource referenceCreated="1504857725344" size="26133"
         spec="D:\git\cooperation\documents\cooperation.vue" type="1" xsi:type="URLResource">
         <title>cooperation.vue</title>
         <property key="File" value="D:\git\cooperation\documents\cooperation.vue"/>
@@ -380,7 +380,7 @@
         x="905.0" y="336.0" width="77.0" height="27.0" strokeWidth="1.0"
         autoSized="true" xsi:type="node">
         <fillColor>#FEFEC9</fillColor>
-        <strokeColor>#4C4C4C</strokeColor>
+        <strokeColor>#EA2218</strokeColor>
         <textColor>#000000</textColor>
         <font>Arial-plain-16</font>
         <URIString>http://vue.tufts.edu/rdf/resource/601d9becc0a8000200421ef87e7f47cc</URIString>
