@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:tns="http://www.example.org/OneIdSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	targetNamespace="http://www.example.org/OneIdSchema"
+	elementFormDefault="qualified">
+	<xsd:complexType name="Organisation">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="aim" type="tns:Aim" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="plan" type="tns:Plan" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Person">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="effort" type="tns:Effort" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="reward" type="tns:Reward" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="algorithm" type="tns:Algorithm"
+				minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Effort">
+		<xsd:sequence>
+			<xsd:element name="result" type="tns:Result" minOccurs="0"
+				maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Reward">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Result">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="outcome" type="tns:Outcome" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Cooperation">
+		<xsd:sequence>
+			<xsd:element name="effort" type="tns:Effort" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="person" type="tns:Person" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="task" type="tns:Task" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="goal" type="tns:Goal" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="organisation" type="tns:Organisation"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="plan" type="tns:Plan" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Task">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="effort" type="tns:Effort" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Aim">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Goal">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="aim" type="tns:Aim" minOccurs="0"
+				maxOccurs="1" />
+			<xsd:element name="task" type="tns:Task" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="outcome" type="tns:Outcome" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Outcome">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Success">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="aim" type="tns:Aim" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="outcome" type="tns:Outcome" minOccurs="1"
+				maxOccurs="unbounded" />
+			<xsd:element name="goal" type="tns:Goal" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Algorithm">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="effort" type="tns:Effort" minOccurs="1"
+				maxOccurs="unbounded" />
+			<xsd:element name="outcome" type="tns:Outcome" minOccurs="1"
+				maxOccurs="unbounded" />
+			<xsd:element name="reward" type="tns:Reward" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Plan">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="goal" type="tns:Goal" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="organisation" type="tns:Organisation"></xsd:element>
+
+	<xsd:element name="success" type="tns:Success"></xsd:element>
+
+	<xsd:element name="algorithm" type="tns:Algorithm"></xsd:element>
+
+	<xsd:element name="person" type="tns:Person"></xsd:element>
+</xsd:schema>
