@@ -1,14 +1,14 @@
-<!-- Tufts VUE 3.2.2 concept-map (cooperation.vue) 2017-09-08 -->
+<!-- Tufts VUE 3.2.2 concept-map (cooperation.vue) 2017-09-11 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/D:/apps/VUE/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Fri Sep 08 23:47:49 EST 2017 by stevec on platform Windows 8 6.2 in JVM 1.7.0_21-b11 -->
+<!-- Do Not Remove: Saved date Mon Sep 11 10:49:37 EST 2017 by stevec on platform Windows 8 6.2 in JVM 1.7.0_21-b11 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="cooperation.vue"
     created="1504828659801" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1504878469135" size="26854"
+    <resource referenceCreated="1505090977701" size="31302"
         spec="D:\git\cooperation\module-base\documents\cooperation.vue"
         type="1" xsi:type="URLResource">
         <title>cooperation.vue</title>
@@ -80,7 +80,7 @@
         <shape arcwidth="20.0" archeight="20.0" xsi:type="roundRect"/>
     </child>
     <child ID="16" label="gives" layerID="1" created="1504830621458"
-        x="717.25" y="241.50195" width="30.0" height="92.24805"
+        x="715.75" y="241.50195" width="33.0" height="92.24805"
         strokeWidth="1.0" autoSized="false" controlCount="0"
         arrowState="2" xsi:type="link">
         <strokeColor>#33A8F5</strokeColor>
@@ -123,7 +123,7 @@
         <shape arcwidth="20.0" archeight="20.0" xsi:type="roundRect"/>
     </child>
     <child ID="21" label="defined by" layerID="1"
-        created="1504831758603" x="214.0" y="129.125" width="56.0"
+        created="1504831758603" x="209.0" y="129.125" width="66.0"
         height="86.375" strokeWidth="1.0" autoSized="false"
         controlCount="0" arrowState="2" xsi:type="link">
         <strokeColor>#AF55F4</strokeColor>
@@ -136,8 +136,8 @@
         <ID2 xsi:type="node">19</ID2>
     </child>
     <child ID="24" label="relates to" layerID="1"
-        created="1504831911888" x="261.0" y="221.0" width="136.5"
-        height="15.0" strokeWidth="1.0" autoSized="false"
+        created="1504831911888" x="261.0" y="220.0" width="136.5"
+        height="17.0" strokeWidth="1.0" autoSized="false"
         controlCount="0" arrowState="2" xsi:type="link">
         <strokeColor>#AF55F4</strokeColor>
         <textColor>#AF55F4</textColor>
@@ -149,8 +149,8 @@
         <ID2 xsi:type="node">19</ID2>
     </child>
     <child ID="25" label="actioned by" layerID="1"
-        created="1504832416178" x="440.5" y="221.0" width="113.5"
-        height="15.0" strokeWidth="1.0" autoSized="false"
+        created="1504832416178" x="440.5" y="220.0" width="113.5"
+        height="17.0" strokeWidth="1.0" autoSized="false"
         controlCount="0" arrowState="2" xsi:type="link">
         <strokeColor>#AF55F4</strokeColor>
         <textColor>#AF55F4</textColor>
@@ -162,7 +162,7 @@
         <ID2 xsi:type="node">18</ID2>
     </child>
     <child ID="26" label="performs" layerID="1" created="1504832418772"
-        x="703.9583" y="129.125" width="50.0" height="86.375"
+        x="700.9583" y="129.125" width="56.0" height="86.375"
         strokeWidth="1.0" autoSized="false" controlCount="0"
         arrowState="2" xsi:type="link">
         <strokeColor>#33A8F5</strokeColor>
@@ -175,8 +175,8 @@
         <ID2 xsi:type="node">11</ID2>
     </child>
     <child ID="29" label="working on" layerID="1"
-        created="1504832685237" x="598.0" y="221.0" width="109.25"
-        height="15.0" strokeWidth="1.0" autoSized="false"
+        created="1504832685237" x="598.0" y="220.0" width="109.25"
+        height="17.0" strokeWidth="1.0" autoSized="false"
         controlCount="0" arrowState="2" xsi:type="link">
         <strokeColor>#AF55F4</strokeColor>
         <textColor>#AF55F4</textColor>
@@ -188,11 +188,11 @@
         <ID2 xsi:type="node">18</ID2>
     </child>
     <child ID="30" label="has" layerID="1" created="1504834642718"
-        x="408.5" y="241.5" width="21.0" height="95.25"
+        x="407.5" y="241.5" width="23.0" height="95.25"
         strokeWidth="1.0" autoSized="false" controlCount="0"
         arrowState="2" xsi:type="link">
-        <strokeColor>#AF55F4</strokeColor>
-        <textColor>#AF55F4</textColor>
+        <strokeColor>#FFCC00</strokeColor>
+        <textColor>#FFCC00</textColor>
         <font>Arial-plain-14</font>
         <URIString>http://vue.tufts.edu/rdf/resource/5fd3a9dec0a8000200421ef8e27bb087</URIString>
         <point1 x="419.0" y="242.0"/>
@@ -204,18 +204,18 @@
         x="382.0" y="336.25" width="74.0" height="27.0"
         strokeWidth="1.0" autoSized="true" xsi:type="node">
         <fillColor>#FEFEC9</fillColor>
-        <strokeColor>#AF55F4</strokeColor>
+        <strokeColor>#FFCC00</strokeColor>
         <textColor>#000000</textColor>
         <font>Arial-plain-16</font>
         <URIString>http://vue.tufts.edu/rdf/resource/5fd3a9dfc0a8000200421ef8b994fb57</URIString>
         <shape arcwidth="20.0" archeight="20.0" xsi:type="roundRect"/>
     </child>
     <child ID="33" label="leads to" layerID="1" created="1504834884964"
-        x="455.5" y="340.70233" width="251.75" height="15.0"
+        x="455.5" y="339.70233" width="251.75" height="17.0"
         strokeWidth="1.0" autoSized="false" controlCount="0"
         arrowState="2" xsi:type="link">
-        <strokeColor>#33A8F5</strokeColor>
-        <textColor>#33A8F5</textColor>
+        <strokeColor>#FFCC00</strokeColor>
+        <textColor>#FFCC00</textColor>
         <font>Arial-plain-14</font>
         <URIString>http://vue.tufts.edu/rdf/resource/5fd3a9dfc0a8000200421ef87089921e</URIString>
         <point1 x="706.75" y="347.00735"/>
@@ -224,7 +224,7 @@
         <ID2 xsi:type="node">32</ID2>
     </child>
     <child ID="34" label="considers" layerID="1" created="1504835315906"
-        x="754.25" y="221.0" width="151.25" height="15.0"
+        x="754.25" y="220.0" width="151.25" height="17.0"
         strokeWidth="1.0" autoSized="false" controlCount="0"
         arrowState="2" xsi:type="link">
         <strokeColor>#EA2218</strokeColor>
@@ -240,7 +240,7 @@
         x="206.5" y="336.0" width="71.0" height="27.0" strokeWidth="1.0"
         autoSized="true" xsi:type="node">
         <fillColor>#FEFEC9</fillColor>
-        <strokeColor>#AF55F4</strokeColor>
+        <strokeColor>#FFCC00</strokeColor>
         <textColor>#000000</textColor>
         <font>Arial-plain-16</font>
         <URIString>http://vue.tufts.edu/rdf/resource/5fd3a9e1c0a8000200421ef877e4858f</URIString>
@@ -261,11 +261,11 @@
         <ID2 xsi:type="node">11</ID2>
     </child>
     <child ID="41" label="relates to" layerID="1"
-        created="1504844420818" x="216.5" y="241.5" width="51.0"
+        created="1504844420818" x="212.5" y="241.5" width="59.0"
         height="95.0" strokeWidth="1.0" autoSized="false"
         controlCount="0" arrowState="2" xsi:type="link">
-        <strokeColor>#AF55F4</strokeColor>
-        <textColor>#AF55F4</textColor>
+        <strokeColor>#FFCC00</strokeColor>
+        <textColor>#FFCC00</textColor>
         <font>Arial-plain-14</font>
         <URIString>http://vue.tufts.edu/rdf/resource/5fd3a9e2c0a8000200421ef8ec155889</URIString>
         <point1 x="242.0" y="336.0"/>
@@ -274,11 +274,11 @@
         <ID2 xsi:type="node">19</ID2>
     </child>
     <child ID="42" label="through" layerID="1" created="1504844470684"
-        x="277.0" y="342.12396" width="105.5" height="15.0"
+        x="277.0" y="341.12396" width="105.5" height="17.0"
         strokeWidth="1.0" autoSized="false" controlCount="0"
         arrowState="2" xsi:type="link">
-        <strokeColor>#AF55F4</strokeColor>
-        <textColor>#AF55F4</textColor>
+        <strokeColor>#FFCC00</strokeColor>
+        <textColor>#FFCC00</textColor>
         <font>Arial-plain-14</font>
         <URIString>http://vue.tufts.edu/rdf/resource/5fd3a9e3c0a8000200421ef8932262f9</URIString>
         <point1 x="277.5" y="349.55014"/>
@@ -290,8 +290,8 @@
         created="1504846269641" x="261.248" y="239.79565"
         width="140.99722" height="96.704346" strokeWidth="1.0"
         autoSized="false" controlCount="0" arrowState="2" xsi:type="link">
-        <strokeColor>#AF55F4</strokeColor>
-        <textColor>#AF55F4</textColor>
+        <strokeColor>#FFCC00</strokeColor>
+        <textColor>#FFCC00</textColor>
         <font>Arial-plain-14</font>
         <URIString>http://vue.tufts.edu/rdf/resource/5fd52e44c0a8000200421ef89c480473</URIString>
         <point1 x="261.748" y="336.0"/>
@@ -314,7 +314,7 @@
         <ctrlPoint0 x="947.0" y="446.0" xsi:type="point"/>
     </child>
     <child ID="49" label="seeks" layerID="1" created="1504847565064"
-        x="757.1666" y="108.625" width="154.33331" height="15.0"
+        x="757.1666" y="107.625" width="154.33331" height="17.0"
         strokeWidth="1.0" strokeStyle="2" autoSized="false"
         controlCount="0" arrowState="2" xsi:type="link">
         <strokeColor>#EA2218</strokeColor>
@@ -337,7 +337,7 @@
         <shape arcwidth="20.0" archeight="20.0" xsi:type="roundRect"/>
     </child>
     <child ID="51" label="calculates" layerID="1"
-        created="1504848880933" x="915.5" y="129.125" width="56.0"
+        created="1504848880933" x="912.0" y="129.125" width="63.0"
         height="86.375" strokeWidth="1.0" autoSized="false"
         controlCount="0" arrowState="2" xsi:type="link">
         <strokeColor>#EA2218</strokeColor>
@@ -386,7 +386,7 @@
         <shape arcwidth="20.0" archeight="20.0" xsi:type="roundRect"/>
     </child>
     <child ID="55" label="consists of" layerID="1"
-        created="1504849754079" x="346.74945" y="182.97635" width="60.0"
+        created="1504849754079" x="343.24945" y="182.97635" width="67.0"
         height="34.335983" strokeWidth="1.0" strokeStyle="2"
         autoSized="false" controlCount="0" arrowState="2" xsi:type="link">
         <strokeColor>#AF55F4</strokeColor>
@@ -463,12 +463,90 @@
         <ID1 xsi:type="node">14</ID1>
         <ID2 xsi:type="node">54</ID2>
     </child>
+    <child ID="65"
+        label="KEY:&#xa;    &#xa;    &#xa;      Blue: Persons can record their Effort (work, time spent) and Results &#xa;      obtained.&#xa;    &#xa;    &#xa;      Purple: A formal Organisation can define its Aims, achievable Goals and &#xa;      Tasks to make these happen. It may develop these Goals through a process &#xa;      of developing a Plan.&#xa;    &#xa;    &#xa;      Orange: After the fact, an Organistion can evaluate Success in relation &#xa;      to the Aims by measuring the achievement of the Goals through Outcomes.&#xa;    &#xa;    &#xa;      Green: Cooperation by People is needed to form an Organisation with &#xa;      Aims, create a Plan by deciding on Goals, allocate Tasks within the Plan &#xa;      and work together in a coordinated way. &#xa;    &#xa;    &#xa;      Red: People will seek Rewards from Cooperation, these can come in many &#xa;      ways but all are related to overall Outcomes and often determined by the &#xa;      Effort contributed by and individual Person."
+        layerID="1" created="1505088241138" x="200.29999" y="402.49884"
+        width="788.0" height="167.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
+        <strokeColor>#404040</strokeColor>
+        <textColor>#000000</textColor>
+        <font>SansSerif-plain-14</font>
+        <URIString>http://vue.tufts.edu/rdf/resource/6e4d2202c0a80002002f3782426e98a2</URIString>
+        <richText>&lt;html&gt;
+  &lt;head style="color: #000000" color="#000000"&gt;
+    &lt;style type="text/css"&gt;
+      &lt;!--
+        body { margin-left: 0px; margin-top: 0px; font-family: Arial; margin-right: 0px; margin-bottom: 0px; color: #000000; font-size: 13 }
+        ol { margin-left: 30; margin-top: 6; font-family: Arial; vertical-align: middle; list-style-position: outside; font-size: 13 }
+        p { margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; color: #000000 }
+        ul { margin-left: 30; margin-top: 6; font-family: Arial; list-style-position: outside; vertical-align: middle; font-size: 13 }
+      --&gt;
+    &lt;/style&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p style="color: #000000" color="#000000"&gt;
+      KEY:
+    &lt;/p&gt;
+    &lt;p style="color: #000000" color="#000000"&gt;
+      Blue: Persons can record their Effort (work, time spent) and Results 
+      obtained.
+    &lt;/p&gt;
+    &lt;p style="color: #000000" color="#000000"&gt;
+      Purple: A formal Organisation can define its Aims, achievable Goals and 
+      Tasks to make these happen. It may develop these Goals through a process 
+      of developing a Plan.
+    &lt;/p&gt;
+    &lt;p style="color: #000000" color="#000000"&gt;
+      Orange: After the fact, an Organistion can evaluate Success in relation 
+      to the Aims by measuring the achievement of the Goals through Outcomes.
+    &lt;/p&gt;
+    &lt;p style="color: #000000" color="#000000"&gt;
+      Green: Cooperation by People is needed to form an Organisation with 
+      Aims, create a Plan by deciding on Goals, allocate Tasks within the Plan 
+      and work together in a coordinated way. 
+    &lt;/p&gt;
+    &lt;p style="color: #000000" color="#000000"&gt;
+      Red: People will seek Rewards from Cooperation, these can come in many 
+      ways but all are related to overall Outcomes and often determined by the 
+      Effort contributed by and individual Person.
+    &lt;/p&gt;
+    &lt;p style="color: #000000" color="#000000"&gt;
+      
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</richText>
+        <label>KEY:
+    
+    
+      Blue: Persons can record their Effort (work, time spent) and Results 
+      obtained.
+    
+    
+      Purple: A formal Organisation can define its Aims, achievable Goals and 
+      Tasks to make these happen. It may develop these Goals through a process 
+      of developing a Plan.
+    
+    
+      Orange: After the fact, an Organistion can evaluate Success in relation 
+      to the Aims by measuring the achievement of the Goals through Outcomes.
+    
+    
+      Green: Cooperation by People is needed to form an Organisation with 
+      Aims, create a Plan by deciding on Goals, allocate Tasks within the Plan 
+      and work together in a coordinated way. 
+    
+    
+      Red: People will seek Rewards from Cooperation, these can come in many 
+      ways but all are related to overall Outcomes and often determined by the 
+      Effort contributed by and individual Person.</label>
+    </child>
     <layer ID="1" label="Layer 1" created="1504828659811" x="0.0"
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
         <URIString>http://vue.tufts.edu/rdf/resource/5fd3a9e3c0a8000200421ef873edb092</URIString>
     </layer>
-    <userZoom>1.0</userZoom>
-    <userOrigin x="-14.0" y="-14.0"/>
+    <userZoom>1.25</userZoom>
+    <userOrigin x="122.37427" y="-70.87648"/>
     <presentationBackground>#202020</presentationBackground>
     <PathwayList currentPathway="0" revealerIndex="-1">
         <pathway ID="0" label="Untitled Pathway" created="1504828659772"
