@@ -1,14 +1,14 @@
 <!-- Tufts VUE 3.2.2 concept-map (cooperation.vue) 2017-09-11 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/D:/apps/VUE/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Mon Sep 11 10:49:37 EST 2017 by stevec on platform Windows 8 6.2 in JVM 1.7.0_21-b11 -->
+<!-- Do Not Remove: Saved date Mon Sep 11 10:53:13 EST 2017 by stevec on platform Windows 8 6.2 in JVM 1.7.0_21-b11 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="cooperation.vue"
     created="1504828659801" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1505090977701" size="31302"
+    <resource referenceCreated="1505091193435" size="31302"
         spec="D:\git\cooperation\module-base\documents\cooperation.vue"
         type="1" xsi:type="URLResource">
         <title>cooperation.vue</title>
@@ -464,7 +464,7 @@
         <ID2 xsi:type="node">54</ID2>
     </child>
     <child ID="65"
-        label="KEY:&#xa;    &#xa;    &#xa;      Blue: Persons can record their Effort (work, time spent) and Results &#xa;      obtained.&#xa;    &#xa;    &#xa;      Purple: A formal Organisation can define its Aims, achievable Goals and &#xa;      Tasks to make these happen. It may develop these Goals through a process &#xa;      of developing a Plan.&#xa;    &#xa;    &#xa;      Orange: After the fact, an Organistion can evaluate Success in relation &#xa;      to the Aims by measuring the achievement of the Goals through Outcomes.&#xa;    &#xa;    &#xa;      Green: Cooperation by People is needed to form an Organisation with &#xa;      Aims, create a Plan by deciding on Goals, allocate Tasks within the Plan &#xa;      and work together in a coordinated way. &#xa;    &#xa;    &#xa;      Red: People will seek Rewards from Cooperation, these can come in many &#xa;      ways but all are related to overall Outcomes and often determined by the &#xa;      Effort contributed by and individual Person."
+        label="KEY:&#xa;    &#xa;    &#xa;      Blue: Persons can record their Effort (work, time spent) and Results &#xa;      obtained.&#xa;    &#xa;    &#xa;      Purple: A formal Organisation can define its Aims, achievable Goals and &#xa;      Tasks to make these happen. It may develop these Goals through a process &#xa;      of developing a Plan.&#xa;    &#xa;    &#xa;      Orange: After the fact, an Organisation can evaluate Success in relation &#xa;      to the Aims by measuring the achievement of the Goals through Outcomes.&#xa;    &#xa;    &#xa;      Green: Cooperation by People is needed to form an Organisation with &#xa;      Aims, create a Plan by deciding on Goals, allocate Tasks within the Plan &#xa;      and work together in a coordinated way. &#xa;    &#xa;    &#xa;      Red: People will seek Rewards from Cooperation, these can come in many &#xa;      ways but all are related to overall Outcomes and often determined by the &#xa;      Effort contributed by an individual Person. Reward calculation &#xa;      Algorithms are needed, this is the interesting bit!"
         layerID="1" created="1505088241138" x="200.29999" y="402.49884"
         width="788.0" height="167.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
         <strokeColor>#404040</strokeColor>
@@ -497,7 +497,7 @@
       of developing a Plan.
     &lt;/p&gt;
     &lt;p style="color: #000000" color="#000000"&gt;
-      Orange: After the fact, an Organistion can evaluate Success in relation 
+      Orange: After the fact, an Organisation can evaluate Success in relation 
       to the Aims by measuring the achievement of the Goals through Outcomes.
     &lt;/p&gt;
     &lt;p style="color: #000000" color="#000000"&gt;
@@ -508,7 +508,8 @@
     &lt;p style="color: #000000" color="#000000"&gt;
       Red: People will seek Rewards from Cooperation, these can come in many 
       ways but all are related to overall Outcomes and often determined by the 
-      Effort contributed by and individual Person.
+      Effort contributed by an individual Person. Reward calculation 
+      Algorithms are needed, this is the interesting bit!
     &lt;/p&gt;
     &lt;p style="color: #000000" color="#000000"&gt;
       
@@ -528,7 +529,7 @@
       of developing a Plan.
     
     
-      Orange: After the fact, an Organistion can evaluate Success in relation 
+      Orange: After the fact, an Organisation can evaluate Success in relation 
       to the Aims by measuring the achievement of the Goals through Outcomes.
     
     
@@ -539,7 +540,8 @@
     
       Red: People will seek Rewards from Cooperation, these can come in many 
       ways but all are related to overall Outcomes and often determined by the 
-      Effort contributed by and individual Person.</label>
+      Effort contributed by an individual Person. Reward calculation 
+      Algorithms are needed, this is the interesting bit!</label>
     </child>
     <layer ID="1" label="Layer 1" created="1504828659811" x="0.0"
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
