@@ -5,15 +5,16 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-
 package domainapp.modules.simple.dom.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -24,11 +25,13 @@ import org.apache.isis.applib.annotation.DomainObject;
 import lombok.Getter;
 import lombok.Setter;
 
-
 /**
- * <p>Java class for Goal complex type.
+ * <p>
+ * Java class for Goal complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="Goal"&gt;
@@ -48,26 +51,56 @@ import lombok.Setter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Goal", propOrder = {
-    "name",
-    "aim",
-    "task",
-    "outcome"
-})
+@XmlType(name = "Goal", propOrder = { "name", "aim", "tasks", "outcomes" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Goal {
 
-    @XmlElement(required = true)
-    @Column(allowsNull="false")
-    @Getter 
-    @Setter
-    protected String name;
-    @Column(allowsNull="false")
-    @Getter 
-    @Setter
-    protected Aim aim;
-    protected List<Task> task;
-    protected List<Outcome> outcome;
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter
+	protected Organisation organisation;
+
+	@XmlElement(required = true)
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter
+	protected String name;
+
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter
+	protected Aim aim;
+
+	@Persistent(mappedBy = "goal")
+	@Getter
+	protected List<Task> tasks;
+
+	@Persistent(mappedBy = "goal")
+	@Getter
+	protected List<Outcome> outcomes;
+
+	public Goal() {
+	}
+
+	public Goal(String name) {
+		setName(name);
+	}
+
+	public Goal addTask(String name) {
+		this.getTasks().add(taskRepository.createTask(this, name));
+		return this;
+	}
+
+	public Goal addOutcome(String name) {
+		this.getOutcomes().add(organisationRepository.createOutcome(this, name));
+		return this;
+	}
+
+	@Inject
+	OrganisationRepository organisationRepository;
+	
+	@Inject
+	TaskRepository taskRepository;
 
 }

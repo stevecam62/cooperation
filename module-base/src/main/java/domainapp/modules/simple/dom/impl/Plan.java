@@ -5,7 +5,6 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-
 package domainapp.modules.simple.dom.impl;
 
 import java.util.ArrayList;
@@ -21,14 +20,17 @@ import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-
 /**
- * <p>Java class for Plan complex type.
+ * <p>
+ * Java class for Plan complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="Plan"&gt;
@@ -46,21 +48,35 @@ import lombok.Setter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Plan", propOrder = {
-    "name",
-    "goal"
-})
+@XmlType(name = "Plan", propOrder = { "name", "goal" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Plan {
 
-    @XmlElement(required = true)
-    @Column(allowsNull="false")
-    @Getter 
-    @Setter
-    protected String name;
-    @XmlElement(required = true)
-    protected List<Goal> goal;
+	@XmlElement(required = true)
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter
+	protected String name;
 
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter(value=AccessLevel.PRIVATE)
+	protected Organisation organisation;
+
+	@XmlElement(required = true)
+	protected List<Goal> goal;
+
+	Plan() {
+	}
+
+	public Plan(String name) {
+		setName(name);
+	}
+
+	public Plan(Organisation organisation, String name) {
+		setOrganisation(organisation);
+		setName(name);
+	}
 
 }

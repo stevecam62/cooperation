@@ -18,29 +18,10 @@ import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-
-/**
- * <p>Java class for Reward complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType name="Reward"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
- * </pre>
- * 
- * 
- */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Reward", propOrder = {
     "name"
@@ -52,6 +33,11 @@ public class Reward {
     @XmlElement(required = true)
     @Column(allowsNull="false")
     @Getter 
-    @Setter
+    @Setter(value=AccessLevel.PRIVATE)
     protected String name;
+    
+    @Column(allowsNull="false")
+    @Getter 
+    @Setter(value=AccessLevel.PRIVATE)
+    private Person person;
 }

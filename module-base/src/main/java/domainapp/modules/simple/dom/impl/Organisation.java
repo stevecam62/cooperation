@@ -5,12 +5,12 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-
 package domainapp.modules.simple.dom.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
@@ -25,47 +25,55 @@ import org.apache.isis.applib.annotation.DomainObject;
 import lombok.Getter;
 import lombok.Setter;
 
-
-/**
- * <p>Java class for Organisation complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType name="Organisation"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="aim" type="{http://www.example.org/OneIdSchema}Aim" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="plan" type="{http://www.example.org/OneIdSchema}Plan" maxOccurs="unbounded"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
- * </pre>
- * 
- * 
- */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Organisation", propOrder = {
-    "name",
-    "aim",
-    "plan"
-})
+@XmlType(name = "Organisation", propOrder = { "name", "aims", "plans", "goals" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Organisation {
 
-    @XmlElement(required = true)
-    @Column(allowsNull="false")
-    @Getter 
-    @Setter
-    protected String name;
-    @Persistent(mappedBy="organisation")
-    protected List<Aim> aim;
-    @XmlElement(required = true)
-    @Persistent(mappedBy="organisation")
-    protected List<Plan> plan;
+	@XmlElement(required = true)
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter
+	protected String name;
+
+	@Persistent(mappedBy = "organisation")
+	@Getter
+	protected List<Aim> aims;
+
+	@XmlElement(required = true)
+	@Persistent(mappedBy = "organisation")
+	@Getter
+	protected List<Plan> plans;
+	
+	@XmlElement(required = true)
+	@Persistent(mappedBy = "organisation")
+	@Getter
+	protected List<Goal> goals;
+
+	public Organisation() {
+	}
+
+	public Organisation(String name) {
+		setName(name);
+	}
+
+	public Organisation addAim(String name) {
+		this.getAims().add(organisationRepository.createAim(this,name));
+		return this;
+	}
+	
+	public Organisation addPlan(String name) {
+		this.getPlans().add(organisationRepository.createPlan(this, name));
+		return this;
+	}
+	
+	public Organisation addGoal(String name) {
+		this.getGoals().add(organisationRepository.createGoal(name));
+		return this;
+	}
+
+	@Inject
+	OrganisationRepository organisationRepository;
 
 }

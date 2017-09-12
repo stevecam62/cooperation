@@ -5,60 +5,74 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-
 package domainapp.modules.simple.dom.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.value.DateTime;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-
-/**
- * <p>Java class for Task complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType name="Task"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="effort" type="{http://www.example.org/OneIdSchema}Effort" maxOccurs="unbounded" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
- * </pre>
- * 
- * 
- */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Task", propOrder = {
-    "name",
-    "effort"
-})
+@XmlType(name = "Task", propOrder = { "name", "efforts" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Task {
 
-    @XmlElement(required = true)
-    @Column(allowsNull="false")
-    @Getter 
-    @Setter
-    protected String name;
-    protected List<Effort> effort;
+	@XmlElement(required = true)
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter
+	protected String name;
+
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter(value = AccessLevel.PRIVATE)
+	public Goal goal;
+	
+	@Persistent
+	@Join
+	@Getter
+	protected List<Person> persons;
+
+	@Persistent(mappedBy = "task")
+	@Getter
+	protected List<Effort> efforts;
+
+	Task() {
+	}
+
+	public Task(String name) {
+		this.setName(name);
+	}
+
+	public Task(Goal goal, String name) {
+		this.setGoal(goal);
+		this.setName(name);
+	}
+
+	public Task addEffort(Person person, DateTime start, DateTime end) {
+		this.getEfforts().add(taskRepository.createEffort(this, person, start, end));
+		return this;
+	}
+
+	@Inject
+	TaskRepository taskRepository;
 
 }

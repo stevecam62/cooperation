@@ -5,7 +5,6 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-
 package domainapp.modules.simple.dom.impl;
 
 import java.util.ArrayList;
@@ -24,11 +23,13 @@ import org.apache.isis.applib.annotation.DomainObject;
 import lombok.Getter;
 import lombok.Setter;
 
-
 /**
- * <p>Java class for Success complex type.
+ * <p>
+ * Java class for Success complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="Success"&gt;
@@ -48,31 +49,36 @@ import lombok.Setter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Success", propOrder = {
-    "name",
-    "aim",
-    "outcome",
-    "goal"
-})
+@XmlType(name = "Success", propOrder = { "name", "aim", "outcome", "goal" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Success {
 
-    @XmlElement(required = true)
-    @Column(allowsNull="false")
-    @Getter 
-    @Setter
-    protected String name;
-    @XmlElement(required = true)
-    @Column(allowsNull="false")
-    @Getter 
-    @Setter
-    protected Aim aim;
-    @XmlElement(required = true)
-    protected List<Outcome> outcome;
-    @XmlElement(required = true)
-    protected List<Goal> goal;
+	@XmlElement(required = true)
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter
+	protected String name;
 
+	@XmlElement(required = true)
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter
+	protected Aim aim;
+	
+	@XmlElement(required = true)
+	@Getter
+	protected List<Outcome> outcome;
+	
+	@XmlElement(required = true)
+	@Getter
+	protected List<Goal> goal;
 
+	public Success() {
+	}
+
+	public Success(String name) {
+		setName(name);
+	}
 
 }

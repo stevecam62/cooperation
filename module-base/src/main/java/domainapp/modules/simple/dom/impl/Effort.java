@@ -5,7 +5,6 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-
 package domainapp.modules.simple.dom.impl;
 
 import javax.jdo.annotations.Column;
@@ -16,41 +15,51 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.value.DateTime;
 
 import lombok.Getter;
 import lombok.Setter;
 
-
-/**
- * <p>Java class for Effort complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType name="Effort"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="result" type="{http://www.example.org/OneIdSchema}Result" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
- * </pre>
- * 
- * 
- */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Effort", propOrder = {
-    "result"
-})
+@XmlType(name = "Effort", propOrder = { "result" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Effort {
 
-    @Column(allowsNull="false")
-    @Getter 
-    @Setter
-    protected Result result;
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter
+	private Person person;
+
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter
+	private Task task;
+
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter
+	private Result result;
+
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter
+	private DateTime start;
+
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter
+	private DateTime end;
+	
+
+	Effort() {
+	}
+
+	public Effort(Task task, Person person, DateTime start, DateTime end) {
+		setPerson(person);
+		setTask(task);
+		setStart(start);
+		setEnd(end);
+	}
 
 }

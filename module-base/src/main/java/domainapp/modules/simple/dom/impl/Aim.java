@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,6 +53,17 @@ public class Aim {
     @Column(allowsNull="false")
     @Getter 
     @Setter
-	protected String name;
+	private String name;
+	
+    @Getter 
+    @Setter(value=AccessLevel.PRIVATE)
+	private Organisation organisation;
+	
+	public Aim(){
+	}
+	
+	public Aim(Organisation organisation, String name){
+		setName(name);
+	}
 
 }

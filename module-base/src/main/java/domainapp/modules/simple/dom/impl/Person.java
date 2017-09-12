@@ -13,7 +13,9 @@ import java.util.List;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -62,9 +64,24 @@ public class Person {
     @Column(allowsNull="false")
     @Getter 
     @Setter
-    protected String name;
-    protected List<Effort> effort;
-    protected List<Reward> reward;
-    protected Algorithm algorithm;
+    private String name;
+
+    @Column(allowsNull="true")
+    @Getter 
+    @Setter
+    private Algorithm algorithm;
+    
+	@Persistent
+	@Join
+	@Getter
+	private List<Task> tasks;
+	
+	@Persistent(mappedBy="person")
+	@Getter
+	private List<Effort> efforts;
+	
+	@Persistent(mappedBy="person")
+	@Getter
+	private List<Reward> reward;
 
 }

@@ -54,4 +54,20 @@ public class Outcome {
     @Getter 
     @Setter
     protected String name;
+    
+    @Column(allowsNull="true")
+    @Getter 
+    @Setter
+    protected Goal goal;
+    
+	public Outcome() {}
+
+	public Outcome(String name) {
+		setName(name);
+	}
+
+	public Outcome(Goal goal, String name) {
+		setGoal(goal);
+		setName(name);
+	}
 }
