@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.impl.location;
+package au.org.cooperation.modules.base.dom.impl.location;
 
 public enum State {
 	ACT, NSW, NT, QLD, SA, TAS, VIC, WA;

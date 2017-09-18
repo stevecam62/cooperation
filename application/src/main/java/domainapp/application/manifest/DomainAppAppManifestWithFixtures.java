@@ -22,7 +22,7 @@ import java.util.List;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-import domainapp.modules.simple.fixture.scenario.CreateSimpleObjects;
+import au.org.cooperation.modules.base.fixture.scenario.CreateSimpleObjects;
 
 /**
  * Run the app but without setting up any fixtures.

@@ -6,7 +6,7 @@
 //
 
 
-package domainapp.modules.simple.dom.impl;
+package au.org.cooperation.modules.base.dom.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,29 +24,6 @@ import org.apache.isis.applib.annotation.DomainObject;
 import lombok.Getter;
 import lombok.Setter;
 
-
-/**
- * <p>Java class for Algorithm complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType name="Algorithm"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="effort" type="{http://www.example.org/OneIdSchema}Effort" maxOccurs="unbounded"/&gt;
- *         &lt;element name="outcome" type="{http://www.example.org/OneIdSchema}Outcome" maxOccurs="unbounded"/&gt;
- *         &lt;element name="reward" type="{http://www.example.org/OneIdSchema}Reward" maxOccurs="unbounded"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
- * </pre>
- * 
- * 
- */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Algorithm", propOrder = {
     "name",
@@ -63,13 +40,16 @@ public class Algorithm {
     @Getter 
     @Setter
     protected String name;
+    
     @XmlElement(required = true)
     @Column(allowsNull="false")
     @Getter 
     @Setter
     protected List<Effort> effort;
+    
     @XmlElement(required = true)
     protected List<Outcome> outcome;
+    
     @XmlElement(required = true)
     protected List<Reward> reward;
 

@@ -16,7 +16,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package domainapp.modules.simple.dom.impl.simple;
+package au.org.cooperation.modules.base.dom.impl.simple;
 
 import java.util.List;
 

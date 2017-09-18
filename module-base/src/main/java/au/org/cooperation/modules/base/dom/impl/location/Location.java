@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.impl.location;
+package au.org.cooperation.modules.base.dom.impl.location;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
@@ -32,8 +32,8 @@ import org.apache.isis.applib.annotation.Where;
 @PersistenceCapable(identityType = IdentityType.DATASTORE)
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 @Discriminator(strategy = DiscriminatorStrategy.VALUE_MAP, value = "LOCATION")
-@Queries({ @Query(name = "findLocationByName", language = "JDOQL", value = "SELECT FROM domainapp.modules.simple.dom.impl.location.Location WHERE name == :name"),
-		@Query(name = "findAllLocations", language = "JDOQL", value = "SELECT FROM domainapp.modules.simple.dom.impl.location.Location ORDER BY name") })
+@Queries({ @Query(name = "findLocationByName", language = "JDOQL", value = "SELECT FROM au.org.cooperation.modules.base.dom.impl.location.Location WHERE name == :name"),
+		@Query(name = "findAllLocations", language = "JDOQL", value = "SELECT FROM au.org.cooperation.modules.base.dom.impl.location.Location ORDER BY name") })
 public class Location /*implements Locatable*/ {
 
 	private String name;

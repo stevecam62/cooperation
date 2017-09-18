@@ -17,7 +17,7 @@
  *  under the License.
  */
 
-package domainapp.modules.simple.fixture.scenario;
+package au.org.cooperation.modules.base.fixture.scenario;
 
 import java.util.List;
 
@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
 
-import domainapp.modules.simple.dom.impl.simple.SimpleObject;
-import domainapp.modules.simple.dom.impl.simple.SimpleObjectMenu;
+import au.org.cooperation.modules.base.dom.impl.simple.SimpleObject;
+import au.org.cooperation.modules.base.dom.impl.simple.SimpleObjectMenu;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 

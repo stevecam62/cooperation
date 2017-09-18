@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.impl.user;
+package au.org.cooperation.modules.base.dom.impl.user;
 
 
 import javax.inject.Inject;
@@ -15,9 +15,9 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.isisaddons.module.security.dom.user.ApplicationUser;
 
-import domainapp.modules.simple.dom.impl.location.Address;
-import domainapp.modules.simple.dom.impl.location.LocationRepository;
-import domainapp.modules.simple.dom.impl.location.State;
+import au.org.cooperation.modules.base.dom.impl.location.Address;
+import au.org.cooperation.modules.base.dom.impl.location.LocationRepository;
+import au.org.cooperation.modules.base.dom.impl.location.State;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,18 +26,18 @@ import lombok.Setter;
 @javax.jdo.annotations.Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 @javax.jdo.annotations.Queries({
 		@javax.jdo.annotations.Query(name = "findByUsername", language = "JDOQL", value = "SELECT "
-				+ "FROM domainapp.modules.simple.dom.impl.user.MyApplicationUser " + "WHERE username == :username"),
+				+ "FROM au.org.cooperation.modules.base.dom.impl.user.MyApplicationUser " + "WHERE username == :username"),
 		@javax.jdo.annotations.Query(name = "findByEmailAddress", language = "JDOQL", value = "SELECT "
-				+ "FROM domainapp.modules.simple.dom.impl.user.MyApplicationUser "
+				+ "FROM au.org.cooperation.modules.base.dom.impl.user.MyApplicationUser "
 				+ "WHERE emailAddress == :emailAddress"),
 		@javax.jdo.annotations.Query(name = "findByAtPath", language = "JDOQL", value = "SELECT "
-				+ "FROM domainapp.modules.simple.dom.impl.user.MyApplicationUser " + "WHERE atPath == :atPath"),
+				+ "FROM au.org.cooperation.modules.base.dom.impl.user.MyApplicationUser " + "WHERE atPath == :atPath"),
 		@javax.jdo.annotations.Query(name = "findByName", language = "JDOQL", value = "SELECT "
-				+ "FROM domainapp.modules.simple.dom.impl.user.MyApplicationUser "
+				+ "FROM au.org.cooperation.modules.base.dom.impl.user.MyApplicationUser "
 				+ "WHERE username.matches(:nameRegex)" + "   || familyName.matches(:nameRegex)"
 				+ "   || givenName.matches(:nameRegex)" + "   || knownAs.matches(:nameRegex)"),
 		@javax.jdo.annotations.Query(name = "find", language = "JDOQL", value = "SELECT "
-				+ "FROM domainapp.modules.simple.dom.impl.user.MyApplicationUser " + "WHERE username.matches(:regex)"
+				+ "FROM au.org.cooperation.modules.base.dom.impl.user.MyApplicationUser " + "WHERE username.matches(:regex)"
 				+ " || familyName.matches(:regex)" + " || givenName.matches(:regex)" + " || knownAs.matches(:regex)"
 				+ " || emailAddress.matches(:regex)") })
 @DomainObject(objectType = "User")

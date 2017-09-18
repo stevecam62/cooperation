@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.impl.location;
+package au.org.cooperation.modules.base.dom.impl.location;
 
 import javax.inject.Inject;
 

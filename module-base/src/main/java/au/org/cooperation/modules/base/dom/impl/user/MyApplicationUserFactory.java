@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.impl.user;
+package au.org.cooperation.modules.base.dom.impl.user;
 
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.NatureOfService;

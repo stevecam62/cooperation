@@ -17,7 +17,7 @@
  *  under the License.
  */
 
-package domainapp.modules.simple.fixture.teardown;
+package au.org.cooperation.modules.base.fixture.teardown;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;

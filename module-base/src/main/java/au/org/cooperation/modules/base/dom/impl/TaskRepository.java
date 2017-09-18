@@ -16,16 +16,15 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package domainapp.modules.simple.dom.impl;
+package au.org.cooperation.modules.base.dom.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.NatureOfService;
-import org.apache.isis.applib.query.QueryDefault;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
-import org.apache.isis.applib.value.DateTime;
 
 @DomainService(
         nature = NatureOfService.DOMAIN,
@@ -59,7 +58,7 @@ public class TaskRepository {
         return object;
 	}
 	
-	public Effort createEffort(Task task, Person person, DateTime start, DateTime end) {
+	public Effort createEffort(Task task, Person person, Date start, Date end) {
         final Effort object = new Effort(task, person, start, end);
         serviceRegistry.injectServicesInto(object);
         repositoryService.persist(object);

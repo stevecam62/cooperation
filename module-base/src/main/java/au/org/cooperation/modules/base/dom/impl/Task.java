@@ -5,7 +5,7 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-package domainapp.modules.simple.dom.impl;
+package au.org.cooperation.modules.base.dom.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,6 +20,7 @@ import javax.jdo.annotations.Persistent;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
@@ -41,11 +42,13 @@ public class Task {
 	@Setter
 	protected String name;
 
+	@XmlTransient
 	@Column(allowsNull = "true")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	public Goal goal;
 	
+	@XmlTransient
 	@Persistent
 	@Join
 	@Getter
@@ -67,11 +70,12 @@ public class Task {
 		this.setName(name);
 	}
 
-	public Task addEffort(Person person, DateTime start, DateTime end) {
+	public Task addEffort(Person person, Date start, Date end) {
 		this.getEfforts().add(taskRepository.createEffort(this, person, start, end));
 		return this;
 	}
 
+	@XmlTransient
 	@Inject
 	TaskRepository taskRepository;
 

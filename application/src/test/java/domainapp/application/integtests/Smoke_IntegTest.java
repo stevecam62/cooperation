@@ -24,12 +24,13 @@ import javax.inject.Inject;
 
 import org.junit.Test;
 
+import au.org.cooperation.modules.base.dom.impl.simple.SimpleObject;
+import au.org.cooperation.modules.base.dom.impl.simple.SimpleObjectMenu;
+
 import org.apache.isis.applib.fixturescripts.FixtureScripts;
 import org.apache.isis.applib.services.xactn.TransactionService;
 
 import domainapp.application.fixture.teardown.DomainAppTearDown;
-import domainapp.modules.simple.dom.impl.simple.SimpleObject;
-import domainapp.modules.simple.dom.impl.simple.SimpleObjectMenu;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

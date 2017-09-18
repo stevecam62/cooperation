@@ -22,8 +22,8 @@ import javax.annotation.Nullable;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
+import au.org.cooperation.modules.base.fixture.scenario.CreateSimpleObjects;
 import domainapp.application.fixture.teardown.DomainAppTearDown;
-import domainapp.modules.simple.fixture.scenario.CreateSimpleObjects;
 import lombok.Getter;
 import lombok.Setter;
 

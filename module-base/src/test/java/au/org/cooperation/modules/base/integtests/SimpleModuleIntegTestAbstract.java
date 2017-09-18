@@ -16,13 +16,13 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package domainapp.modules.simple.integtests;
+package au.org.cooperation.modules.base.integtests;
 
 import org.junit.BeforeClass;
 
-import org.apache.isis.core.integtestsupport.IntegrationTestAbstract2;
+import au.org.cooperation.modules.base.SimpleModuleManifest;
 
-import domainapp.modules.simple.SimpleModuleManifest;
+import org.apache.isis.core.integtestsupport.IntegrationTestAbstract2;
 
 public abstract class SimpleModuleIntegTestAbstract extends IntegrationTestAbstract2 {
 

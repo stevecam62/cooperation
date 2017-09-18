@@ -5,7 +5,7 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-package domainapp.modules.simple.dom.impl;
+package au.org.cooperation.modules.base.dom.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ import javax.jdo.annotations.Persistent;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
@@ -25,37 +26,13 @@ import org.apache.isis.applib.annotation.DomainObject;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * <p>
- * Java class for Goal complex type.
- * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
- * 
- * <pre>
- * &lt;complexType name="Goal"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="aim" type="{http://www.example.org/OneIdSchema}Aim" minOccurs="0"/&gt;
- *         &lt;element name="task" type="{http://www.example.org/OneIdSchema}Task" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="outcome" type="{http://www.example.org/OneIdSchema}Outcome" maxOccurs="unbounded" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
- * </pre>
- * 
- * 
- */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Goal", propOrder = { "name", "aim", "tasks", "outcomes" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Goal {
 
+    @XmlTransient
 	@Column(allowsNull = "true")
 	@Getter
 	@Setter
@@ -67,6 +44,7 @@ public class Goal {
 	@Setter
 	protected String name;
 
+    @XmlElement
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter
@@ -97,9 +75,11 @@ public class Goal {
 		return this;
 	}
 
+    @XmlTransient
 	@Inject
 	OrganisationRepository organisationRepository;
 	
+    @XmlTransient
 	@Inject
 	TaskRepository taskRepository;
 

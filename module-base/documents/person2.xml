@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:person xmlns:tns="http://www.example.org/OneIdSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/OneIdSchema cooperation.xsd ">
+  <tns:family-name>tns:family-name</tns:family-name>
+  <tns:given-name>tns:given-name</tns:given-name>
+  <tns:date-of-birth>tns:date-of-birth</tns:date-of-birth>
+  <tns:effort>
+    <tns:result>
+      <tns:name>tns:name</tns:name>
+    </tns:result>
+    <tns:start>2001-12-31T12:00:00</tns:start>
+    <tns:end>2001-12-31T12:00:00</tns:end>
+  </tns:effort>
+  <tns:reward>
+    <tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
+    <tns:value>0.0</tns:value>
+    <tns:description>tns:description</tns:description>
+  </tns:reward>
+  <tns:algorithm>
+    <tns:name>tns:name</tns:name>
+    <tns:effort>
+      <tns:start>2001-12-31T12:00:00</tns:start>
+      <tns:end>2001-12-31T12:00:00</tns:end>
+    </tns:effort>
+    <tns:outcome>
+      <tns:name>tns:name</tns:name>
+    </tns:outcome>
+    <tns:reward>
+      <tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
+    </tns:reward>
+  </tns:algorithm>
+</tns:person>

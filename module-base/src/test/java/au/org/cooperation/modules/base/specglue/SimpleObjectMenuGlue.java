@@ -14,17 +14,17 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package domainapp.modules.simple.specglue;
+package au.org.cooperation.modules.base.specglue;
 
 import java.util.List;
 import java.util.UUID;
 
 import org.apache.isis.core.specsupport.specs.CukeGlueAbstract;
 
+import au.org.cooperation.modules.base.dom.impl.simple.SimpleObject;
+import au.org.cooperation.modules.base.dom.impl.simple.SimpleObjectMenu;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-import domainapp.modules.simple.dom.impl.simple.SimpleObject;
-import domainapp.modules.simple.dom.impl.simple.SimpleObjectMenu;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

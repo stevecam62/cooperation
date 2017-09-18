@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.impl.location;
+package au.org.cooperation.modules.base.dom.impl.location;
 
 
 import javax.inject.Inject;
@@ -24,9 +24,9 @@ import org.apache.isis.applib.util.TitleBuffer;
 @Inheritance(strategy = InheritanceStrategy.SUPERCLASS_TABLE)
 @Discriminator(strategy = DiscriminatorStrategy.VALUE_MAP, value = "Address")
 @Queries({
-		@Query(name = "findAddressByName", language = "JDOQL", value = "SELECT FROM domainapp.modules.simple.dom.impl.location.Address WHERE name == :name"),
-		@Query(name = "findAllAddresses", language = "JDOQL", value = "SELECT FROM domainapp.modules.simple.dom.impl.location.Address"),
-		@Query(name = "findAllNamedAddresses", language = "JDOQL", value = "SELECT FROM domainapp.modules.simple.dom.impl.location.Address WHERE name != null && name.trim().length() > 0 ORDER BY name") })
+		@Query(name = "findAddressByName", language = "JDOQL", value = "SELECT FROM au.org.cooperation.modules.base.dom.impl.location.Address WHERE name == :name"),
+		@Query(name = "findAllAddresses", language = "JDOQL", value = "SELECT FROM au.org.cooperation.modules.base.dom.impl.location.Address"),
+		@Query(name = "findAllNamedAddresses", language = "JDOQL", value = "SELECT FROM au.org.cooperation.modules.base.dom.impl.location.Address WHERE name != null && name.trim().length() > 0 ORDER BY name") })
 public class Address extends Location {
 
 	private String street1;

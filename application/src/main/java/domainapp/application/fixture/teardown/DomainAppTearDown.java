@@ -20,7 +20,7 @@ package domainapp.application.fixture.teardown;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-import domainapp.modules.simple.fixture.teardown.SimpleModuleTearDown;
+import au.org.cooperation.modules.base.fixture.teardown.SimpleModuleTearDown;
 
 public class DomainAppTearDown extends FixtureScript {
 

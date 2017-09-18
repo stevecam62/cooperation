@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.impl.user;
+package au.org.cooperation.modules.base.dom.impl.user;
 
 import java.util.Collections;
 import java.util.Set;

@@ -16,12 +16,12 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package domainapp.modules.simple;
+package au.org.cooperation.modules.base;
 
 import org.apache.isis.applib.AppManifestAbstract;
 
-import domainapp.modules.simple.dom.SimpleModuleDomSubmodule;
-import domainapp.modules.simple.fixture.SimpleModuleFixtureSubmodule;
+import au.org.cooperation.modules.base.dom.SimpleModuleDomSubmodule;
+import au.org.cooperation.modules.base.fixture.SimpleModuleFixtureSubmodule;
 
 /**
  * Used by <code>isis-maven-plugin</code> (build-time validation of the module) and also by module-level integration tests.

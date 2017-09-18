@@ -16,7 +16,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package domainapp.modules.simple.integtests.tests;
+package au.org.cooperation.modules.base.integtests.tests;
 
 import java.sql.Timestamp;
 
@@ -24,6 +24,13 @@ import javax.inject.Inject;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import au.org.cooperation.modules.base.dom.impl.simple.SimpleObject;
+import au.org.cooperation.modules.base.dom.impl.simple.SimpleObjectMenu;
+import au.org.cooperation.modules.base.fixture.scenario.CreateSimpleObjects;
+import au.org.cooperation.modules.base.fixture.scenario.SimpleObjectData;
+import au.org.cooperation.modules.base.fixture.teardown.SimpleModuleTearDown;
+import au.org.cooperation.modules.base.integtests.SimpleModuleIntegTestAbstract;
 
 import org.apache.isis.applib.fixturescripts.FixtureScripts;
 import org.apache.isis.applib.services.title.TitleService;
@@ -33,12 +40,6 @@ import org.apache.isis.applib.services.xactn.TransactionService;
 import org.apache.isis.core.metamodel.services.jdosupport.Persistable_datanucleusIdLong;
 import org.apache.isis.core.metamodel.services.jdosupport.Persistable_datanucleusVersionTimestamp;
 
-import domainapp.modules.simple.dom.impl.simple.SimpleObject;
-import domainapp.modules.simple.dom.impl.simple.SimpleObjectMenu;
-import domainapp.modules.simple.fixture.scenario.CreateSimpleObjects;
-import domainapp.modules.simple.fixture.scenario.SimpleObjectData;
-import domainapp.modules.simple.fixture.teardown.SimpleModuleTearDown;
-import domainapp.modules.simple.integtests.SimpleModuleIntegTestAbstract;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SimpleObject_IntegTest extends SimpleModuleIntegTestAbstract {

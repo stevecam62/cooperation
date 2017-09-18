@@ -14,14 +14,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package domainapp.modules.simple.dom.impl.simple;
+package au.org.cooperation.modules.base.dom.impl.simple;
 
 import java.util.List;
 
 import com.google.common.collect.Lists;
 
-import domainapp.modules.simple.dom.impl.simple.SimpleObject;
-import domainapp.modules.simple.dom.impl.simple.SimpleObjectRepository;
+import au.org.cooperation.modules.base.dom.impl.simple.SimpleObject;
+import au.org.cooperation.modules.base.dom.impl.simple.SimpleObjectRepository;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

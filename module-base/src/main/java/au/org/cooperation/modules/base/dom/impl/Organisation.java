@@ -5,7 +5,7 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-package domainapp.modules.simple.dom.impl;
+package au.org.cooperation.modules.base.dom.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ import javax.jdo.annotations.Persistent;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
@@ -37,6 +38,7 @@ public class Organisation {
 	@Setter
 	protected String name;
 
+	@XmlElement()
 	@Persistent(mappedBy = "organisation")
 	@Getter
 	protected List<Aim> aims;
@@ -73,6 +75,7 @@ public class Organisation {
 		return this;
 	}
 
+	@XmlTransient
 	@Inject
 	OrganisationRepository organisationRepository;
 

@@ -6,7 +6,7 @@
 //
 
 
-package domainapp.modules.simple.dom.impl;
+package au.org.cooperation.modules.base.dom.impl;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
@@ -14,6 +14,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
@@ -36,6 +37,7 @@ public class Reward {
     @Setter(value=AccessLevel.PRIVATE)
     protected String name;
     
+    @XmlTransient
     @Column(allowsNull="false")
     @Getter 
     @Setter(value=AccessLevel.PRIVATE)

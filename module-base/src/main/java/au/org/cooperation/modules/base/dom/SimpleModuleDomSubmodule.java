@@ -16,7 +16,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package domainapp.modules.simple.dom;
+package au.org.cooperation.modules.base.dom;
 
 public final class SimpleModuleDomSubmodule {
     private SimpleModuleDomSubmodule(){}

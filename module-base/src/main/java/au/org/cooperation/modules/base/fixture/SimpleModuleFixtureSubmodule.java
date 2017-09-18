@@ -16,7 +16,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package domainapp.modules.simple.fixture;
+package au.org.cooperation.modules.base.fixture;
 
 public final class SimpleModuleFixtureSubmodule {
     private SimpleModuleFixtureSubmodule(){}

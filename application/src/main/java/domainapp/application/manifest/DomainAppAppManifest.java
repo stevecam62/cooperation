@@ -20,9 +20,9 @@ package domainapp.application.manifest;
 
 import org.apache.isis.applib.AppManifestAbstract;
 
+import au.org.cooperation.modules.base.dom.SimpleModuleDomSubmodule;
 import domainapp.application.fixture.DomainAppApplicationModuleFixtureSubmodule;
 import domainapp.application.services.DomainAppApplicationModuleServicesSubmodule;
-import domainapp.modules.simple.dom.SimpleModuleDomSubmodule;
 
 /**
  * Bootstrap the application.

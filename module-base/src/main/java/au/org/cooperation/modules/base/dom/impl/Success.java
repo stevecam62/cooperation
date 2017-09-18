@@ -5,7 +5,7 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-package domainapp.modules.simple.dom.impl;
+package au.org.cooperation.modules.base.dom.impl;
 
 import java.util.ArrayList;
 import java.util.List;
