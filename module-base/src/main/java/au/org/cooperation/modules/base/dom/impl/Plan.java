@@ -12,7 +12,9 @@ import java.util.List;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -49,7 +51,7 @@ import lombok.Setter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Plan", propOrder = { "name", "goal" })
+@XmlType(name = "Plan", propOrder = { "name", "description", "goal" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Plan {
@@ -59,6 +61,12 @@ public class Plan {
 	@Getter
 	@Setter
 	protected String name;
+	
+	@XmlElement(required = true)
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter
+	protected String description;
 
 	@XmlTransient
 	@Column(allowsNull = "false")
@@ -67,6 +75,8 @@ public class Plan {
 	protected Organisation organisation;
 
 	@XmlElement(required = true)
+	@Persistent(mappedBy="plan")
+	@Order(column="plan_goal_idx")
 	protected List<Goal> goal;
 
 	Plan() {
@@ -74,6 +84,10 @@ public class Plan {
 
 	public Plan(String name) {
 		setName(name);
+	}
+	
+	public String title(){
+		return getName();
 	}
 
 	public Plan(Organisation organisation, String name) {

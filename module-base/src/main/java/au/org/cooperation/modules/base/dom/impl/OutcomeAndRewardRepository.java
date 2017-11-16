@@ -18,7 +18,6 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.isis.applib.annotation.DomainService;
@@ -30,32 +29,49 @@ import org.apache.isis.applib.value.DateTime;
 
 @DomainService(
         nature = NatureOfService.DOMAIN,
-        repositoryFor = Person.class
+        repositoryFor = Organisation.class
 )
-public class PersonRepository {
+public class OutcomeAndRewardRepository {
 
-    public List<Person> listAll() {
-        return repositoryService.allInstances(Person.class);
+    public List<Organisation> listAll() {
+        return repositoryService.allInstances(Organisation.class);
     }
-
-    /*public List<Person> findByName(final String name) {
-        return repositoryService.allMatches(
-                new QueryDefault<>(
-                        Person.class,
-                        "findByName",
-                        "name", name));
-    }*/
-
-    public Person createPerson(String givenName, String familyName, Date dateOfBirth) {
-        final Person object = new Person();
-        object.setGivenName(givenName);
-        object.setFamilyName(familyName);
-        object.setDateOfBirth(dateOfBirth);
+    
+    public Result createResult(final Organisation organisation, final String name) {
+        final Result object = new Result();
         serviceRegistry.injectServicesInto(object);
         repositoryService.persist(object);
         return object;
     }
-  
+    
+    public Goal createReward(final Organisation organisation, final String name, final Aim aim) {
+        final Goal object = new Goal(organisation, name, aim);
+        serviceRegistry.injectServicesInto(object);
+        repositoryService.persist(object);
+        return object;
+    }
+    
+    public Outcome createOutcome(final String name) {
+        final Outcome object = new Outcome(name);
+        serviceRegistry.injectServicesInto(object);
+        repositoryService.persist(object);
+        return object;
+    }
+    
+	public Outcome createOutcome(final Goal goal, final Task task, final String name) {
+        final Outcome object = new Outcome(goal, name);
+        serviceRegistry.injectServicesInto(object);
+        repositoryService.persist(object);
+        return object;
+	}
+    
+    public Success createSuccess(final String name) {
+        final Success object = new Success(name);
+        serviceRegistry.injectServicesInto(object);
+        repositoryService.persist(object);
+        return object;
+    }
+    
 
     @javax.inject.Inject
     RepositoryService repositoryService;

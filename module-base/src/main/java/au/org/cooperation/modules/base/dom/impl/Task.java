@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Join;
+import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -43,7 +44,7 @@ public class Task {
 	protected String name;
 
 	@XmlTransient
-	@Column(allowsNull = "true")
+	@Column(allowsNull = "true", name="goal_id")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	public Goal goal;
@@ -55,8 +56,19 @@ public class Task {
 	protected List<Person> persons;
 
 	@Persistent(mappedBy = "task")
+	@Order(column="task_effort_idx")
 	@Getter
 	protected List<Effort> efforts;
+	
+	@Persistent(mappedBy = "task")
+	@Order(column="task_result_idx")
+	@Getter
+	protected List<Result> results;
+	
+	@Persistent(mappedBy = "task")
+	@Order(column="task_outcome_idx")
+	@Getter
+	protected List<Outcome> outcomes;
 
 	Task() {
 	}
@@ -64,19 +76,53 @@ public class Task {
 	public Task(String name) {
 		this.setName(name);
 	}
-
+	
 	public Task(Goal goal, String name) {
 		this.setGoal(goal);
 		this.setName(name);
+	}
+	
+	public String title(){
+		return getName();
+	}
+	
+	public Task addPerson(Person person) {
+		this.getPersons().add(person);
+		return this;
+	}
+	
+	public List<Person> choices0AddPerson(){
+		return personRepository.listAll();
 	}
 
 	public Task addEffort(Person person, Date start, Date end) {
 		this.getEfforts().add(taskRepository.createEffort(this, person, start, end));
 		return this;
 	}
+	
+	public List<Person> choices0AddEffort(){
+		return this.getPersons();
+	}
+	
+	public Task addResult(String description) {
+		this.getResults().add(taskRepository.createResult(this, description));
+		return this;
+	}
+	
+	public Task addOutcome(String description) {
+		this.getOutcomes().add(organisationRepository.createOutcome(this, description));
+		return this;
+	}
 
 	@XmlTransient
 	@Inject
 	TaskRepository taskRepository;
-
+	
+	@XmlTransient
+	@Inject
+	OrganisationRepository organisationRepository;
+	
+	@XmlTransient
+	@Inject
+	PersonRepository personRepository;
 }

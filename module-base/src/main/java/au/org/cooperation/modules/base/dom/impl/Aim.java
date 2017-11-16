@@ -29,6 +29,7 @@ public class Aim {
 	private String name;
 	
     @XmlTransient
+    @Column(allowsNull="false", name="organisation_id")
     @Getter 
     @Setter(value=AccessLevel.PRIVATE)
 	private Organisation organisation;
@@ -38,6 +39,10 @@ public class Aim {
 	
 	public Aim(Organisation organisation, String name){
 		setName(name);
+	}
+	
+	public String title(){
+		return getName();
 	}
 
 }

@@ -16,38 +16,39 @@
 
 	<bs3:row>
 		<bs3:col span="12" unreferencedActions="true">
-			<c:domainObject bookmarking="AS_ROOT" />
+			<c:domainObject bookmarking="NEVER" />
 		</bs3:col>
 	</bs3:row>
 	<bs3:row>
 		<bs3:col span="6">
 			<c:fieldSet name="General" unreferencedProperties="true">
-				<c:action id="delete">
-					<c:describedAs>Deletes this object from the persistent datastore</c:describedAs>
-				</c:action>
+				<c:property id="organisation" namedEscaped="true" hidden="ALL_TABLES" />
+				<c:property id="aim" namedEscaped="true" hidden="ALL_TABLES" >
+					<c:named>Primary Aim</c:named>
+					<c:describedAs>The primary Organisation Aim that this goal seeks attain.</c:describedAs>
+				</c:property>
 				<c:property id="name" namedEscaped="true">
 					<c:action id="updateName">
 						<c:describedAs>Updates the object's name</c:describedAs>
 					</c:action>
 				</c:property>
-				<c:property id="notes" namedEscaped="true" multiLine="10"
-					hidden="ALL_TABLES" />
+				<c:property id="description" namedEscaped="true"
+					multiLine="5" hidden="ALL_TABLES" />
+				<c:property id="plan" namedEscaped="true" hidden="ALL_TABLES">
+					<c:named>Related Plan</c:named>
+					<c:describedAs>Present if the Goal has been created within, or related to, an Organisation Plan.</c:describedAs>
+				</c:property>
 			</c:fieldSet>
-			<c:collection id="aims" defaultView="table">
-				<c:action id="addAim">
-					<c:describedAs>Add an Organisation Aim</c:describedAs>
-				</c:action>
-			</c:collection>
 		</bs3:col>
 		<bs3:col span="6" unreferencedCollections="true">
-			<c:collection id="goals" defaultView="table">
-				<c:action id="addGoal">
-					<c:describedAs>Add an Organisation Goal</c:describedAs>
+			<c:collection id="tasks">
+				<c:action id="addTask">
+					<c:describedAs>Add a Task to this Goal</c:describedAs>
 				</c:action>
 			</c:collection>
-			<c:collection id="plans" defaultView="table">
-				<c:action id="addPlan">
-					<c:describedAs>Add an Organisation Task</c:describedAs>
+			<c:collection id="outcomes">
+				<c:action id="addOutcome">
+					<c:describedAs>Add an Outcome to this Goal</c:describedAs>
 				</c:action>
 			</c:collection>
 		</bs3:col>

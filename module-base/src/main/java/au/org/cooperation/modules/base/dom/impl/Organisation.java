@@ -13,6 +13,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -22,12 +23,13 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Organisation", propOrder = { "name", "aims", "plans", "goals" })
+@XmlType(name = "Organisation", propOrder = { "name", "description", "aims", "plans", "goals" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Organisation {
@@ -37,41 +39,65 @@ public class Organisation {
 	@Getter
 	@Setter
 	protected String name;
+	
+	@XmlElement
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter
+	protected String description;
 
 	@XmlElement()
-	@Persistent(mappedBy = "organisation")
+	@Persistent(mappedBy = "organisation", column="aim_id")
+	@Order(column="org_aim_idx")
 	@Getter
 	protected List<Aim> aims;
-
-	@XmlElement(required = true)
-	@Persistent(mappedBy = "organisation")
-	@Getter
-	protected List<Plan> plans;
 	
 	@XmlElement(required = true)
-	@Persistent(mappedBy = "organisation")
+	@Persistent(mappedBy = "organisation", column="goal_id")
+	@Order(column="org_goal_idx")
 	@Getter
 	protected List<Goal> goals;
 
+	@XmlElement(required = true)
+	@Persistent(mappedBy = "organisation", column="plan_id")
+	@Order(column="org_plan_idx")
+	@Getter
+	protected List<Plan> plans;
+	
 	public Organisation() {
 	}
 
 	public Organisation(String name) {
 		setName(name);
 	}
+	
+	public String title(){
+		return getName();
+	}
 
-	public Organisation addAim(String name) {
+	public Organisation addAim(@ParameterLayout(named="Aim name") String name) {
 		this.getAims().add(organisationRepository.createAim(this,name));
 		return this;
 	}
 	
-	public Organisation addPlan(String name) {
-		this.getPlans().add(organisationRepository.createPlan(this, name));
+	public Organisation addGoal(@ParameterLayout(named="Goal name") String name, @ParameterLayout(named="Related Aim") Aim aim) {
+		this.getGoals().add(organisationRepository.createGoal(this, name, aim));
 		return this;
 	}
 	
-	public Organisation addGoal(String name) {
-		this.getGoals().add(organisationRepository.createGoal(name));
+	public List<Aim> choices1AddGoal(){
+		return this.getAims();
+	}
+	
+	public String disableAddGoal(){
+		if(this.getAims().size() == 0)
+			return "A Goal must be linked to at least one Aim, so add an Aim first";
+		else
+			return null;
+	}
+	
+	public Organisation addPlan(@ParameterLayout(named="Plan name") String name) {
+		this.getPlans().add(organisationRepository.createPlan(this, name));
 		return this;
 	}
 

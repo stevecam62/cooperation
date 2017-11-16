@@ -64,10 +64,18 @@ public class TaskRepository {
         repositoryService.persist(object);
         return object;
 	}
+	
+	public Result createResult(Task task, String description) {
+        final Result object = new Result(task, description);
+        serviceRegistry.injectServicesInto(object);
+        repositoryService.persist(object);
+        return object;
+	}
 
     @javax.inject.Inject
     RepositoryService repositoryService;
     @javax.inject.Inject
     ServiceRegistry2 serviceRegistry;
+
 
 }

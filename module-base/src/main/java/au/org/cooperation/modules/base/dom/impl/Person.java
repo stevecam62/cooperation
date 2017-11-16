@@ -27,8 +27,7 @@ import lombok.Setter;
 	"givenName",
 	"dateOfBirth",
     "efforts",
-    "rewards",
-    "algorithm"
+    "rewards"
 })
 
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
@@ -53,11 +52,11 @@ public class Person {
     @Setter
     private Date dateOfBirth;
 
-    @XmlElement
-    @Column(allowsNull="true")
-    @Getter 
-    @Setter
-    private Algorithm algorithm;
+    //@XmlElement
+    //@Column(allowsNull="true")
+    //@Getter 
+    //@Setter
+    //private Algorithm algorithm;
     
     @XmlTransient
 	@Persistent
@@ -74,5 +73,9 @@ public class Person {
 	@Persistent(mappedBy="person")
 	@Getter
 	private List<Reward> rewards;
+    
+    public String title(){
+    	return this.getGivenName() + " " + getFamilyName();
+    }
 
 }

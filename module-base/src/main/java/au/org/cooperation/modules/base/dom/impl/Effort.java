@@ -14,10 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.apache.isis.applib.annotation.DomainObject;
-import org.apache.isis.applib.value.DateTime;
 
-import domainapp.modules.base.dom.impl.generated.Adapter1;
-import domainapp.modules.base.dom.impl.generated.Result;
 import lombok.Getter;
 import lombok.Setter;
 

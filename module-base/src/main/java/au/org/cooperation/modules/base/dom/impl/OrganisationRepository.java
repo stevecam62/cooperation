@@ -27,77 +27,90 @@ import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.value.DateTime;
 
-@DomainService(
-        nature = NatureOfService.DOMAIN,
-        repositoryFor = Organisation.class
-)
+@DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Organisation.class)
 public class OrganisationRepository {
 
-    public List<Organisation> listAll() {
-        return repositoryService.allInstances(Organisation.class);
-    }
-
-    /*public List<Organisation> findByName(final String name) {
-        return repositoryService.allMatches(
-                new QueryDefault<>(
-                        Organisation.class,
-                        "findByName",
-                        "name", name));
-    }*/
-
-    public Organisation createOrganisation(final String name) {
-        final Organisation object = new Organisation(name);
-        serviceRegistry.injectServicesInto(object);
-        repositoryService.persist(object);
-        return object;
-    }
-    
-    public Aim createAim(final Organisation organisation, final String name) {
-        final Aim object = new Aim(organisation, name);
-        serviceRegistry.injectServicesInto(object);
-        repositoryService.persist(object);
-        return object;
-    }
-    
-    public Plan createPlan(final Organisation organisation, final String name) {
-        final Plan object = new Plan(organisation, name);
-        serviceRegistry.injectServicesInto(object);
-        repositoryService.persist(object);
-        return object;
-    }
-    
-    public Goal createGoal(final String name) {
-        final Goal object = new Goal(name);
-        serviceRegistry.injectServicesInto(object);
-        repositoryService.persist(object);
-        return object;
-    }
-    
-    public Outcome createOutcome(final String name) {
-        final Outcome object = new Outcome(name);
-        serviceRegistry.injectServicesInto(object);
-        repositoryService.persist(object);
-        return object;
-    }
-    
-	public Outcome createOutcome(final Goal goal, final String name) {
-        final Outcome object = new Outcome(goal, name);
-        serviceRegistry.injectServicesInto(object);
-        repositoryService.persist(object);
-        return object;
+	public List<Organisation> listAll() {
+		return repositoryService.allInstances(Organisation.class);
 	}
-    
-    public Success createSuccess(final String name) {
-        final Success object = new Success(name);
-        serviceRegistry.injectServicesInto(object);
-        repositoryService.persist(object);
-        return object;
-    }
-    
 
-    @javax.inject.Inject
-    RepositoryService repositoryService;
-    @javax.inject.Inject
-    ServiceRegistry2 serviceRegistry;
+	/*
+	 * public List<Organisation> findByName(final String name) { return
+	 * repositoryService.allMatches( new QueryDefault<>( Organisation.class,
+	 * "findByName", "name", name)); }
+	 */
+
+	public Organisation createOrganisation(final String name) {
+		final Organisation object = new Organisation(name);
+		serviceRegistry.injectServicesInto(object);
+		repositoryService.persist(object);
+		return object;
+	}
+
+	public Aim createAim(final Organisation organisation, final String name) {
+		final Aim object = new Aim(organisation, name);
+		serviceRegistry.injectServicesInto(object);
+		repositoryService.persist(object);
+		return object;
+	}
+
+	public Plan createPlan(final Organisation organisation, final String name) {
+		final Plan object = new Plan(organisation, name);
+		serviceRegistry.injectServicesInto(object);
+		repositoryService.persist(object);
+		return object;
+	}
+
+	public Goal createGoal(final Organisation organisation, final String name, final Aim aim) {
+		final Goal object = new Goal(organisation, name, aim);
+		serviceRegistry.injectServicesInto(object);
+		repositoryService.persist(object);
+		return object;
+	}
+
+	public Outcome createOutcome(final String name) {
+		final Outcome object = new Outcome(name);
+		serviceRegistry.injectServicesInto(object);
+		repositoryService.persist(object);
+		return object;
+	}
+
+	public Outcome createOutcome(final Task task, final String description) {
+		if (task == null || description == null)
+			return null;
+		Goal goal = null;
+		if (task != null)
+			goal = task.getGoal();
+		final Outcome outcome = new Outcome(goal, description);
+		serviceRegistry.injectServicesInto(outcome);
+		repositoryService.persist(outcome);
+		return outcome;
+	}
+
+	public Outcome createOutcome(final Result result, final String description) {
+		if (result == null || description == null)
+			return null;
+		Goal goal = null;
+		if (result != null && result.getTask() != null && result.getTask().getGoal() != null)
+			goal = result.getTask().getGoal();
+		final Outcome outcome = new Outcome(goal, description);
+		serviceRegistry.injectServicesInto(outcome);
+		repositoryService.persist(outcome);
+		result.getOutcomes().add(outcome);
+		outcome.getResults().add(result);
+		return outcome;
+	}
+
+	public Success createSuccess(final String name) {
+		final Success object = new Success(name);
+		serviceRegistry.injectServicesInto(object);
+		repositoryService.persist(object);
+		return object;
+	}
+
+	@javax.inject.Inject
+	RepositoryService repositoryService;
+	@javax.inject.Inject
+	ServiceRegistry2 serviceRegistry;
 
 }

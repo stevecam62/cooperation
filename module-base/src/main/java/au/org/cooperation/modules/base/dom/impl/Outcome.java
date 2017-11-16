@@ -8,9 +8,9 @@
 
 package au.org.cooperation.modules.base.dom.impl;
 
-import javax.jdo.annotations.Column;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.PersistenceCapable;
+import java.util.List;
+
+import javax.jdo.annotations.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -19,22 +19,23 @@ import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Outcome", propOrder = {
-    "name"
-})
+	    "description"
+	})
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Outcome {
 
-    @XmlElement(required = true)
-    @Column(allowsNull="false")
+    @XmlElement()
+    @Column(allowsNull="true")
     @Getter 
     @Setter
-    protected String name;
+    protected String description;
     
     @XmlTransient
     @Column(allowsNull="true")
@@ -42,14 +43,31 @@ public class Outcome {
     @Setter
     protected Goal goal;
     
-	public Outcome() {}
+	@XmlTransient
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter
+	private Task task;
+    
+    //m-n relationship
+    @XmlTransient
+    @Join
+    @Getter
+    @Setter
+    protected List<Result> results;
+    
+	Outcome() {}
 
-	public Outcome(String name) {
-		setName(name);
+	public Outcome(String description) {
+		setDescription(description);
 	}
 
-	public Outcome(Goal goal, String name) {
+	public Outcome(Goal goal, String description) {
 		setGoal(goal);
-		setName(name);
+		setDescription(description);
+	}
+	
+	public String title(){
+		return getDescription().substring(0, 50);
 	}
 }

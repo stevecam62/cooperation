@@ -5,8 +5,9 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-
 package au.org.cooperation.modules.base.dom.impl;
+
+import java.util.Date;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
@@ -14,8 +15,10 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
@@ -24,22 +27,33 @@ import lombok.Getter;
 import lombok.Setter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Reward", propOrder = {
-    "name"
-})
+@XmlType(name = "Reward", propOrder = { "timestamp", "value", "description" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Reward {
+	
+	@XmlTransient
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter(value = AccessLevel.PRIVATE)
+	private Person person;
 
-    @XmlElement(required = true)
-    @Column(allowsNull="false")
-    @Getter 
-    @Setter(value=AccessLevel.PRIVATE)
-    protected String name;
-    
-    @XmlTransient
-    @Column(allowsNull="false")
-    @Getter 
-    @Setter(value=AccessLevel.PRIVATE)
-    private Person person;
+	@XmlElement(required = true)
+	@XmlSchemaType(name = "dateTime")
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter()
+	protected Date timestamp;
+
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter()
+	protected Float value;
+
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter()
+	protected String description;
+
+
 }

@@ -63,9 +63,9 @@ public class ObjectFactory {
      * Create an instance of {@link Algorithm }
      * 
      */
-    public Algorithm createAlgorithm() {
-        return new Algorithm();
-    }
+    //public Algorithm createAlgorithm() {
+    //    return new Algorithm();
+    //}
 
     /**
      * Create an instance of {@link Persons }
@@ -105,14 +105,6 @@ public class ObjectFactory {
      */
     public Result createResult() {
         return new Result();
-    }
-
-    /**
-     * Create an instance of {@link Cooperation }
-     * 
-     */
-    public Cooperation createCooperation() {
-        return new Cooperation();
     }
 
     /**
@@ -177,10 +169,10 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Algorithm }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://au.org.cooperation/base", name = "algorithm")
-    public JAXBElement<Algorithm> createAlgorithm(Algorithm value) {
-        return new JAXBElement<Algorithm>(_Algorithm_QNAME, Algorithm.class, null, value);
-    }
+    //@XmlElementDecl(namespace = "http://au.org.cooperation/base", name = "algorithm")
+    //public JAXBElement<Algorithm> createAlgorithm(Algorithm value) {
+    //    return new JAXBElement<Algorithm>(_Algorithm_QNAME, Algorithm.class, null, value);
+    //}
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Persons }{@code >}}

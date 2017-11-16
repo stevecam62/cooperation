@@ -16,40 +16,23 @@
 
 	<bs3:row>
 		<bs3:col span="12" unreferencedActions="true">
-			<c:domainObject bookmarking="AS_ROOT" />
+			<c:domainObject bookmarking="NEVER" />
 		</bs3:col>
 	</bs3:row>
 	<bs3:row>
 		<bs3:col span="6">
-			<c:fieldSet name="General" unreferencedProperties="true">
-				<c:action id="delete">
-					<c:describedAs>Deletes this object from the persistent datastore</c:describedAs>
-				</c:action>
-				<c:property id="name" namedEscaped="true">
-					<c:action id="updateName">
-						<c:describedAs>Updates the object's name</c:describedAs>
-					</c:action>
-				</c:property>
-				<c:property id="notes" namedEscaped="true" multiLine="10"
-					hidden="ALL_TABLES" />
+			<c:fieldSet name="Person Properties"
+				unreferencedProperties="true">
+				<c:property id="organisation" namedEscaped="true" hidden="ALL_TABLES" />
+				<c:property id="givenName" namedEscaped="true" />
+				<c:property id="familyName" namedEscaped="true" />
+				<c:property id="dateOfBirth" namedEscaped="true" hidden="ALL_TABLES" />
 			</c:fieldSet>
-			<c:collection id="aims" defaultView="table">
-				<c:action id="addAim">
-					<c:describedAs>Add an Organisation Aim</c:describedAs>
-				</c:action>
-			</c:collection>
+			<c:collection id="tasks" defaultView="table" />
 		</bs3:col>
 		<bs3:col span="6" unreferencedCollections="true">
-			<c:collection id="goals" defaultView="table">
-				<c:action id="addGoal">
-					<c:describedAs>Add an Organisation Goal</c:describedAs>
-				</c:action>
-			</c:collection>
-			<c:collection id="plans" defaultView="table">
-				<c:action id="addPlan">
-					<c:describedAs>Add an Organisation Task</c:describedAs>
-				</c:action>
-			</c:collection>
+			<c:collection id="efforts" defaultView="table"/>
+			<c:collection id="rewards" defaultView="table" />
 		</bs3:col>
 	</bs3:row>
 </bs3:grid>

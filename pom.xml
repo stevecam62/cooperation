@@ -38,7 +38,7 @@
     </prerequisites>
 
     <properties>
-        <isis.version>1.15.0</isis.version>
+        <isis.version>1.15.1</isis.version>
 
         <lombok.version>1.16.10</lombok.version>
 

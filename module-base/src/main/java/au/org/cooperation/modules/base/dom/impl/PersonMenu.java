@@ -18,6 +18,7 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.isis.applib.annotation.Action;
@@ -31,35 +32,29 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
-@DomainService(
-        nature = NatureOfService.VIEW_MENU_ONLY,
-        objectType = "cooperation.PersonMenu",
-        repositoryFor = Person.class
-)
-@DomainServiceLayout(
-        named = "Persons",
-        menuOrder = "10"
-)
+@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.PersonMenu", repositoryFor = Person.class)
+@DomainServiceLayout(named = "Persons", menuOrder = "10")
 public class PersonMenu {
 
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    @MemberOrder(sequence = "1")
-    public List<Person> listAll() {
-        return personRepo.listAll();
-    }
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+	@MemberOrder(sequence = "1")
+	public List<Person> listAll() {
+		return personRepo.listAll();
+	}
 
+	public static class CreateDomainEvent extends ActionDomainEvent<PersonMenu> {
+	}
 
-    public static class CreateDomainEvent extends ActionDomainEvent<PersonMenu> {}
-    @Action(domainEvent = CreateDomainEvent.class)
-    @MemberOrder(sequence = "3")
-    public Person create(
-            @ParameterLayout(named="Name")
-            final String name) {
-        return personRepo.createPerson();
-    }
+	@Action(domainEvent = CreateDomainEvent.class)
+	@MemberOrder(sequence = "3")
+	public Person create(@ParameterLayout(named = "Given Name") final String givenName,
+			@ParameterLayout(named = "Family Name") final String familyName,
+			@ParameterLayout(named = "Date of Birth") final Date dateOfBirth) {
+		return personRepo.createPerson(givenName, familyName, dateOfBirth);
+	}
 
-    @javax.inject.Inject
-    PersonRepository personRepo;
+	@javax.inject.Inject
+	PersonRepository personRepo;
 
 }

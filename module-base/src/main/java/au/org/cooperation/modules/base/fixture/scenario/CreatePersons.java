@@ -36,7 +36,7 @@ public class CreatePersons extends FixtureScript {
 			jaxbUnmarshaller.setEventHandler(new javax.xml.bind.helpers.DefaultValidationEventHandler());
 			Persons _persons = (Persons) JAXBIntrospector.getValue(jaxbUnmarshaller.unmarshal(is));
 			for (Person _person : _persons.getPersons()) {
-				this.person = personMenu.create("");
+				this.person = personMenu.create("", null, null);
 			}
 		} catch (JAXBException e) {
 			e.printStackTrace();
@@ -46,36 +46,7 @@ public class CreatePersons extends FixtureScript {
 	public Person getPerson() {
 		return this.person;
 	}
-/**	
-	<?xml version="1.0" encoding="UTF-8"?>
-	<tns:persons xmlns:tns="http://au.org.cooperation/base" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/OneIdSchema cooperation.xsd ">
-	  <tns:person>
-	    <tns:family-name>tns:family-name</tns:family-name>
-	    <tns:given-name>tns:given-name</tns:given-name>
-	    <tns:date-of-birth>tns:date-of-birth</tns:date-of-birth>
-	    <tns:effort>
-	      <tns:start>2001-12-31T12:00:00</tns:start>
-	      <tns:end>2001-12-31T12:00:00</tns:end>
-	    </tns:effort>
-	    <tns:reward>
-	      <tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
-	    </tns:reward>
-	    <tns:algorithm>
-	      <tns:name>tns:name</tns:name>
-	      <tns:effort>
-	        <tns:start>2001-12-31T12:00:00</tns:start>
-	        <tns:end>2001-12-31T12:00:00</tns:end>
-	      </tns:effort>
-	      <tns:outcome>
-	        <tns:name>tns:name</tns:name>
-	      </tns:outcome>
-	      <tns:reward>
-	        <tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
-	      </tns:reward>
-	    </tns:algorithm>
-	  </tns:person>
-	</tns:persons>
-*/
+
 	
 	@Inject
 	PersonMenu personMenu;

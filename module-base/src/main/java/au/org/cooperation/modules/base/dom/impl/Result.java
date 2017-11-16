@@ -11,16 +11,17 @@ package au.org.cooperation.modules.base.dom.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.jdo.annotations.Column;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.PersistenceCapable;
+import javax.inject.Inject;
+import javax.jdo.annotations.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,8 +48,8 @@ import lombok.Setter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Result", propOrder = {
-    "name",
-    "outcome"
+    "description",
+    "outcomes"
 })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
@@ -58,7 +59,39 @@ public class Result {
     @Column(allowsNull="false")
     @Getter 
     @Setter
-    protected String name;
-    protected List<Outcome> outcome;
-
+    protected String description;
+    
+    @XmlTransient
+    @Column(allowsNull="false")
+    @Getter 
+    @Setter(value=AccessLevel.PRIVATE)
+    protected Task task;
+    
+    @XmlTransient
+    @Join()
+    @Getter
+    @Setter
+    protected List<Outcome> outcomes;
+    
+    Result(){
+    	
+    }
+    
+    public Result(Task task, String description){
+    	setTask(task);
+    	setDescription(description);
+    }
+    
+    public String title(){
+    	return getDescription();
+    }
+    
+    public Result addOutcome(String description){
+    	Outcome outcome = organisationRepository.createOutcome(this, description);
+    	return this;
+    }
+    
+    @XmlTransient
+	@Inject
+	OrganisationRepository organisationRepository;
 }
