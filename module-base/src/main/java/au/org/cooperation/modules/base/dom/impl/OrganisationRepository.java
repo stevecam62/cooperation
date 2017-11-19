@@ -60,9 +60,17 @@ public class OrganisationRepository {
 		repositoryService.persist(object);
 		return object;
 	}
-
+	
 	public Goal createGoal(final Organisation organisation, final String name, final Aim aim) {
 		final Goal object = new Goal(organisation, name, aim);
+		serviceRegistry.injectServicesInto(object);
+		repositoryService.persist(object);
+		return object;
+	}
+	
+	public Goal createGoal(Plan plan, String name, Aim aim) {
+		final Goal object = new Goal(plan.getOrganisation(), name, aim);
+		object.setPlan(plan);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;
@@ -112,5 +120,6 @@ public class OrganisationRepository {
 	RepositoryService repositoryService;
 	@javax.inject.Inject
 	ServiceRegistry2 serviceRegistry;
+
 
 }

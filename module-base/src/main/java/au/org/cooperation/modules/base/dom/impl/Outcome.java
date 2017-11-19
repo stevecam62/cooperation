@@ -5,7 +5,6 @@
 // Generated on: 2017.09.10 at 09:30:22 PM AEST 
 //
 
-
 package au.org.cooperation.modules.base.dom.impl;
 
 import java.util.List;
@@ -24,39 +23,38 @@ import lombok.Getter;
 import lombok.Setter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Outcome", propOrder = {
-	    "description"
-	})
+@XmlType(name = "Outcome", propOrder = { "description" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Outcome {
 
-    @XmlElement()
-    @Column(allowsNull="true")
-    @Getter 
-    @Setter
-    protected String description;
-    
-    @XmlTransient
-    @Column(allowsNull="true")
-    @Getter 
-    @Setter
-    protected Goal goal;
-    
-	@XmlTransient
+	@XmlElement()
 	@Column(allowsNull = "true")
 	@Getter
 	@Setter
+	protected String description;
+
+	@XmlTransient
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter(value=AccessLevel.PACKAGE)
+	protected Goal goal;
+
+	@XmlTransient
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter(value=AccessLevel.PACKAGE)
 	private Task task;
-    
-    //m-n relationship
-    @XmlTransient
-    @Join
-    @Getter
-    @Setter
-    protected List<Result> results;
-    
-	Outcome() {}
+
+	// m-n relationship
+	@XmlTransient
+	@Join
+	@Getter
+	@Setter(value=AccessLevel.PRIVATE)
+	protected List<Result> results;
+
+	Outcome() {
+	}
 
 	public Outcome(String description) {
 		setDescription(description);
@@ -66,8 +64,9 @@ public class Outcome {
 		setGoal(goal);
 		setDescription(description);
 	}
-	
-	public String title(){
-		return getDescription().substring(0, 50);
+
+	public String title() {
+		return (getDescription() != null)
+				? ((getDescription().length() > 49) ? getDescription().substring(0, 50) : getDescription()) : null;
 	}
 }

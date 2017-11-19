@@ -80,7 +80,7 @@ public class Organisation {
 		return this;
 	}
 	
-	public Organisation addGoal(@ParameterLayout(named="Goal name") String name, @ParameterLayout(named="Related Aim") Aim aim) {
+	public Organisation addGoal(@ParameterLayout(named="Goal name") String name, @ParameterLayout(named="Primary Aim") Aim aim) {
 		this.getGoals().add(organisationRepository.createGoal(this, name, aim));
 		return this;
 	}

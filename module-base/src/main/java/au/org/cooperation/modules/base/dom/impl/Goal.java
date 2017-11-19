@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlType;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.Optionality;
 import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -63,7 +64,7 @@ public class Goal {
     @XmlTransient
 	@Column(allowsNull = "true", name="plan_id")
 	@Getter
-	@Setter
+	@Setter(value=AccessLevel.PACKAGE)
 	protected Plan plan;
 
 	@Persistent(mappedBy = "goal")
@@ -89,7 +90,7 @@ public class Goal {
 		return getName();
 	}
 
-	public Goal addTask(String name) {
+	public Goal addTask(@ParameterLayout(named="Task name") String name) {
 		this.getTasks().add(taskRepository.createTask(this, name));
 		return this;
 	}

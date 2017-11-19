@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -86,7 +87,7 @@ public class Result {
     	return getDescription();
     }
     
-    public Result addOutcome(String description){
+    public Result addOutcome(@ParameterLayout(named="Description") String description){
     	Outcome outcome = organisationRepository.createOutcome(this, description);
     	return this;
     }

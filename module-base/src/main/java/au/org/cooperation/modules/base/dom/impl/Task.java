@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.value.DateTime;
 
 import lombok.AccessLevel;
@@ -44,11 +45,11 @@ public class Task {
 	protected String name;
 
 	@XmlTransient
-	@Column(allowsNull = "true", name="goal_id")
+	@Column(allowsNull = "true", name = "goal_id")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	public Goal goal;
-	
+
 	@XmlTransient
 	@Persistent
 	@Join
@@ -56,17 +57,17 @@ public class Task {
 	protected List<Person> persons;
 
 	@Persistent(mappedBy = "task")
-	@Order(column="task_effort_idx")
+	@Order(column = "task_effort_idx")
 	@Getter
 	protected List<Effort> efforts;
-	
+
 	@Persistent(mappedBy = "task")
-	@Order(column="task_result_idx")
+	@Order(column = "task_result_idx")
 	@Getter
 	protected List<Result> results;
-	
+
 	@Persistent(mappedBy = "task")
-	@Order(column="task_outcome_idx")
+	@Order(column = "task_outcome_idx")
 	@Getter
 	protected List<Outcome> outcomes;
 
@@ -76,52 +77,66 @@ public class Task {
 	public Task(String name) {
 		this.setName(name);
 	}
-	
+
 	public Task(Goal goal, String name) {
 		this.setGoal(goal);
 		this.setName(name);
 	}
-	
-	public String title(){
+
+	public String title() {
 		return getName();
 	}
-	
-	public Task addPerson(Person person) {
+
+	public Task addPerson(@ParameterLayout(named = "Person") Person person) {
 		this.getPersons().add(person);
 		return this;
 	}
-	
-	public List<Person> choices0AddPerson(){
+
+	public List<Person> choices0AddPerson() {
 		return personRepository.listAll();
 	}
 
-	public Task addEffort(Person person, Date start, Date end) {
+	public Task addEffort(@ParameterLayout(named = "Person") Person person, Date start, Date end) {
 		this.getEfforts().add(taskRepository.createEffort(this, person, start, end));
 		return this;
 	}
-	
-	public List<Person> choices0AddEffort(){
+
+	public List<Person> choices0AddEffort() {
 		return this.getPersons();
 	}
-	
-	public Task addResult(String description) {
+
+	public Task addResult(@ParameterLayout(named = "Result description") String description) {
 		this.getResults().add(taskRepository.createResult(this, description));
 		return this;
 	}
-	
-	public Task addOutcome(String description) {
-		this.getOutcomes().add(organisationRepository.createOutcome(this, description));
+
+	public Task addOutcome(@ParameterLayout(named = "Outcome description") String description,
+			@ParameterLayout(named = "First result") Result result) {
+		Outcome outcome = organisationRepository.createOutcome(this, description);
+		this.getOutcomes().add(outcome);
+		if (this.getGoal() != null) {
+			this.getGoal().getOutcomes().add(outcome);
+		}
+		if(result != null){
+			outcome.getResults().add(result);
+			result.getOutcomes().add(outcome);
+		}
 		return this;
+	}
+	
+	public List<Result> choices1AddOutcome(){
+		//TODO has result been added?
+		return this.getResults();
 	}
 
 	@XmlTransient
 	@Inject
 	TaskRepository taskRepository;
-	
+
 	@XmlTransient
 	@Inject
 	OrganisationRepository organisationRepository;
-	
+
 	@XmlTransient
 	@Inject
 	PersonRepository personRepository;

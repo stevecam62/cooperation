@@ -10,6 +10,7 @@ package au.org.cooperation.modules.base.dom.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Order;
@@ -22,6 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -77,7 +79,8 @@ public class Plan {
 	@XmlElement(required = true)
 	@Persistent(mappedBy="plan")
 	@Order(column="plan_goal_idx")
-	protected List<Goal> goal;
+	@Getter
+	protected List<Goal> goals;
 
 	Plan() {
 	}
@@ -94,5 +97,26 @@ public class Plan {
 		setOrganisation(organisation);
 		setName(name);
 	}
+	
+	public Plan addGoal(@ParameterLayout(named="Goal name") String name, @ParameterLayout(named="Primary Aim") Aim aim) {
+		Goal goal = organisationRepository.createGoal(this, name, aim);
+		this.getGoals().add(goal);
+		return this;
+	}
+	
+	public List<Aim> choices1AddGoal(){
+		return this.getOrganisation().getAims();
+	}
+	
+	public String disableAddGoal(){
+		if(this.getOrganisation().getAims().size() == 0)
+			return "A Goal must be linked to at least one Aim, so add an Organisation Aim first";
+		else
+			return null;
+	}
+	
+	@XmlTransient
+	@Inject
+	OrganisationRepository organisationRepository;
 
 }

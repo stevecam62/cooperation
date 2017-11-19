@@ -22,6 +22,7 @@
 	<bs3:row>
 		<bs3:col span="6">
 			<c:fieldSet name="General" unreferencedProperties="true">
+				<c:property id="task" namedEscaped="true" hidden="PARENTED_TABLES"/>
 				<c:property id="description" namedEscaped="true"
 					multiLine="5" />
 			</c:fieldSet>
