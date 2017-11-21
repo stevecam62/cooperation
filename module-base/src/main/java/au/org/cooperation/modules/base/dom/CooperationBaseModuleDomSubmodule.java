@@ -16,26 +16,15 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package au.org.cooperation.modules.base;
+package au.org.cooperation.modules.base.dom;
 
-import org.apache.isis.applib.AppManifestAbstract;
+public final class CooperationBaseModuleDomSubmodule {
+    private CooperationBaseModuleDomSubmodule(){}
 
-import au.org.cooperation.modules.base.dom.CooperationBaseModuleDomSubmodule;
-import au.org.cooperation.modules.base.fixture.SimpleModuleFixtureSubmodule;
-
-/**
- * Used by <code>isis-maven-plugin</code> (build-time validation of the module) and also by module-level integration tests.
- */
-public class SimpleModuleManifest extends AppManifestAbstract {
-
-    public static final Builder BUILDER = Builder.forModules(
-            CooperationBaseModuleDomSubmodule.class,
-            SimpleModuleFixtureSubmodule.class
-    );
-
-    public SimpleModuleManifest() {
-        super(BUILDER);
-    }
-
-
+    public static class PropertyDomainEvent<S,T>
+            extends org.apache.isis.applib.services.eventbus.PropertyDomainEvent<S,T> {}
+    public static class CollectionDomainEvent<S,T>
+            extends org.apache.isis.applib.services.eventbus.CollectionDomainEvent<S,T> {}
+    public static class ActionDomainEvent<S> extends
+            org.apache.isis.applib.services.eventbus.ActionDomainEvent<S> {}
 }

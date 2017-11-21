@@ -16,26 +16,19 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package au.org.cooperation.modules.base;
+package cooperation.application.integtests;
 
-import org.apache.isis.applib.AppManifestAbstract;
+import org.junit.BeforeClass;
 
-import au.org.cooperation.modules.base.dom.CooperationBaseModuleDomSubmodule;
-import au.org.cooperation.modules.base.fixture.SimpleModuleFixtureSubmodule;
+import cooperation.application.manifest.CooperationAppAppManifest;
 
-/**
- * Used by <code>isis-maven-plugin</code> (build-time validation of the module) and also by module-level integration tests.
- */
-public class SimpleModuleManifest extends AppManifestAbstract {
+import org.apache.isis.core.integtestsupport.IntegrationTestAbstract2;
 
-    public static final Builder BUILDER = Builder.forModules(
-            CooperationBaseModuleDomSubmodule.class,
-            SimpleModuleFixtureSubmodule.class
-    );
+public abstract class DomainAppIntegTestAbstract extends IntegrationTestAbstract2 {
 
-    public SimpleModuleManifest() {
-        super(BUILDER);
+    @BeforeClass
+    public static void initSystem() {
+        bootstrapUsing(new CooperationAppAppManifest());
     }
-
 
 }

@@ -16,26 +16,33 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package au.org.cooperation.modules.base;
+package cooperation.application.fixture.scenarios;
 
-import org.apache.isis.applib.AppManifestAbstract;
+import javax.annotation.Nullable;
 
-import au.org.cooperation.modules.base.dom.CooperationBaseModuleDomSubmodule;
-import au.org.cooperation.modules.base.fixture.SimpleModuleFixtureSubmodule;
+import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-/**
- * Used by <code>isis-maven-plugin</code> (build-time validation of the module) and also by module-level integration tests.
- */
-public class SimpleModuleManifest extends AppManifestAbstract {
+import au.org.cooperation.modules.base.fixture.scenario.CreateSimpleObjects;
+import cooperation.application.fixture.teardown.CooperationAppTearDown;
+import lombok.Getter;
+import lombok.Setter;
 
-    public static final Builder BUILDER = Builder.forModules(
-            CooperationBaseModuleDomSubmodule.class,
-            SimpleModuleFixtureSubmodule.class
-    );
+public class CooperationAppDemo extends FixtureScript {
 
-    public SimpleModuleManifest() {
-        super(BUILDER);
+    public CooperationAppDemo() {
+        withDiscoverability(Discoverability.DISCOVERABLE);
     }
 
+    @Nullable
+    @Getter @Setter
+    private Integer number;
 
+    @Override
+    protected void execute(final ExecutionContext ec) {
+
+        // execute
+        ec.executeChild(this, new CooperationAppTearDown());
+        ec.executeChild(this, new CreateSimpleObjects().setNumber(number));
+
+    }
 }

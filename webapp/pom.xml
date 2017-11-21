@@ -33,7 +33,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <isis-maven-plugin.appManifest>domainapp.application.manifest.DomainAppAppManifest</isis-maven-plugin.appManifest>
+        <isis-maven-plugin.appManifest>cooperation.application.manifest.CooperationAppAppManifest</isis-maven-plugin.appManifest>
 
         <jetty-console-maven-plugin.backgroundImage>${basedir}/src/main/jettyconsole/isis-banner.png</jetty-console-maven-plugin.backgroundImage>
 

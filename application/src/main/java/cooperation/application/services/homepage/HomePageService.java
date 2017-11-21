@@ -16,26 +16,28 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package au.org.cooperation.modules.base;
+package cooperation.application.services.homepage;
 
-import org.apache.isis.applib.AppManifestAbstract;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.HomePage;
+import org.apache.isis.applib.annotation.NatureOfService;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.services.factory.FactoryService;
 
-import au.org.cooperation.modules.base.dom.CooperationBaseModuleDomSubmodule;
-import au.org.cooperation.modules.base.fixture.SimpleModuleFixtureSubmodule;
+@DomainService(
+        nature = NatureOfService.DOMAIN, // trick to suppress the actions from the top-level menu
+        objectType = "homepage.HomePageService"
+)
+public class HomePageService {
 
-/**
- * Used by <code>isis-maven-plugin</code> (build-time validation of the module) and also by module-level integration tests.
- */
-public class SimpleModuleManifest extends AppManifestAbstract {
-
-    public static final Builder BUILDER = Builder.forModules(
-            CooperationBaseModuleDomSubmodule.class,
-            SimpleModuleFixtureSubmodule.class
-    );
-
-    public SimpleModuleManifest() {
-        super(BUILDER);
+    @Action(semantics = SemanticsOf.SAFE)
+    @HomePage
+    public HomePageViewModel homePage() {
+        return factoryService.instantiate(HomePageViewModel.class);
     }
 
 
+    @javax.inject.Inject
+    FactoryService factoryService;
 }

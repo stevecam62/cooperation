@@ -1,24 +1,12 @@
 package au.org.cooperation.modules.base.dom.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.jdo.annotations.Column;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.Join;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
-
-import org.apache.isis.applib.annotation.DomainObject;
-
-import lombok.Getter;
-import lombok.Setter;
+import javax.jdo.annotations.*;
+import javax.xml.bind.annotation.*;
+import org.apache.isis.applib.annotation.*;
+import lombok.*;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)

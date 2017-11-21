@@ -16,26 +16,21 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package au.org.cooperation.modules.base;
+package cooperation.application.manifest;
 
-import org.apache.isis.applib.AppManifestAbstract;
+import java.util.List;
 
-import au.org.cooperation.modules.base.dom.CooperationBaseModuleDomSubmodule;
-import au.org.cooperation.modules.base.fixture.SimpleModuleFixtureSubmodule;
+import org.apache.isis.applib.fixturescripts.FixtureScript;
+
+import au.org.cooperation.modules.base.fixture.scenario.CreateSimpleObjects;
 
 /**
- * Used by <code>isis-maven-plugin</code> (build-time validation of the module) and also by module-level integration tests.
+ * Run the app but without setting up any fixtures.
  */
-public class SimpleModuleManifest extends AppManifestAbstract {
+public class CooperationAppAppManifestWithFixtures extends CooperationAppAppManifest {
 
-    public static final Builder BUILDER = Builder.forModules(
-            CooperationBaseModuleDomSubmodule.class,
-            SimpleModuleFixtureSubmodule.class
-    );
-
-    public SimpleModuleManifest() {
-        super(BUILDER);
+    @Override protected void overrideFixtures(final List<Class<? extends FixtureScript>> fixtureScripts) {
+        fixtureScripts.add(CreateSimpleObjects.class);
     }
-
 
 }

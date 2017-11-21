@@ -31,7 +31,7 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
-@DomainService(
+/*@DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
         objectType = "simple.SimpleObjectMenu",
         repositoryFor = SimpleObject.class
@@ -39,7 +39,7 @@ import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 @DomainServiceLayout(
         named = "Simple Objects",
         menuOrder = "10"
-)
+)*/
 public class SimpleObjectMenu {
 
     @Action(semantics = SemanticsOf.SAFE)

@@ -16,26 +16,14 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package au.org.cooperation.modules.base;
-
-import org.apache.isis.applib.AppManifestAbstract;
-
-import au.org.cooperation.modules.base.dom.CooperationBaseModuleDomSubmodule;
-import au.org.cooperation.modules.base.fixture.SimpleModuleFixtureSubmodule;
+package cooperation.application.manifest;
 
 /**
- * Used by <code>isis-maven-plugin</code> (build-time validation of the module) and also by module-level integration tests.
+ * Bypasses security, meaning any user/password combination can be used to login.
  */
-public class SimpleModuleManifest extends AppManifestAbstract {
+public class CooperationAppAppManifestBypassSecurity extends CooperationAppAppManifest {
 
-    public static final Builder BUILDER = Builder.forModules(
-            CooperationBaseModuleDomSubmodule.class,
-            SimpleModuleFixtureSubmodule.class
-    );
-
-    public SimpleModuleManifest() {
-        super(BUILDER);
+    @Override protected String overrideAuthMechanism() {
+        return "bypass";
     }
-
-
 }
