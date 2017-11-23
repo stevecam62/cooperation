@@ -18,7 +18,10 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.util.Date;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
@@ -31,46 +34,35 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
-@DomainService(
-        nature = NatureOfService.VIEW_MENU_ONLY,
-        objectType = "cooperation.TaskMenu",
-        repositoryFor = Task.class
-)
-@DomainServiceLayout(
-        named = "Tasks",
-        menuOrder = "20"
-)
-public class TaskMenu {
+@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.RewardMenu", repositoryFor = Reward.class)
+@DomainServiceLayout(named = "Rewards", menuOrder = "40")
+public class RewardMenu {
 
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    @MemberOrder(sequence = "1")
-    public List<Task> listAll() {
-        return taskRepo.listAllTasks();
-    }
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+	@MemberOrder(sequence = "1")
+	public List<Reward> listAll() {
+		return rewardRepo.listAll();
+	}
 
-    /*@Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    @MemberOrder(sequence = "2")
-    public List<Task> findByName(
-            @ParameterLayout(named="Name")
-            final String name
-    ) {
-        return simpleObjectRepository.findByName(name);
-    }
-    */
+	public static class CreateDomainEvent extends ActionDomainEvent<RewardMenu> {
+	}
 
-    public static class CreateDomainEvent extends ActionDomainEvent<TaskMenu> {}
-    @Action(domainEvent = CreateDomainEvent.class)
-    @MemberOrder(sequence = "3")
-    public Task create(
-            @ParameterLayout(named="Name")
-            final String name) {
-        return taskRepo.createTask(name);
-    }
+	@Action(domainEvent = CreateDomainEvent.class)
+	@MemberOrder(sequence = "3")
+	public Reward create(Effort effort) {
+		Reward reward = rewardRepo.createReward(effort.getPerson());
+		reward.addEffort(effort);
+		return reward;
+	}
+	
+	public List<Effort> choices0Create(){
+		return taskRepo.listAllEfforts();
+	}
+	
+	@Inject
+	RewardAlgorithmRepository rewardRepo;
 
-
-    @javax.inject.Inject
-    TaskRepository taskRepo;
-
+	@javax.inject.Inject
+	TaskRepository taskRepo;
 }

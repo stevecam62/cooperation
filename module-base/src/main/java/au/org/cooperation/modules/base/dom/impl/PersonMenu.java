@@ -33,7 +33,7 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.PersonMenu", repositoryFor = Person.class)
-@DomainServiceLayout(named = "Persons", menuOrder = "10")
+@DomainServiceLayout(named = "Persons", menuOrder = "20")
 public class PersonMenu {
 
 	@Action(semantics = SemanticsOf.SAFE)

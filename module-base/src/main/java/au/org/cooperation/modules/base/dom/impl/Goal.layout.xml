@@ -41,12 +41,12 @@
 			</c:fieldSet>
 		</bs3:col>
 		<bs3:col span="6" unreferencedCollections="true">
-			<c:collection id="tasks">
+			<c:collection id="tasks" defaultView="table">
 				<c:action id="addTask">
 					<c:describedAs>Add a Task to this Goal</c:describedAs>
 				</c:action>
 			</c:collection>
-			<c:collection id="outcomes">
+			<c:collection id="outcomes" defaultView="table">
 				<c:action id="addOutcome">
 					<c:describedAs>Add an Outcome to this Goal</c:describedAs>
 				</c:action>

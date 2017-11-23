@@ -18,6 +18,7 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.isis.applib.annotation.Action;
@@ -31,46 +32,27 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
-@DomainService(
-        nature = NatureOfService.VIEW_MENU_ONLY,
-        objectType = "cooperation.TaskMenu",
-        repositoryFor = Task.class
-)
-@DomainServiceLayout(
-        named = "Tasks",
-        menuOrder = "20"
-)
-public class TaskMenu {
+@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.EffortMenu", repositoryFor = Effort.class)
+@DomainServiceLayout(named = "Effort", menuOrder = "40")
+public class EffortMenu {
 
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    @MemberOrder(sequence = "1")
-    public List<Task> listAll() {
-        return taskRepo.listAllTasks();
-    }
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+	@MemberOrder(sequence = "1")
+	public List<Effort> listAll() {
+		return taskRepo.listAllEfforts();
+	}
 
-    /*@Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    @MemberOrder(sequence = "2")
-    public List<Task> findByName(
-            @ParameterLayout(named="Name")
-            final String name
-    ) {
-        return simpleObjectRepository.findByName(name);
-    }
-    */
+	public static class CreateDomainEvent extends ActionDomainEvent<EffortMenu> {
+	}
 
-    public static class CreateDomainEvent extends ActionDomainEvent<TaskMenu> {}
-    @Action(domainEvent = CreateDomainEvent.class)
-    @MemberOrder(sequence = "3")
-    public Task create(
-            @ParameterLayout(named="Name")
-            final String name) {
-        return taskRepo.createTask(name);
-    }
+	@Action(domainEvent = CreateDomainEvent.class)
+	@MemberOrder(sequence = "3")
+	public Effort create(Task task, Person person, Date start, Date end) {
+		return taskRepo.createEffort(task, person, start, end);
+	}
 
-
-    @javax.inject.Inject
-    TaskRepository taskRepo;
+	@javax.inject.Inject
+	TaskRepository taskRepo;
 
 }

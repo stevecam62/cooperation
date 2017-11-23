@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
+import au.org.cooperation.modules.base.dom.StartAndFinishDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +27,13 @@ import lombok.Setter;
 @XmlType(name = "Effort", propOrder = { "result", "start", "end" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
-public class Effort {
+public class Effort /*extends StartAndFinishDateTime*/ {
+	
+	@XmlTransient()
+	@Column(allowsNull = "true")
+	@Getter
+	@Setter(value=AccessLevel.PACKAGE)
+	private Reward reward;
 
 	@XmlElement()
 	@Column(allowsNull = "true")
@@ -70,6 +77,10 @@ public class Effort {
 		setTask(task);
 		setStart(start);
 		setEnd(end);
+	}
+	
+	public String title(){
+		return "Effort by " + this.getPerson().title();
 	}
 
 	public Effort assignToResult(Result result) {

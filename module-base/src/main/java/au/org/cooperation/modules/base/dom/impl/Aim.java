@@ -17,7 +17,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Aim", propOrder = { "name" })
+@XmlType(name = "Aim", propOrder = { "name", "description" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Aim {
@@ -27,6 +27,12 @@ public class Aim {
     @Getter 
     @Setter
 	private String name;
+	
+	@XmlElement
+    @Column(allowsNull="true")
+    @Getter 
+    @Setter
+	private String description;
 	
     @XmlTransient
     @Column(allowsNull="false", name="organisation_id")

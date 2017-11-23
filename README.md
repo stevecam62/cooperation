@@ -30,5 +30,11 @@ In all cooperation 'human nature' is a factor, put simply individuals are strong
 
 Another aspect of fairness is reward. Getting fair rewards from cooperation is probably more flexible than fairness in contributed effort, people will volunteer time to some organisations. Individuals may see a cooperative as a way to gain non-financial rewards that they cannot achieve individually. So in terms of cooperation generally and in forming and operating a cooperative specifically, this flexibility in rewards needs to be considered and managed carefully.
 
+## Implementation
+
+This project uses the Java web-application framework [Apache Isis](http://isis.apache.org).
+
+It can be enhanced relatively easily by customising its Java Domain Model and/or integrating standard modules from the [Incode Platform](http://platform.incode.org).
+
 Stephen Cameron 17/11/2017
 

@@ -32,10 +32,14 @@ import org.apache.isis.applib.services.repository.RepositoryService;
 )
 public class TaskRepository {
 
-    public List<Task> listAll() {
+    public List<Task> listAllTasks() {
         return repositoryService.allInstances(Task.class);
     }
 
+    public List<Effort> listAllEfforts() {
+        return repositoryService.allInstances(Effort.class);
+    }
+    
     /*public List<Task> findByName(final String name) {
         return repositoryService.allMatches(
                 new QueryDefault<>(

@@ -7,11 +7,16 @@
 
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Join;
+import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -31,7 +36,7 @@ import lombok.Setter;
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Reward {
-	
+
 	@XmlTransient
 	@Column(allowsNull = "false")
 	@Getter
@@ -55,5 +60,23 @@ public class Reward {
 	@Setter()
 	protected String description;
 
+	@XmlTransient
+	@Persistent(mappedBy="reward")
+	@Join()
+	@Getter()
+	@Setter()
+	//TODO why must this be initialised???
+	protected List<Effort> efforts = new ArrayList<>();
 
+	Reward() {
+	}
+
+	public Reward(Person person) {
+		this.person = person;
+	}
+
+	public void addEffort(Effort effort) {
+		effort.setReward(this);
+		this.getEfforts().add(effort);
+	}
 }
