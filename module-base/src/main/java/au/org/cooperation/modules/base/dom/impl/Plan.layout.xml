@@ -28,7 +28,7 @@
 			</c:fieldSet>
 		</bs3:col>
 		<bs3:col span="6" unreferencedCollections="true">
-			<c:collection id="goals">
+			<c:collection id="goals" defaultView="table">
 				<c:action id="addGoal"></c:action>
 			</c:collection>
 		</bs3:col>

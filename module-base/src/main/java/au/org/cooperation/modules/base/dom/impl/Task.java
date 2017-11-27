@@ -89,6 +89,7 @@ public class Task {
 
 	public Task addPerson(@ParameterLayout(named = "Person") Person person) {
 		this.getPersons().add(person);
+		person.getTasks().add(this);
 		return this;
 	}
 
@@ -97,7 +98,9 @@ public class Task {
 	}
 
 	public Task addEffort(@ParameterLayout(named = "Person") Person person, Date start, Date end) {
-		this.getEfforts().add(taskRepository.createEffort(this, person, start, end));
+		Effort effort = taskRepository.createEffort(this, person, start, end);
+		this.getEfforts().add(effort);
+		person.getEfforts().add(effort);
 		return this;
 	}
 

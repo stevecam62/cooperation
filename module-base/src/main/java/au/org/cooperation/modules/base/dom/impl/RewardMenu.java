@@ -35,7 +35,7 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.RewardMenu", repositoryFor = Reward.class)
-@DomainServiceLayout(named = "Rewards", menuOrder = "40")
+@DomainServiceLayout(named = "Reward", menuOrder = "40")
 public class RewardMenu {
 
 	@Action(semantics = SemanticsOf.SAFE)

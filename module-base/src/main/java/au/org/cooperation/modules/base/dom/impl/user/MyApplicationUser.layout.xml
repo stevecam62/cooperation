@@ -101,7 +101,7 @@
 	<bs3:row>
 		<bs3:col span="12" unreferencedCollections="true">
 			<c:collection id="projectAccess" defaultView="table" />
-			<c:collection id="recoveryQuestions" hidden="EVERYWHERE" />
+			<c:collection id="recoveryQuestions" hidden="EVERYWHERE" <c:collection/>
 		</bs3:col>
 	</bs3:row>
 </bs3:grid>

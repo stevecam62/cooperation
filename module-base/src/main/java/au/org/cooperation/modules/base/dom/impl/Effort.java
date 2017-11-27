@@ -31,26 +31,27 @@ public class Effort /*extends StartAndFinishDateTime*/ {
 	
 	@XmlTransient()
 	@Column(allowsNull = "true")
-	@Getter
+	//hidden from UI
+	@Getter(value=AccessLevel.PACKAGE)
 	@Setter(value=AccessLevel.PACKAGE)
 	private Reward reward;
 
 	@XmlElement()
 	@Column(allowsNull = "true")
 	@Getter
-	@Setter(value = AccessLevel.PRIVATE)
+	@Setter(value = AccessLevel.PROTECTED)
 	private Result result;
 
 	@XmlTransient
 	@Column(allowsNull = "false")
 	@Getter
-	@Setter
+	@Setter(value = AccessLevel.PROTECTED)
 	private Person person;
 
 	@XmlTransient
 	@Column(allowsNull = "true")
 	@Getter
-	@Setter
+	@Setter(value = AccessLevel.PROTECTED)
 	private Task task;
 
 	@XmlElement(required = true, type = String.class)

@@ -30,7 +30,7 @@
 						<c:describedAs>Updates the object's name</c:describedAs>
 					</c:action>
 				</c:property>
-				<c:property id="notes" namedEscaped="true" multiLine="10"
+				<c:property id="description" namedEscaped="true" multiLine="5"
 					hidden="ALL_TABLES" />
 			</c:fieldSet>
 			<c:collection id="aims" defaultView="table">

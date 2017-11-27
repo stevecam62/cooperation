@@ -22,17 +22,15 @@
 	<bs3:row>
 		<bs3:col span="6">
 			<c:fieldSet name="General" unreferencedProperties="true">
-				<c:property id="task" namedEscaped="true" hidden="PARENTED_TABLES"/>
+				<c:property id="person" namedEscaped="true" />
+				<c:property id="timestamp" namedEscaped="true" hidden="PARENTED_TABLES" />
+				<c:property id="value" namedEscaped="true" />
 				<c:property id="description" namedEscaped="true"
 					multiLine="5" />
 			</c:fieldSet>
 		</bs3:col>
 		<bs3:col span="6" unreferencedCollections="true">
-			<c:collection id="outcomes"  defaultView="table">
-				<c:action id="addOutcome">
-					<c:describedAs>Add an Outcome to this Goal</c:describedAs>
-				</c:action>
-			</c:collection>
+			<c:collection id="efforts"  defaultView="table"/>
 		</bs3:col>
 	</bs3:row>
 </bs3:grid>

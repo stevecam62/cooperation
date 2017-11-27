@@ -14,7 +14,6 @@ import java.util.List;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Join;
-import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -23,9 +22,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.Programmatic;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -75,6 +74,7 @@ public class Reward {
 		this.person = person;
 	}
 
+	@Programmatic
 	public void addEffort(Effort effort) {
 		effort.setReward(this);
 		this.getEfforts().add(effort);

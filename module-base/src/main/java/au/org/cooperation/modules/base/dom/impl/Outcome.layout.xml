@@ -29,7 +29,7 @@
 			</c:fieldSet>
 		</bs3:col>
 		<bs3:col span="6" unreferencedCollections="true">
-			<c:collection id="results">
+			<c:collection id="results" defaultView="table">
 				<c:action id="addResult">
 					<c:describedAs>Link a Result to this Outcome</c:describedAs>
 				</c:action>

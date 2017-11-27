@@ -1,5 +1,9 @@
 package au.org.cooperation.modules.base.dom;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 import javax.jdo.annotations.*;
 
 import org.apache.isis.applib.annotation.Action;
@@ -8,8 +12,8 @@ import org.apache.isis.applib.annotation.Optionality;
 import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Property;
-import org.joda.time.DateTime;
-import org.joda.time.Duration;
+//import org.joda.time.LocalDateTime;
+//import org.joda.time.Duration;
 
 /**
  * An interval as represented by a start and finish date-times on the same date
@@ -21,35 +25,35 @@ import org.joda.time.Duration;
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class StartAndFinishDateTime {
 
-	protected DateTime startDateTime;
-	protected DateTime endDateTime;
+	protected LocalDateTime start;
+	protected LocalDateTime end;
 
 	@Property(editing = Editing.DISABLED)
 	@Column(allowsNull = "true")
-	public DateTime getStartDateTime() {
-		return startDateTime;
+	public LocalDateTime getStart() {
+		return start;
 	}
 
-	public void setStartDateTime(final DateTime startDateTime) {
-		this.startDateTime = startDateTime;
+	public void setStart(final LocalDateTime start) {
+		this.start = start;
 	}
 
 	@Property(editing = Editing.DISABLED)
 	@Column(allowsNull = "true")
-	public DateTime getEndDateTime() {
-		return endDateTime;
+	public LocalDateTime getEnd() {
+		return end;
 	}
 
-	public void setEndDateTime(final DateTime endDateTime) {
-		this.endDateTime = endDateTime;
+	public void setEnd(final LocalDateTime end) {
+		this.end = end;
 	}
 
 	@NotPersistent
 	public String getIntervalLengthFormatted() {
-		if (getStartDateTime() != null && getEndDateTime() != null) {
-			Duration duration = new Duration(getStartDateTime(), getEndDateTime());
-			Long hours = duration.getStandardHours();
-			Long minutes = duration.getStandardMinutes();
+		if (getStart() != null && getEnd() != null) {
+			Duration duration = Duration.between(getStart(), getEnd());
+			Long hours = duration.toHours();
+			Long minutes = duration.toMinutes();
 			if (hours > 0)
 				minutes = minutes - hours * 60;
 			return String.format("%01d:%02d", hours, minutes);
@@ -59,22 +63,22 @@ public abstract class StartAndFinishDateTime {
 
 	@NotPersistent
 	public Long getIntervalLengthInMinutes() {
-		if (getStartDateTime() != null && getEndDateTime() != null) {
-			Duration duration = new Duration(getStartDateTime(), getEndDateTime());
-			return duration.getStandardMinutes();
+		if (getStart() != null && getEnd() != null) {
+			Duration duration = Duration.between(getStart(), getEnd());
+			return duration.toMinutes();
 		} else
 			return null;
 	}
 
-	public static String validateStartAndFinishDateTimes(DateTime start, DateTime finish) {
+	public static String validateStartAndFinish(LocalDateTime start, LocalDateTime finish) {
 		if (start != null && finish != null) {
 			if (finish.isBefore(start) || finish.equals(start))
 				return "End is before or equal to Start";
 			else {
-				Duration duration = new Duration(start, finish);
-				if (duration.getStandardMinutes() == 0)
+				Duration duration = Duration.between(start, finish);
+				if (duration.toMinutes() == 0)
 					return "End is equal to Start";
-				if (duration.getStandardHours() > 12)
+				if (duration.toHours() > 12)
 					return "End and Start are not in the same 12 hour period";
 				if (finish.getDayOfWeek() != start.getDayOfWeek()) {
 					return "End and Start are on different days of the week";
@@ -85,67 +89,64 @@ public abstract class StartAndFinishDateTime {
 	}
 
 	@Action()
-	public StartAndFinishDateTime updateStartDateTime(
-			@Parameter(optionality = Optionality.MANDATORY) @ParameterLayout(named = "Start Time") DateTime start) {
-		setStartDateTime(trimSeconds(start));
+	public StartAndFinishDateTime updateStart(
+			@Parameter(optionality = Optionality.MANDATORY) @ParameterLayout(named = "Start Time") LocalDateTime start) {
+		setStart(trimSeconds(start));
 		return this;
 	}
 
-	public DateTime default0UpdateStartDateTime() {
-		if (getStartDateTime() == null)
-			return getEndDateTime();
+	public LocalDateTime default0UpdateStart() {
+		if (getStart() == null)
+			return getEnd();
 		else
-			return getStartDateTime();
+			return getStart();
 	}
 
-	public String validateUpdateStartDateTime(DateTime start) {
-		return validateStartAndFinishDateTimes(start, getEndDateTime());
+	public String validateUpdateStart(LocalDateTime start) {
+		return validateStartAndFinish(start, getEnd());
 	}
 
 	// NOTE Must keep end date time optional to be able to change start date
 	// time to anything
 	@Action()
-	public StartAndFinishDateTime updateEndDateTime(
-			@Parameter(optionality = Optionality.OPTIONAL) @ParameterLayout(named = "End Time") DateTime end) {
-		setEndDateTime(trimSeconds(end));
+	public StartAndFinishDateTime updateEnd(
+			@Parameter(optionality = Optionality.OPTIONAL) @ParameterLayout(named = "End Time") LocalDateTime end) {
+		setEnd(trimSeconds(end));
 		return this;
 	}
 
-	public DateTime default0UpdateEndDateTime() {
-		if (getEndDateTime() == null)
-			return getStartDateTime();
+	public LocalDateTime default0UpdateEnd() {
+		if (getEnd() == null)
+			return getStart();
 		else
-			return getEndDateTime();
+			return getEnd();
 	}
 
-	public String validateUpdateEndDateTime(DateTime end) {
-		return validateStartAndFinishDateTimes(getStartDateTime(), end);
+	public String validateUpdateEnd(LocalDateTime end) {
+		return validateStartAndFinish(getStart(), end);
 	}
 
 	@Action()
-	public StartAndFinishDateTime updateEndDateTimeOffStart(
-			@Parameter(optionality = Optionality.MANDATORY) @ParameterLayout(named = "Add N Minutes to Start Date Time") Integer minutes) {
-		setEndDateTime(getStartDateTime().plusMinutes(minutes));
+	public StartAndFinishDateTime updateEndOffStart(
+			@Parameter(optionality = Optionality.MANDATORY) @ParameterLayout(named = "Add N Minutes to Start LocalDateTime Time") Integer minutes) {
+		setEnd(getStart().plusMinutes(minutes));
 		return this;
 	}
 
-	public String validateUpdateEndDateTimeOffStart(Integer minutes) {
-		return validateStartAndFinishDateTimes(getStartDateTime(), getStartDateTime().plusMinutes(minutes));
+	public String validateUpdateEndOffStart(Integer minutes) {
+		return validateStartAndFinish(getStart(), getStart().plusMinutes(minutes));
 	}
 
-	public String disableUpdateEndDateTimeOffStart() {
-		if (getStartDateTime() == null)
-			return "Start Date Time is Not Set";
+	public String disableUpdateEndOffStart() {
+		if (getStart() == null)
+			return "Start LocalDateTime Time is Not Set";
 		else
 			return null;
 	}
 
-	protected DateTime trimSeconds(DateTime dateTime) {
+	protected LocalDateTime trimSeconds(LocalDateTime dateTime) {
 		if (dateTime == null)
 			return null;
-		final DateTime hour = dateTime.hourOfDay().roundFloorCopy();
-		final long millisSinceHour = new Duration(hour, dateTime).getMillis();
-		final int roundedMinutes = ((int) Math.round(millisSinceHour / 60000.0));
-		return hour.plusMinutes(roundedMinutes);
+		return dateTime.truncatedTo(ChronoUnit.MINUTES);
 	}
 }

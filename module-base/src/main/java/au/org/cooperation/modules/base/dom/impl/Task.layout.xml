@@ -32,7 +32,7 @@
 					</c:action>
 				</c:property>
 			</c:fieldSet>
-			<c:collection id="persons">
+			<c:collection id="persons"  defaultView="table">
 				<c:action id="addPerson">
 					<c:describedAs>Assign a Person to this Task</c:describedAs>
 				</c:action>

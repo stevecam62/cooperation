@@ -101,6 +101,7 @@ public class Plan {
 	public Plan addGoal(@ParameterLayout(named="Goal name") String name, @ParameterLayout(named="Primary Aim") Aim aim) {
 		Goal goal = organisationRepository.createGoal(this, name, aim);
 		this.getGoals().add(goal);
+		this.getOrganisation().getGoals().add(goal);
 		return this;
 	}
 	
