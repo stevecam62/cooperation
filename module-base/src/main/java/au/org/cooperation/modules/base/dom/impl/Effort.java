@@ -1,5 +1,6 @@
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,7 @@ import lombok.Setter;
 @XmlType(name = "Effort", propOrder = { "result", "start", "end" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
-public class Effort /*extends StartAndFinishDateTime*/ {
+public class Effort extends StartAndFinishDateTime {
 	
 	@XmlTransient()
 	@Column(allowsNull = "true")
@@ -54,7 +55,7 @@ public class Effort /*extends StartAndFinishDateTime*/ {
 	@Setter(value = AccessLevel.PROTECTED)
 	private Task task;
 
-	@XmlElement(required = true, type = String.class)
+	/*@XmlElement(required = true, type = String.class)
 	@XmlJavaTypeAdapter(Adapter1.class)
 	@XmlSchemaType(name = "dateTime")
 	@Column(allowsNull = "true")
@@ -68,12 +69,12 @@ public class Effort /*extends StartAndFinishDateTime*/ {
 	@Column(allowsNull = "true")
 	@Getter
 	@Setter
-	protected Date end;
+	protected Date end;*/
 
 	Effort() {
 	}
 
-	public Effort(Task task, Person person, Date start, Date end) {
+	public Effort(Task task, Person person, LocalDateTime start, LocalDateTime end) {
 		setPerson(person);
 		setTask(task);
 		setStart(start);

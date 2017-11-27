@@ -7,6 +7,7 @@
 
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -97,7 +98,7 @@ public class Task {
 		return personRepository.listAll();
 	}
 
-	public Task addEffort(@ParameterLayout(named = "Person") Person person, Date start, Date end) {
+	public Task addEffort(@ParameterLayout(named = "Person") Person person, LocalDateTime start, LocalDateTime end) {
 		Effort effort = taskRepository.createEffort(this, person, start, end);
 		this.getEfforts().add(effort);
 		person.getEfforts().add(effort);

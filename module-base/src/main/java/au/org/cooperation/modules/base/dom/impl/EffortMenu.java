@@ -18,6 +18,7 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class EffortMenu {
 
 	@Action(domainEvent = CreateDomainEvent.class)
 	@MemberOrder(sequence = "3")
-	public Effort create(Task task, Person person, Date start, Date end) {
+	public Effort create(Task task, Person person, LocalDateTime start, LocalDateTime end) {
 		return taskRepo.createEffort(task, person, start, end);
 	}
 

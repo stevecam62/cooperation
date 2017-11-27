@@ -18,6 +18,7 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class TaskRepository {
         return object;
 	}
 	
-	public Effort createEffort(Task task, Person person, Date start, Date end) {
+	public Effort createEffort(Task task, Person person, LocalDateTime start, LocalDateTime end) {
         final Effort object = new Effort(task, person, start, end);
         serviceRegistry.injectServicesInto(object);
         repositoryService.persist(object);
