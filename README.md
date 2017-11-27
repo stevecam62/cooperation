@@ -40,7 +40,41 @@ It can be enhanced relatively easily by customising its Java Domain Model and/or
 
 ### Organisation
 
+A formal on informal group of cooperating people.
+
 ![Organisation Screen](https://github.com/stevecam62/cooperation/blob/master/module-base/images/screen/Organisation.png)
+
+### Aim
+
+A general statement of what an organisation intends to achieve through cooperation.
+
+### Goal
+
+A specific statement of how one or more of the Aims are going to be achieved.
+
+### Task
+
+A statement of ongoing or one-of work that can be assigned to individuals for completion.
+
+### Plan
+
+A named grouping of Goals with an associated set of Tasks, most likely relating to a time period.
+
+### Person
+
+An individual cooperating person.
+
+### Effort
+
+A record of a Person's time (interval) spent working on a Task on a specific date.
+
+### Outcome
+
+A record of what as achieved by one or more Person's Effort working on a Task on a specific date.
+
+### Reward
+
+An allocation of cash (or some other non-monetary thing of value, or a combination) as payment to a Person for their Effort in a period.
 
 Stephen Cameron 17/11/2017
 
