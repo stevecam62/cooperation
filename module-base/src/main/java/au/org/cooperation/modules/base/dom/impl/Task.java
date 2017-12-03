@@ -7,9 +7,7 @@
 
 package au.org.cooperation.modules.base.dom.impl;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -27,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
-import org.apache.isis.applib.value.DateTime;
+import org.joda.time.DateTime;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -95,10 +93,23 @@ public class Task {
 	}
 
 	public List<Person> choices0AddPerson() {
-		return personRepository.listAll();
+		List<Person> temp1 = null;
+		if (this.getGoal() != null && this.getGoal().getOrganisation() != null) {
+			temp1 = this.getGoal().getOrganisation().listActivePersons();
+		} else {
+			temp1 = personRepository.listAll();
+		}
+		// check if already linked
+		List<Person> temp2 = new ArrayList<>();
+		for (Person person : persons) {
+			if (!this.getPersons().contains(person)){
+				temp2.add(person);
+			}
+		}
+		return temp2;
 	}
 
-	public Task addEffort(@ParameterLayout(named = "Person") Person person, LocalDateTime start, LocalDateTime end) {
+	public Task addEffort(@ParameterLayout(named = "Person") Person person, DateTime start, DateTime end) {
 		Effort effort = taskRepository.createEffort(this, person, start, end);
 		this.getEfforts().add(effort);
 		person.getEfforts().add(effort);
@@ -121,15 +132,15 @@ public class Task {
 		if (this.getGoal() != null) {
 			this.getGoal().getOutcomes().add(outcome);
 		}
-		if(result != null){
+		if (result != null) {
 			outcome.getResults().add(result);
 			result.getOutcomes().add(outcome);
 		}
 		return this;
 	}
-	
-	public List<Result> choices1AddOutcome(){
-		//TODO has result been added?
+
+	public List<Result> choices1AddOutcome() {
+		// TODO has result been added?
 		return this.getResults();
 	}
 

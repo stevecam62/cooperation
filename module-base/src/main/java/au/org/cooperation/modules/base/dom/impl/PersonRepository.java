@@ -18,6 +18,7 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class PersonRepository {
                         "name", name));
     }*/
 
-    public Person createPerson(String givenName, String familyName, Date dateOfBirth) {
+    public Person createPerson(String givenName, String familyName, java.sql.Date dateOfBirth) {
         final Person object = new Person();
         object.setGivenName(givenName);
         object.setFamilyName(familyName);

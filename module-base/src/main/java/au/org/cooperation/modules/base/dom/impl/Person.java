@@ -1,5 +1,6 @@
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -35,10 +36,10 @@ public class Person {
     private String givenName;
     
     @XmlElement(name = "date-of-birth", required = true)
-    @Column(allowsNull="false")
+    @Column(allowsNull="false", sqlType="Date")
     @Getter 
     @Setter
-    private Date dateOfBirth;
+    private java.sql.Date dateOfBirth;
 
     //@XmlElement
     //@Column(allowsNull="true")

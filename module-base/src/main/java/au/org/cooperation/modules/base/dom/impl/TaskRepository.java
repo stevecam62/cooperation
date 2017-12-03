@@ -26,6 +26,7 @@ import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
+import org.joda.time.DateTime;
 
 @DomainService(
         nature = NatureOfService.DOMAIN,
@@ -63,7 +64,7 @@ public class TaskRepository {
         return object;
 	}
 	
-	public Effort createEffort(Task task, Person person, LocalDateTime start, LocalDateTime end) {
+	public Effort createEffort(Task task, Person person, DateTime start, DateTime end) {
         final Effort object = new Effort(task, person, start, end);
         serviceRegistry.injectServicesInto(object);
         repositoryService.persist(object);

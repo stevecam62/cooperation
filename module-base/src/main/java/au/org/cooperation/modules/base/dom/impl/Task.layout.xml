@@ -22,14 +22,14 @@
 	<bs3:row>
 		<bs3:col span="6">
 			<c:fieldSet name="General" unreferencedProperties="true">
-				<c:property id="goal" namedEscaped="true" hidden="ALL_TABLES">
-					<c:named>Primary Goal</c:named>
-					<c:describedAs>The primary Goal that is achieved via this Task</c:describedAs>
-				</c:property>
 				<c:property id="name" namedEscaped="true">
 					<c:action id="updateName">
 						<c:describedAs>Updates the object's name</c:describedAs>
 					</c:action>
+				</c:property>
+				<c:property id="goal" namedEscaped="true" hidden="ALL_TABLES">
+					<c:named>Primary Goal</c:named>
+					<c:describedAs>The primary Goal that is achieved via this Task</c:describedAs>
 				</c:property>
 			</c:fieldSet>
 			<c:collection id="persons"  defaultView="table">

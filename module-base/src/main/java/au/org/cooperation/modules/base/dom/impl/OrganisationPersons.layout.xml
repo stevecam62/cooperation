@@ -16,45 +16,20 @@
 
 	<bs3:row>
 		<bs3:col span="12" unreferencedActions="true">
-			<c:domainObject bookmarking="AS_ROOT" />
+			<c:domainObject bookmarking="NEVER" />
 		</bs3:col>
 	</bs3:row>
 	<bs3:row>
 		<bs3:col span="6">
-			<c:fieldSet name="General" unreferencedProperties="true">
-				<c:action id="delete">
-					<c:describedAs>Deletes this object from the persistent datastore</c:describedAs>
-				</c:action>
-				<c:property id="name" namedEscaped="true">
-					<c:action id="updateName">
-						<c:describedAs>Updates the object's name</c:describedAs>
-					</c:action>
-				</c:property>
-				<c:property id="description" namedEscaped="true"
-					multiLine="5" hidden="ALL_TABLES" />
-				<c:property id="activeLinkedPersonCount" namedEscaped="true"
-					hidden="ALL_TABLES">
-					<c:named>Linked Person Count</c:named>
-					<c:describedAs>Number of Persons Linked to the Organisation with a link status of ACTIVE</c:describedAs>
-					<c:action id="showLinkedPersons" />
-				</c:property>
-			</c:fieldSet>
-			<c:collection id="aims" defaultView="table">
-				<c:action id="addAim">
-					<c:describedAs>Add an Organisation Aim</c:describedAs>
-				</c:action>
-			</c:collection>
+			<c:fieldSet name="General" unreferencedProperties="true" />
 		</bs3:col>
 		<bs3:col span="6" unreferencedCollections="true">
-			<c:collection id="goals" defaultView="table">
-				<c:action id="addGoal">
-					<c:describedAs>Add an Organisation Goal</c:describedAs>
-				</c:action>
+			<c:collection id="activePersons" defaultView="table">
+				<c:action id="addPerson"></c:action>
+				<c:action id="inactivatePerson"></c:action>
 			</c:collection>
-			<c:collection id="plans" defaultView="table">
-				<c:action id="addPlan">
-					<c:describedAs>Add an Organisation Task</c:describedAs>
-				</c:action>
+			<c:collection id="inactivePersons">
+				<c:action id="activatePerson"></c:action>
 			</c:collection>
 		</bs3:col>
 	</bs3:row>

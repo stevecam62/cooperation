@@ -18,6 +18,7 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -50,11 +51,10 @@ public class PersonMenu {
 	@MemberOrder(sequence = "3")
 	public Person create(@ParameterLayout(named = "Given Name") final String givenName,
 			@ParameterLayout(named = "Family Name") final String familyName,
-			@ParameterLayout(named = "Date of Birth") final Date dateOfBirth) {
+			@ParameterLayout(named = "Date of Birth") final java.sql.Date dateOfBirth) {
 		return personRepo.createPerson(givenName, familyName, dateOfBirth);
 	}
 
 	@javax.inject.Inject
 	PersonRepository personRepo;
-
 }

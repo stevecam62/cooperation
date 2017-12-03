@@ -24,9 +24,6 @@
 			<c:fieldSet name="General" unreferencedProperties="true">
 				<c:property id="task" namedEscaped="true" hidden="PARENTED_TABLES" />
 				<c:property id="person" namedEscaped="true" />
-				<c:property id="start" namedEscaped="true" hidden="ALL_TABLES" />
-				<c:property id="end" namedEscaped="true" hidden="ALL_TABLES" />
-				<c:property id="interval" namedEscaped="true" />
 				<c:property id="result" namedEscaped="true" hidden="ALL_TABLES">
 					<c:describedAs>A Result achieved from this Effort.</c:describedAs>
 					<c:action id="addResult"></c:action>
@@ -34,6 +31,30 @@
 				</c:property>
 			</c:fieldSet>
 		</bs3:col>
+		<bs3:col span="6">
+			<c:fieldSet name="Times" id="time">
+				<c:property id="intervalLengthFormatted">
+					<c:named>Period</c:named>
+					<c:describedAs>Calculated Period Length (HH:MM).</c:describedAs>
+				</c:property>
+				<c:property id="intervalLengthInMinutes" hidden="OBJECT_FORMS">
+					<c:named>Minutes</c:named>
+					<c:describedAs>Calculated Period Length (Minutes).</c:describedAs>
+				</c:property>
+				<c:property id="startDateTime" hidden="ALL_TABLES">
+					<c:action id="updateStartDateTime" position="BELOW" />
+				</c:property>
+				<c:property id="endDateTime" hidden="ALL_TABLES">
+					<c:named>Approximate End Date Time</c:named>
+					<c:action id="updateEndDateTime" position="BELOW" />
+					<c:action id="updateEndDateTimeOffStart" position="BELOW">
+						<c:named>Start Date Time + N</c:named>
+					</c:action>
+				</c:property>
+			</c:fieldSet>
+		</bs3:col>
+	</bs3:row>
+	<bs3:row>
 		<bs3:col span="6" unreferencedCollections="true">
 			<!-- c:collection id="aims"> <c:action id="addAim"> <c:describedAs>Add 
 				an Organisation Aim</c:describedAs> </c:action> </c:collection -->

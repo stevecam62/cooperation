@@ -27,6 +27,8 @@ import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.value.DateTime;
 
+import au.org.cooperation.modules.base.dom.impl.OrganisationPerson.OrganisationPersonStatus;
+
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Organisation.class)
 public class OrganisationRepository {
 
@@ -46,6 +48,15 @@ public class OrganisationRepository {
 		repositoryService.persist(object);
 		return object;
 	}
+	
+	public OrganisationPerson createOrganisationPerson(Organisation organisation, Person person,
+			OrganisationPersonStatus status) {
+		final OrganisationPerson object = new OrganisationPerson(organisation, person, status);
+		serviceRegistry.injectServicesInto(object);
+		repositoryService.persist(object);
+		return object;
+	}
+
 
 	public Aim createAim(final Organisation organisation, final String name) {
 		final Aim object = new Aim(organisation, name);

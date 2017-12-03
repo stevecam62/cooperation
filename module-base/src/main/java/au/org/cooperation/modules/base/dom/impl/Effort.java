@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.joda.time.DateTime;
 
 import au.org.cooperation.modules.base.dom.StartAndFinishDateTime;
 import lombok.AccessLevel;
@@ -74,11 +75,11 @@ public class Effort extends StartAndFinishDateTime {
 	Effort() {
 	}
 
-	public Effort(Task task, Person person, LocalDateTime start, LocalDateTime end) {
+	public Effort(Task task, Person person, DateTime start, DateTime end) {
 		setPerson(person);
 		setTask(task);
-		setStart(start);
-		setEnd(end);
+		setStartDateTime(start);
+		setEndDateTime(end);
 	}
 	
 	public String title(){
