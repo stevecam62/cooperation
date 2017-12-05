@@ -20,12 +20,17 @@ package au.org.cooperation.modules.base.dom.impl;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.query.QueryDefault;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
+import org.apache.isis.applib.services.user.UserService;
 import org.apache.isis.applib.value.DateTime;
+import org.isisaddons.module.security.dom.user.ApplicationUser;
+import org.isisaddons.module.security.dom.user.ApplicationUserRepository;
 
 import au.org.cooperation.modules.base.dom.impl.OrganisationPerson.OrganisationPersonStatus;
 
@@ -48,15 +53,16 @@ public class OrganisationRepository {
 		repositoryService.persist(object);
 		return object;
 	}
-	
+
 	public OrganisationPerson createOrganisationPerson(Organisation organisation, Person person,
 			OrganisationPersonStatus status) {
 		final OrganisationPerson object = new OrganisationPerson(organisation, person, status);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
+		if(person.getOrganisation() == null)
+			person.setOrganisation(organisation);
 		return object;
 	}
-
 
 	public Aim createAim(final Organisation organisation, final String name) {
 		final Aim object = new Aim(organisation, name);
@@ -71,14 +77,14 @@ public class OrganisationRepository {
 		repositoryService.persist(object);
 		return object;
 	}
-	
+
 	public Goal createGoal(final Organisation organisation, final String name, final Aim aim) {
 		final Goal object = new Goal(organisation, name, aim);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;
 	}
-	
+
 	public Goal createGoal(Plan plan, String name, Aim aim) {
 		final Goal object = new Goal(plan.getOrganisation(), name, aim);
 		object.setPlan(plan);
@@ -100,7 +106,7 @@ public class OrganisationRepository {
 		Goal goal = null;
 		if (task != null)
 			goal = task.getGoal();
-		final Outcome outcome = new Outcome(goal, description);
+		final Outcome outcome = new Outcome(task.getOrganisation(), goal, description);
 		serviceRegistry.injectServicesInto(outcome);
 		repositoryService.persist(outcome);
 		return outcome;
@@ -112,7 +118,7 @@ public class OrganisationRepository {
 		Goal goal = null;
 		if (result != null && result.getTask() != null && result.getTask().getGoal() != null)
 			goal = result.getTask().getGoal();
-		final Outcome outcome = new Outcome(goal, description);
+		final Outcome outcome = new Outcome(result.getOrganisation(), goal, description);
 		serviceRegistry.injectServicesInto(outcome);
 		repositoryService.persist(outcome);
 		result.getOutcomes().add(outcome);
@@ -121,16 +127,27 @@ public class OrganisationRepository {
 	}
 
 	public Success createSuccess(final String name) {
-		final Success object = new Success(name);
+		final Success object = new Success(this.currentOrganisation(), name);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;
 	}
 
-	@javax.inject.Inject
-	RepositoryService repositoryService;
-	@javax.inject.Inject
-	ServiceRegistry2 serviceRegistry;
+	public Organisation currentOrganisation() {
+		ApplicationUser user = userRepo.findByUsernameCached(users.getUser().getName());
+		if (user != null && user instanceof Person)
+			return ((Person) user).getOrganisation();
+		else
+			return null;
+	}
 
+	@Inject
+	RepositoryService repositoryService;
+	@Inject
+	ServiceRegistry2 serviceRegistry;
+	@Inject
+	ApplicationUserRepository userRepo;
+	@Inject
+	UserService users;
 
 }

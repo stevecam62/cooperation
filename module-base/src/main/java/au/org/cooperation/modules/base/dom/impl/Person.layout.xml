@@ -20,7 +20,7 @@
 		</bs3:col>
 	</bs3:row>
 	<bs3:row>
-		<bs3:col span="6">
+		<bs3:col span="4">
 			<c:fieldSet name="General"
 				unreferencedProperties="true">
 				<c:property id="organisation" namedEscaped="true" hidden="ALL_TABLES" />
@@ -30,7 +30,7 @@
 			</c:fieldSet>
 			<c:collection id="tasks" defaultView="table" />
 		</bs3:col>
-		<bs3:col span="6" unreferencedCollections="true">
+		<bs3:col span="8" unreferencedCollections="true">
 			<c:collection id="efforts" defaultView="table"/>
 			<c:collection id="rewards" defaultView="table" />
 		</bs3:col>

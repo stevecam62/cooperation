@@ -56,6 +56,12 @@ import lombok.Setter;
 @DomainObject()
 public class Result {
 
+	@XmlTransient
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter(value=AccessLevel.PRIVATE)
+	protected Organisation organisation;
+
     @XmlElement(required = true)
     @Column(allowsNull="false")
     @Getter 
@@ -78,7 +84,8 @@ public class Result {
     	
     }
     
-    public Result(Task task, String description){
+    public Result(Organisation organisation, Task task, String description){
+    	setOrganisation(organisation);
     	setTask(task);
     	setDescription(description);
     }

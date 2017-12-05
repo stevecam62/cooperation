@@ -20,6 +20,8 @@ package au.org.cooperation.modules.base.dom.impl;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
@@ -66,11 +68,13 @@ public class TaskMenu {
     public Task create(
             @ParameterLayout(named="Name")
             final String name) {
-        return taskRepo.createTask(name);
+        return taskRepo.createTask(organisationRepository.currentOrganisation(), name);
     }
 
-
-    @javax.inject.Inject
+    @Inject
+    OrganisationRepository organisationRepository;
+    
+    @Inject
     TaskRepository taskRepo;
 
 }

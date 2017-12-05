@@ -21,7 +21,13 @@ import lombok.Setter;
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Aim {
-
+	
+    @XmlTransient
+    @Column(allowsNull="false", name="organisation_id")
+    @Getter 
+    @Setter(value=AccessLevel.PRIVATE)
+	private Organisation organisation;
+    
 	@XmlElement(required = true)
     @Column(allowsNull="false")
     @Getter 
@@ -33,13 +39,7 @@ public class Aim {
     @Getter 
     @Setter
 	private String description;
-	
-    @XmlTransient
-    @Column(allowsNull="false", name="organisation_id")
-    @Getter 
-    @Setter(value=AccessLevel.PRIVATE)
-	private Organisation organisation;
-	
+
 	public Aim(){
 	}
 	

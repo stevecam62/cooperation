@@ -16,10 +16,12 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -54,6 +56,12 @@ import lombok.Setter;
 @DomainObject()
 public class Success {
 
+	@XmlTransient
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter(value=AccessLevel.PRIVATE)
+	protected Organisation organisation;
+
 	@XmlElement(required = true)
 	@Column(allowsNull = "false")
 	@Getter
@@ -77,7 +85,8 @@ public class Success {
 	public Success() {
 	}
 
-	public Success(String name) {
+	public Success( Organisation organisation, String name) {
+		setOrganisation(organisation);
 		setName(name);
 	}
 

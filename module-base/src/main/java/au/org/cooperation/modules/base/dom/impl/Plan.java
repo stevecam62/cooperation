@@ -58,6 +58,12 @@ import lombok.Setter;
 @DomainObject()
 public class Plan {
 
+	@XmlTransient
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter(value=AccessLevel.PRIVATE)
+	protected Organisation organisation;
+
 	@XmlElement(required = true)
 	@Column(allowsNull = "false")
 	@Getter
@@ -69,12 +75,6 @@ public class Plan {
 	@Getter
 	@Setter
 	protected String description;
-
-	@XmlTransient
-	@Column(allowsNull = "false")
-	@Getter
-	@Setter(value=AccessLevel.PRIVATE)
-	protected Organisation organisation;
 
 	@XmlElement(required = true)
 	@Persistent(mappedBy="plan")

@@ -20,6 +20,8 @@ package cooperation.application.manifest;
 
 import org.apache.isis.applib.AppManifestAbstract;
 
+import com.google.common.collect.ImmutableMap;
+
 import au.org.cooperation.modules.base.dom.CooperationBaseModuleDomSubmodule;
 import cooperation.application.fixture.CooperationAppApplicationModuleFixtureSubmodule;
 import cooperation.application.services.CooperationAppApplicationModuleServicesSubmodule;
@@ -45,7 +47,9 @@ public class CooperationAppAppManifest extends AppManifestAbstract {
             .withAdditionalServices(
             		org.isisaddons.module.security.dom.password.PasswordEncryptionServiceUsingJBcrypt.class,
                     org.isisaddons.module.security.dom.permission.PermissionsEvaluationServiceAllowBeatsVeto.class
-            );
+            ).withConfigurationProperties(ImmutableMap.of(
+                    "isis.reflector.facets.include",
+                    "org.isisaddons.module.security.facets.TenantedAuthorizationFacetFactory"));
 
     public CooperationAppAppManifest() {
         super(BUILDER);

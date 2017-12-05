@@ -25,26 +25,25 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
 
-@DomainService(
-        nature = NatureOfService.DOMAIN,
-        repositoryFor = Reward.class
-)
+@DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Reward.class)
 public class RewardAlgorithmRepository {
 
-    public List<Reward> listAll() {
-        return repositoryService.allInstances(Reward.class);
-    }
+	public List<Reward> listAll() {
+		return repositoryService.allInstances(Reward.class);
+	}
 
-    public Reward createReward(Person person) {
-        final Reward object = new Reward(person);
-        serviceRegistry.injectServicesInto(object);
-        repositoryService.persist(object);
-        return object;
-    }
+	public Reward createReward(Person person) {
+		final Reward object = new Reward(organisationRepository.currentOrganisation(),person);
+		serviceRegistry.injectServicesInto(object);
+		repositoryService.persist(object);
+		return object;
+	}
 
-    @Inject
-    RepositoryService repositoryService;
-    @Inject
-    ServiceRegistry2 serviceRegistry;
+	@Inject
+	RepositoryService repositoryService;
+	@Inject
+	ServiceRegistry2 serviceRegistry;
+	@Inject
+	OrganisationRepository organisationRepository;
 
 }

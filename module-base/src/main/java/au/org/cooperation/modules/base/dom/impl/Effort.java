@@ -31,6 +31,12 @@ import lombok.Setter;
 @DomainObject()
 public class Effort extends StartAndFinishDateTime {
 	
+    @XmlTransient
+    @Column(allowsNull="false", name="organisation_id")
+    @Getter 
+    @Setter(value=AccessLevel.PRIVATE)
+	private Organisation organisation;
+    
 	@XmlTransient()
 	@Column(allowsNull = "true")
 	//hidden from UI
@@ -75,7 +81,8 @@ public class Effort extends StartAndFinishDateTime {
 	Effort() {
 	}
 
-	public Effort(Task task, Person person, DateTime start, DateTime end) {
+	public Effort(Organisation organisation, Task task, Person person, DateTime start, DateTime end) {
+		setOrganisation(organisation);
 		setPerson(person);
 		setTask(task);
 		setStartDateTime(start);

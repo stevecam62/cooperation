@@ -36,7 +36,7 @@ public class CreatePersons extends FixtureScript {
 			jaxbUnmarshaller.setEventHandler(new javax.xml.bind.helpers.DefaultValidationEventHandler());
 			Persons _persons = (Persons) JAXBIntrospector.getValue(jaxbUnmarshaller.unmarshal(is));
 			for (Person _person : _persons.getPersons()) {
-				this.person = personMenu.create("", null, null);
+				//this.person = personMenu.create("", null, null);
 			}
 		} catch (JAXBException e) {
 			e.printStackTrace();

@@ -27,6 +27,13 @@ import lombok.Setter;
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Outcome {
+	
+	
+    @XmlTransient
+    @Column(allowsNull="false", name="organisation_id")
+    @Getter 
+    @Setter(value=AccessLevel.PRIVATE)
+	private Organisation organisation;
 
 	@XmlElement()
 	@Column(allowsNull = "true")
@@ -60,7 +67,8 @@ public class Outcome {
 		setDescription(description);
 	}
 
-	public Outcome(Goal goal, String description) {
+	public Outcome(Organisation organisation, Goal goal, String description) {
+		setOrganisation(organisation);
 		setGoal(goal);
 		setDescription(description);
 	}

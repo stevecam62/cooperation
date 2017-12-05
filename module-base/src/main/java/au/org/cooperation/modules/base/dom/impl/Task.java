@@ -37,6 +37,12 @@ import lombok.Setter;
 @DomainObject()
 public class Task {
 
+	@XmlTransient
+	@Column(allowsNull = "false", name = "organisation_id")
+	@Getter
+	@Setter(value = AccessLevel.PRIVATE)
+	private Organisation organisation;
+
 	@XmlElement(required = true)
 	@Column(allowsNull = "false")
 	@Getter
@@ -73,11 +79,12 @@ public class Task {
 	Task() {
 	}
 
-	public Task(String name) {
+	public Task(Organisation organisation, String name) {
 		this.setName(name);
 	}
 
-	public Task(Goal goal, String name) {
+	public Task(Organisation organisation, Goal goal, String name) {
+		this.setOrganisation(organisation);
 		this.setGoal(goal);
 		this.setName(name);
 	}
@@ -102,7 +109,7 @@ public class Task {
 		// check if already linked
 		List<Person> temp2 = new ArrayList<>();
 		for (Person person : persons) {
-			if (!this.getPersons().contains(person)){
+			if (!this.getPersons().contains(person)) {
 				temp2.add(person);
 			}
 		}

@@ -20,12 +20,12 @@ package au.org.cooperation.modules.base.dom.impl;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.NatureOfService;
-import org.apache.isis.applib.query.QueryDefault;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
-import org.apache.isis.applib.value.DateTime;
 
 @DomainService(
         nature = NatureOfService.DOMAIN,
@@ -58,24 +58,25 @@ public class OutcomeAndRewardRepository {
         return object;
     }
     
-	public Outcome createOutcome(final Goal goal, final Task task, final String name) {
-        final Outcome object = new Outcome(goal, name);
+	public Outcome createOutcome(final Goal goal,  final String name) {
+        final Outcome object = new Outcome(goal.getOrganisation(), goal, name);
         serviceRegistry.injectServicesInto(object);
         repositoryService.persist(object);
         return object;
 	}
     
     public Success createSuccess(final String name) {
-        final Success object = new Success(name);
+        final Success object = new Success(organisationRepository.currentOrganisation(), name);
         serviceRegistry.injectServicesInto(object);
         repositoryService.persist(object);
         return object;
     }
     
-
-    @javax.inject.Inject
+    @Inject
+    OrganisationRepository organisationRepository;
+    @Inject
     RepositoryService repositoryService;
-    @javax.inject.Inject
+    @Inject
     ServiceRegistry2 serviceRegistry;
 
 }

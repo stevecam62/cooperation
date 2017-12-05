@@ -40,6 +40,12 @@ public class Reward {
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
+	protected Organisation organisation;
+
+	@XmlTransient
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter(value = AccessLevel.PRIVATE)
 	private Person person;
 
 	@XmlElement(required = true)
@@ -60,18 +66,19 @@ public class Reward {
 	protected String description;
 
 	@XmlTransient
-	@Persistent(mappedBy="reward")
+	@Persistent(mappedBy = "reward")
 	@Join()
 	@Getter()
 	@Setter()
-	//TODO why must this be initialised???
+	// TODO why must this be initialised???
 	protected List<Effort> efforts = new ArrayList<>();
 
 	Reward() {
 	}
 
-	public Reward(Person person) {
-		this.person = person;
+	public Reward(Organisation organisation, Person person) {
+		setOrganisation(organisation);
+		setPerson(person);
 	}
 
 	@Programmatic

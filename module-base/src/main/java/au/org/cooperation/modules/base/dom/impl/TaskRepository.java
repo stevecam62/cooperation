@@ -50,29 +50,29 @@ public class TaskRepository {
                         "name", name));
     }*/
 
-	public Task createTask(final String name) {
-        final Task object = new Task(name);
+	public Task createTask(final Organisation organisation, final String name) {
+        final Task object = new Task(organisation, name);
         serviceRegistry.injectServicesInto(object);
         repositoryService.persist(object);
         return object;
 	}
 	
 	public Task createTask(final Goal goal, final String name) {
-        final Task object = new Task(goal, name);
+        final Task object = new Task(goal.getOrganisation(), goal, name);
         serviceRegistry.injectServicesInto(object);
         repositoryService.persist(object);
         return object;
 	}
 	
 	public Effort createEffort(Task task, Person person, DateTime start, DateTime end) {
-        final Effort object = new Effort(task, person, start, end);
+        final Effort object = new Effort(task.getOrganisation(),task, person, start, end);
         serviceRegistry.injectServicesInto(object);
         repositoryService.persist(object);
         return object;
 	}
 	
 	public Result createResult(Task task, String description) {
-        final Result object = new Result(task, description);
+        final Result object = new Result(task.getOrganisation(), task, description);
         serviceRegistry.injectServicesInto(object);
         repositoryService.persist(object);
         return object;

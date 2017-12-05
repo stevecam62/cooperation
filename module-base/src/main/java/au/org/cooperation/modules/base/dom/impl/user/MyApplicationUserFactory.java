@@ -7,14 +7,15 @@ import org.apache.isis.applib.services.repository.RepositoryService;
 import org.isisaddons.module.security.dom.user.ApplicationUser;
 import org.isisaddons.module.security.dom.user.ApplicationUserFactory;
 
+import au.org.cooperation.modules.base.dom.impl.Person;
+
 @DomainService(nature=NatureOfService.DOMAIN)
 public class MyApplicationUserFactory implements ApplicationUserFactory {
 
 	@Override
 	public ApplicationUser newApplicationUser() {
-        final MyApplicationUser object = new MyApplicationUser();
+        final ApplicationUser object = new Person();
         serviceRegistry.injectServicesInto(object);
-        //repositoryService.persist(object);
         return object;
 	}
 

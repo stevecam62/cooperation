@@ -32,6 +32,7 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
+import org.apache.isis.applib.value.Password;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.PersonMenu", repositoryFor = Person.class)
 @DomainServiceLayout(named = "Persons", menuOrder = "20")
@@ -51,8 +52,10 @@ public class PersonMenu {
 	@MemberOrder(sequence = "3")
 	public Person create(@ParameterLayout(named = "Given Name") final String givenName,
 			@ParameterLayout(named = "Family Name") final String familyName,
-			@ParameterLayout(named = "Date of Birth") final java.sql.Date dateOfBirth) {
-		return personRepo.createPerson(givenName, familyName, dateOfBirth);
+			@ParameterLayout(named = "Date of Birth") final java.sql.Date dateOfBirth, String username,
+			Password password, Password passwordRepeat, String emailAddress) {
+		return personRepo.createPerson(givenName, familyName, dateOfBirth, username, password, passwordRepeat,
+				emailAddress);
 	}
 
 	@javax.inject.Inject
