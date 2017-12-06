@@ -8,16 +8,10 @@
 
 package au.org.cooperation.modules.base.dom.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
@@ -26,63 +20,31 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-
-/**
- * <p>Java class for Result complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType name="Result"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="outcome" type="{http://www.example.org/OneIdSchema}Outcome" maxOccurs="unbounded" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
- * </pre>
- * 
- * 
- */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Result", propOrder = {
-    "description",
-    "outcomes"
-})
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Result {
 
-	@XmlTransient
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter(value=AccessLevel.PRIVATE)
 	protected Organisation organisation;
 
-    @XmlElement(required = true)
     @Column(allowsNull="false")
     @Getter 
     @Setter
     protected String description;
     
-    @XmlTransient
     @Column(allowsNull="false")
     @Getter 
     @Setter(value=AccessLevel.PRIVATE)
     protected Task task;
     
-    @XmlTransient
     @Join()
     @Getter
     @Setter
     protected List<Outcome> outcomes;
     
-    Result(){
-    	
-    }
+    Result(){}
     
     public Result(Organisation organisation, Task task, String description){
     	setOrganisation(organisation);
@@ -99,7 +61,6 @@ public class Result {
     	return this;
     }
     
-    @XmlTransient
 	@Inject
 	OrganisationRepository organisationRepository;
 }

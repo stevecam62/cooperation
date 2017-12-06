@@ -25,38 +25,31 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Effort", propOrder = { "result", "start", "end" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Effort extends StartAndFinishDateTime {
 	
-    @XmlTransient
     @Column(allowsNull="false", name="organisation_id")
     @Getter 
     @Setter(value=AccessLevel.PRIVATE)
 	private Organisation organisation;
     
-	@XmlTransient()
 	@Column(allowsNull = "true")
 	//hidden from UI
 	@Getter(value=AccessLevel.PACKAGE)
 	@Setter(value=AccessLevel.PACKAGE)
 	private Reward reward;
 
-	@XmlElement()
 	@Column(allowsNull = "true")
 	@Getter
 	@Setter(value = AccessLevel.PROTECTED)
 	private Result result;
 
-	@XmlTransient
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter(value = AccessLevel.PROTECTED)
 	private Person person;
 
-	@XmlTransient
 	@Column(allowsNull = "true")
 	@Getter
 	@Setter(value = AccessLevel.PROTECTED)
@@ -120,7 +113,6 @@ public class Effort extends StartAndFinishDateTime {
 		return this;
 	}
 	
-	@XmlTransient
 	@Inject
 	TaskRepository taskRepository;
 

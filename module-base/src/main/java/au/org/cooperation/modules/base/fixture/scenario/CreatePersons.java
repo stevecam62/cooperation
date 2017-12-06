@@ -4,17 +4,16 @@ import java.io.InputStream;
 
 import javax.inject.Inject;
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.JAXBIntrospector;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-import au.org.cooperation.modules.base.dom.impl.ObjectFactory;
 import au.org.cooperation.modules.base.dom.impl.Person;
 import au.org.cooperation.modules.base.dom.impl.PersonMenu;
 import au.org.cooperation.modules.base.dom.impl.Persons;
+import au.org.cooperation.modules.base.integtests.generated.ObjectFactory;
 
 
 public class CreatePersons extends FixtureScript {

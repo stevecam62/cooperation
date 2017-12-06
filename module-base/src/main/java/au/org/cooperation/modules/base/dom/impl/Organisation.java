@@ -33,43 +33,35 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Organisation", propOrder = { "name", "description", "aims", "plans", "goals" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 @XmlJavaTypeAdapter(org.apache.isis.schema.utils.jaxbadapters.PersistentEntityAdapter.class)
 public class Organisation {
 
-	@XmlElement(required = true)
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter
 	protected String name;
 
-	@XmlElement
 	@Column(allowsNull = "true")
 	@Getter
 	@Setter
 	protected String description;
 
-	@XmlElement()
 	@Persistent(mappedBy = "organisation", column = "aim_id")
 	@Order(column = "org_aim_idx")
 	@Getter
 	protected List<Aim> aims;
 
-	@XmlElement(required = true)
 	@Persistent(mappedBy = "organisation", column = "goal_id")
 	@Order(column = "org_goal_idx")
 	@Getter
 	protected List<Goal> goals;
 
-	@XmlTransient
 	@Persistent(mappedBy = "organisation")
 	@Getter(value = AccessLevel.PRIVATE)
 	protected List<OrganisationPerson> persons;
 
-	@XmlElement(required = true)
 	@Persistent(mappedBy = "organisation", column = "plan_id")
 	@Order(column = "org_plan_idx")
 	@Getter
@@ -184,12 +176,9 @@ public class Organisation {
 		return temp;
 	}
 	
-
-	@XmlTransient
 	@Inject
 	OrganisationRepository organisationRepository;
 
-	@XmlTransient
 	@Inject
 	PersonRepository personRepository;
 

@@ -16,11 +16,6 @@ import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
@@ -29,54 +24,25 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * <p>
- * Java class for Plan complex type.
- * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
- * 
- * <pre>
- * &lt;complexType name="Plan"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="goal" type="{http://www.example.org/OneIdSchema}Goal" maxOccurs="unbounded"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
- * </pre>
- * 
- * 
- */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Plan", propOrder = { "name", "description", "goal" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Plan {
 
-	@XmlTransient
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter(value=AccessLevel.PRIVATE)
 	protected Organisation organisation;
 
-	@XmlElement(required = true)
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter
 	protected String name;
 	
-	@XmlElement(required = true)
 	@Column(allowsNull = "true")
 	@Getter
 	@Setter
 	protected String description;
 
-	@XmlElement(required = true)
 	@Persistent(mappedBy="plan")
 	@Order(column="plan_goal_idx")
 	@Getter
@@ -116,7 +82,6 @@ public class Plan {
 			return null;
 	}
 	
-	@XmlTransient
 	@Inject
 	OrganisationRepository organisationRepository;
 

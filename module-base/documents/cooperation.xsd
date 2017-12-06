@@ -20,10 +20,19 @@
 		<xsd:sequence>
 			<xsd:element name="name" type="xsd:string" minOccurs="1"
 				maxOccurs="1" />
+			<xsd:element name="description" type="xsd:string"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
 			<xsd:element name="aim" type="tns:Aim" minOccurs="0"
 				maxOccurs="unbounded" />
+			<xsd:element name="goal" type="tns:Goal"
+				maxOccurs="unbounded" minOccurs="0">
+			</xsd:element>
 			<xsd:element name="plan" type="tns:Plan" minOccurs="0"
 				maxOccurs="unbounded" />
+			<xsd:element name="person" type="tns:Person"
+				maxOccurs="unbounded" minOccurs="0">
+			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="Person">
@@ -157,16 +166,16 @@
 		<xsd:sequence>
 			<xsd:element name="name" type="xsd:string" minOccurs="1"
 				maxOccurs="1" />
+			<xsd:element name="description" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
 			<xsd:element name="goal" type="tns:Goal" minOccurs="0"
 				maxOccurs="unbounded" />
 		</xsd:sequence>
 	</xsd:complexType>
 
-	<xsd:element name="organisation" type="tns:Organisation"></xsd:element>
 
 	<xsd:element name="success" type="tns:Success"></xsd:element>
 
-	<xsd:element name="algorithm" type="tns:Algorithm"></xsd:element>
+	<xsd:element name="algorithm" type="tns:Algorithms"></xsd:element>
 
 	<xsd:element name="persons" type="tns:Persons"></xsd:element>
 
@@ -174,6 +183,24 @@
 		<xsd:sequence>
 			<xsd:element name="person" type="tns:Person" minOccurs="1"
 				maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="organisations" type="tns:Organisations">
+
+	</xsd:element>
+
+	<xsd:complexType name="NewType"></xsd:complexType>
+
+	<xsd:complexType name="Organisations">
+		<xsd:sequence>
+			<xsd:element name="organisation" type="tns:Organisation" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Algorithms">
+		<xsd:sequence>
+			<xsd:element name="algorithm" type="tns:Algorithm" maxOccurs="unbounded" minOccurs="1"></xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 </xsd:schema>

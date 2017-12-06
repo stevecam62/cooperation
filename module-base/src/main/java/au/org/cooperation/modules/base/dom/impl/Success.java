@@ -7,17 +7,11 @@
 
 package au.org.cooperation.modules.base.dom.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
@@ -25,60 +19,28 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * <p>
- * Java class for Success complex type.
- * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
- * 
- * <pre>
- * &lt;complexType name="Success"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="aim" type="{http://www.example.org/OneIdSchema}Aim"/&gt;
- *         &lt;element name="outcome" type="{http://www.example.org/OneIdSchema}Outcome" maxOccurs="unbounded"/&gt;
- *         &lt;element name="goal" type="{http://www.example.org/OneIdSchema}Goal" maxOccurs="unbounded"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
- * </pre>
- * 
- * 
- */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Success", propOrder = { "name", "aim", "outcome", "goal" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Success {
 
-	@XmlTransient
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter(value=AccessLevel.PRIVATE)
 	protected Organisation organisation;
 
-	@XmlElement(required = true)
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter
 	protected String name;
 
-	@XmlElement(required = true)
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter
 	protected Aim aim;
 	
-	@XmlElement(required = true)
 	@Getter
 	protected List<Outcome> outcome;
 	
-	@XmlElement(required = true)
 	@Getter
 	protected List<Goal> goal;
 
@@ -89,5 +51,4 @@ public class Success {
 		setOrganisation(organisation);
 		setName(name);
 	}
-
 }

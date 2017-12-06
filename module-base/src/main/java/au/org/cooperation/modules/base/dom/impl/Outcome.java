@@ -10,11 +10,6 @@ package au.org.cooperation.modules.base.dom.impl;
 import java.util.List;
 
 import javax.jdo.annotations.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
@@ -22,39 +17,31 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Outcome", propOrder = { "description" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Outcome {
 	
-	
-    @XmlTransient
     @Column(allowsNull="false", name="organisation_id")
     @Getter 
     @Setter(value=AccessLevel.PRIVATE)
 	private Organisation organisation;
 
-	@XmlElement()
 	@Column(allowsNull = "true")
 	@Getter
 	@Setter
 	protected String description;
 
-	@XmlTransient
 	@Column(allowsNull = "true")
 	@Getter
 	@Setter(value=AccessLevel.PACKAGE)
 	protected Goal goal;
 
-	@XmlTransient
 	@Column(allowsNull = "true")
 	@Getter
 	@Setter(value=AccessLevel.PACKAGE)
 	private Task task;
 
 	// m-n relationship
-	@XmlTransient
 	@Join
 	@Getter
 	@Setter(value=AccessLevel.PRIVATE)

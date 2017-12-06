@@ -16,12 +16,6 @@ import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.Programmatic;
@@ -30,26 +24,20 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Reward", propOrder = { "timestamp", "value", "description" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Reward {
 
-	@XmlTransient
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	protected Organisation organisation;
 
-	@XmlTransient
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	private Person person;
 
-	@XmlElement(required = true)
-	@XmlSchemaType(name = "dateTime")
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter()
@@ -65,7 +53,6 @@ public class Reward {
 	@Setter()
 	protected String description;
 
-	@XmlTransient
 	@Persistent(mappedBy = "reward")
 	@Join()
 	@Getter()

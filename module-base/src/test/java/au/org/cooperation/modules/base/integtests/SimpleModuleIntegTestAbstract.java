@@ -20,15 +20,33 @@ package au.org.cooperation.modules.base.integtests;
 
 import org.junit.BeforeClass;
 
-import au.org.cooperation.modules.base.SimpleModuleManifest;
+import au.org.cooperation.modules.base.dom.CooperationBaseModuleDomSubmodule;
 
+import org.apache.isis.applib.AppManifestAbstract.Builder;
 import org.apache.isis.core.integtestsupport.IntegrationTestAbstract2;
 
 public abstract class SimpleModuleIntegTestAbstract extends IntegrationTestAbstract2 {
 
-    @BeforeClass
-    public static void initSystem() {
-        bootstrapUsing(SimpleModuleManifest.BUILDER.withConfigurationProperty("isis.objects.editing","false"));
-    }
+	public static final Builder BUILDER = Builder.forModules(
+			CooperationBaseModuleDomSubmodule.class,
+            org.isisaddons.module.security.SecurityModule.class)
+		.withConfigurationProperty("isis.objects.editing", "true")
+		//.withConfigurationProperty("au.com.vuse.onecloud.fixtures.companyinputfile",
+		//		"C:\\Users\\stevec\\eclipse\\neon3\\workspace\\OneId-temp\\doc\\onecloud.xml")
+		//.withConfigurationProperty("au.com.vuse.onecloud.fixtures.invitesinputfile",
+		//		"C:\\Users\\stevec\\eclipse\\neon3\\workspace\\OneId-temp\\doc\\invites.xml")
+		.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionDriverName",
+				"com.mysql.jdbc.Driver")
+		.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionURL",
+				"jdbc:mysql://localhost:3306/cooperation?zeroDateTimeBehavior=convertToNull")
+		.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionUserName",
+				"cooperation")
+		.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionPassword",
+				"password");
+
+	@BeforeClass
+	public static void initSystem() {
+		bootstrapUsing(BUILDER);
+	}
 
 }

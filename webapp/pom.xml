@@ -140,12 +140,6 @@
 			<groupId>org.apache.isis.core</groupId>
 			<artifactId>isis-core-webserver</artifactId>
 		</dependency>
-		
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.17</version>
-		</dependency>
 
         <!-- this app -->
         <dependency>

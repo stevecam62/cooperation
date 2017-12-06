@@ -31,31 +31,25 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Task", propOrder = { "name", "efforts" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Task {
 
-	@XmlTransient
 	@Column(allowsNull = "false", name = "organisation_id")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	private Organisation organisation;
 
-	@XmlElement(required = true)
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter
 	protected String name;
 
-	@XmlTransient
 	@Column(allowsNull = "true", name = "goal_id")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	public Goal goal;
 
-	@XmlTransient
 	@Persistent
 	@Join
 	@Getter
@@ -151,15 +145,12 @@ public class Task {
 		return this.getResults();
 	}
 
-	@XmlTransient
 	@Inject
 	TaskRepository taskRepository;
 
-	@XmlTransient
 	@Inject
 	OrganisationRepository organisationRepository;
 
-	@XmlTransient
 	@Inject
 	PersonRepository personRepository;
 }
