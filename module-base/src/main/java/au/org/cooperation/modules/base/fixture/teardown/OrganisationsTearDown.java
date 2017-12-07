@@ -27,8 +27,8 @@ public class OrganisationsTearDown extends FixtureScript {
     @Override
     protected void execute(ExecutionContext executionContext) {
     	isisJdoSupport.executeUpdate("delete from cooperation.task");
-    	isisJdoSupport.executeUpdate("delete from cooperation.aim");
     	isisJdoSupport.executeUpdate("delete from cooperation.goal");
+    	isisJdoSupport.executeUpdate("delete from cooperation.aim");
     	isisJdoSupport.executeUpdate("delete from cooperation.plan");
     	isisJdoSupport.executeUpdate("delete from cooperation.organisationperson");
     	isisJdoSupport.executeUpdate("delete from cooperation.person where id <> 1"); 

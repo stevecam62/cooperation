@@ -5,28 +5,25 @@
 	<tns:organisation>
 		<tns:name>Our Cooperative Organisation</tns:name>
 		<tns:description>An organisation that exists to provide work opportunities for its members.</tns:description>
-		<tns:aim>
+		<tns:aim id="aim1">
 			<tns:name>Provide existing work for all existing members.</tns:name>
 			<tns:description>tns:description</tns:description>
 		</tns:aim>
-		<tns:aim>
+		<tns:aim id="aim2">
 			<tns:name>Provide work opportunities for new members.</tns:name>
 			<tns:description>tns:description</tns:description>
 		</tns:aim>
-		<tns:aim>
+		<tns:aim id="aim3">
 			<tns:name>Maximise use of renewable energy.</tns:name>
 			<tns:description>tns:description</tns:description>
 		</tns:aim>
-		<tns:aim>
+		<tns:aim id="aim4">
 			<tns:name>Minimise greenhouse gas emissions.</tns:name>
 			<tns:description>tns:description</tns:description>
 		</tns:aim>
 		<tns:goal>
 			<tns:name>24 hours of work per week minimum.</tns:name>
-			<tns:aim>
-				<tns:name>tns:name</tns:name>
-				<tns:description>tns:description</tns:description>
-			</tns:aim>
+			<tns:aim>aim1</tns:aim>
 			<tns:task>
 				<tns:name>tns:name</tns:name>
 				<tns:description>tns:description</tns:description>
@@ -42,17 +39,10 @@
 					<tns:end>2001-12-31T12:00:00</tns:end>
 				</tns:effort>
 			</tns:task>
-			<tns:outcome>
-				<tns:name>tns:name</tns:name>
-				<tns:description>tns:description</tns:description>
-			</tns:outcome>
 		</tns:goal>
 		<tns:goal>
 			<tns:name>Optional 6 months unpaid leave per year.</tns:name>
-			<tns:aim>
-				<tns:name>tns:name</tns:name>
-				<tns:description>tns:description</tns:description>
-			</tns:aim>
+			<tns:aim>aim1</tns:aim>
 			<tns:task>
 				<tns:name>tns:name</tns:name>
 				<tns:description>tns:description</tns:description>
@@ -68,17 +58,10 @@
 					<tns:end>2001-12-31T12:00:00</tns:end>
 				</tns:effort>
 			</tns:task>
-			<tns:outcome>
-				<tns:name>tns:name</tns:name>
-				<tns:description>tns:description</tns:description>
-			</tns:outcome>
 		</tns:goal>
 		<tns:goal>
 			<tns:name>Mandatory 4 weeks paid leave per year.</tns:name>
-			<tns:aim>
-				<tns:name>tns:name</tns:name>
-				<tns:description>tns:description</tns:description>
-			</tns:aim>
+			<tns:aim>aim1</tns:aim>
 			<tns:task>
 				<tns:name>tns:name</tns:name>
 				<tns:description>tns:description</tns:description>
@@ -94,17 +77,10 @@
 					<tns:end>2001-12-31T12:00:00</tns:end>
 				</tns:effort>
 			</tns:task>
-			<tns:outcome>
-				<tns:name>tns:name</tns:name>
-				<tns:description>tns:description</tns:description>
-			</tns:outcome>
 		</tns:goal>
 		<tns:goal>
 			<tns:name>2017 New Opportunities.</tns:name>
-			<tns:aim>
-				<tns:name>tns:name</tns:name>
-				<tns:description>tns:description</tns:description>
-			</tns:aim>
+			<tns:aim>aim1</tns:aim>
 			<tns:task>
 				<tns:name>tns:name</tns:name>
 				<tns:description>tns:description</tns:description>
@@ -120,70 +96,14 @@
 					<tns:end>2001-12-31T12:00:00</tns:end>
 				</tns:effort>
 			</tns:task>
-			<tns:outcome>
-				<tns:name>tns:name</tns:name>
-				<tns:description>tns:description</tns:description>
-			</tns:outcome>
 		</tns:goal>
 		<tns:plan>
 			<tns:name>2017 Strategic Plan</tns:name>
 			<tns:description>tns:description</tns:description>
-			<tns:goal>
-				<tns:name>tns:name</tns:name>
-				<tns:aim>
-					<tns:name>tns:name</tns:name>
-					<tns:description>tns:description</tns:description>
-				</tns:aim>
-				<tns:task>
-					<tns:name>tns:name</tns:name>
-					<tns:description>tns:description</tns:description>
-					<tns:effort>
-						<tns:result>
-							<tns:name>tns:name</tns:name>
-							<tns:outcome>
-								<tns:name>tns:name</tns:name>
-								<tns:description>tns:description</tns:description>
-							</tns:outcome>
-						</tns:result>
-						<tns:start>2001-12-31T12:00:00</tns:start>
-						<tns:end>2001-12-31T12:00:00</tns:end>
-					</tns:effort>
-				</tns:task>
-				<tns:outcome>
-					<tns:name>tns:name</tns:name>
-					<tns:description>tns:description</tns:description>
-				</tns:outcome>
-			</tns:goal>
 		</tns:plan>
 		<tns:plan>
 			<tns:name>2017 Operational Plan</tns:name>
 			<tns:description>tns:description</tns:description>
-			<tns:goal>
-				<tns:name>tns:name</tns:name>
-				<tns:aim>
-					<tns:name>tns:name</tns:name>
-					<tns:description>tns:description</tns:description>
-				</tns:aim>
-				<tns:task>
-					<tns:name>tns:name</tns:name>
-					<tns:description>tns:description</tns:description>
-					<tns:effort>
-						<tns:result>
-							<tns:name>tns:name</tns:name>
-							<tns:outcome>
-								<tns:name>tns:name</tns:name>
-								<tns:description>tns:description</tns:description>
-							</tns:outcome>
-						</tns:result>
-						<tns:start>2001-12-31T12:00:00</tns:start>
-						<tns:end>2001-12-31T12:00:00</tns:end>
-					</tns:effort>
-				</tns:task>
-				<tns:outcome>
-					<tns:name>tns:name</tns:name>
-					<tns:description>tns:description</tns:description>
-				</tns:outcome>
-			</tns:goal>
 		</tns:plan>
 		<tns:person>
 			<tns:family-name>tns:family-name</tns:family-name>

@@ -19,8 +19,8 @@ public class Person extends ApplicationUser {
 	 * Organisations have a list of linked users/Persons, but one user might link to
 	 * multiple Organisations, but we want to restrict the visibility to one Organisation at a time.
 	 * 
-	 * We restrict access to all data usinf the security module tenancy path, but this requires
-	 * a current Organisation, that is set here a login, by the user having only one link to an 
+	 * We restrict access to all data, but this requires
+	 * a current Organisation, that is set here at login, by the user having only one link to an 
 	 * Organisation, or, the user selecting one specifically. In the later case the currently operating
 	 * one will be saved from session to session.
 	 * 
