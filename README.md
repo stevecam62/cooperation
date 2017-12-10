@@ -60,7 +60,7 @@ A specific statement of how one or more of the Aims are going to be achieved.
 
 A statement of ongoing or one-of work that can be assigned to individuals for completion.
 
-![Organisation Screen](https://github.com/stevecam62/cooperation/blob/master/module-base/images/screen/Task.png)
+![Task Screen](https://github.com/stevecam62/cooperation/blob/master/module-base/images/screen/Task.png)
 
 ### Plan
 
@@ -74,15 +74,25 @@ An individual cooperating person.
 
 A record of a Person's time (interval) spent working on a Task on a specific date.
 
+![Effort Screen](https://github.com/stevecam62/cooperation/blob/master/module-base/images/screen/Effort.png)
+
+### Result
+
+A concrete result of one or more Person's effort working on a Task.
+
+![Result Screen](https://github.com/stevecam62/cooperation/blob/master/module-base/images/screen/Result.png)
+
 ### Outcome
 
-A record of what as achieved by one or more Person's Effort working on a Task on a specific date.
+An achievement (or not) that can be related back to a goal, likely relating to several Tasks and Results.
+
+![Outcome Screen](https://github.com/stevecam62/cooperation/blob/master/module-base/images/screen/Outcome.png)
 
 ### Reward
 
 An allocation of cash (or some other non-monetary thing of value, or a combination) as payment to a Person for their Effort in a period.
 
-Stephen Cameron 17/11/2017
+
 
 
 

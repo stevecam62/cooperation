@@ -32,6 +32,7 @@
 					multiLine="5" hidden="PARENTED_TABLES" />
 			</c:fieldSet>
 			<c:collection id="personViews" defaultView="table">
+				<c:named>Persons</c:named>
 				<c:action id="addPerson">
 					<c:describedAs>Assign a Person to this Task</c:describedAs>
 				</c:action>
