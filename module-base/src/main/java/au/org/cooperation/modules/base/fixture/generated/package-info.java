@@ -6,4 +6,4 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://au.org.cooperation/base", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package au.org.cooperation.modules.base.integtests.generated;
+package au.org.cooperation.modules.base.fixture.generated;

@@ -33,7 +33,7 @@
 					</c:action>
 				</c:property>
 				<c:property id="description" namedEscaped="true"
-					multiLine="5" hidden="ALL_TABLES" />
+					multiLine="10" hidden="ALL_TABLES" />
 				<c:property id="plan" namedEscaped="true" hidden="ALL_TABLES">
 					<c:named>Related Plan</c:named>
 					<c:describedAs>Present if the Goal has been created within, or related to, an Organisation Plan.</c:describedAs>

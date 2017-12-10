@@ -27,7 +27,7 @@
 						<c:describedAs>Updates the object's name</c:describedAs>
 					</c:action>
 				</c:property>
-				<c:property id="description" namedEscaped="true" hidden="ALL_TABLES"/>
+				<c:property id="description" namedEscaped="true" multiLine="10" hidden="ALL_TABLES"/>
 			</c:fieldSet>
 		</bs3:col>
 		<bs3:col span="6" unreferencedCollections="true">

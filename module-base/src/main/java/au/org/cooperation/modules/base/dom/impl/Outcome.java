@@ -20,31 +20,31 @@ import lombok.Setter;
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Outcome {
-	
-    @Column(allowsNull="false", name="organisation_id")
-    @Getter 
-    @Setter(value=AccessLevel.PRIVATE)
+
+	@Column(allowsNull = "false", name = "organisation_id")
+	@Getter
+	@Setter(value = AccessLevel.PRIVATE)
 	private Organisation organisation;
 
-	@Column(allowsNull = "true")
+	@Column(allowsNull = "true", length = 5000)
 	@Getter
 	@Setter
 	protected String description;
 
 	@Column(allowsNull = "true")
 	@Getter
-	@Setter(value=AccessLevel.PACKAGE)
+	@Setter(value = AccessLevel.PACKAGE)
 	protected Goal goal;
 
 	@Column(allowsNull = "true")
 	@Getter
-	@Setter(value=AccessLevel.PACKAGE)
+	@Setter(value = AccessLevel.PACKAGE)
 	private Task task;
 
 	// m-n relationship
 	@Join
 	@Getter
-	@Setter(value=AccessLevel.PRIVATE)
+	@Setter(value = AccessLevel.PRIVATE)
 	protected List<Result> results;
 
 	Outcome() {

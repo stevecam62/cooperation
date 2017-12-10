@@ -6,7 +6,7 @@
 //
 
 
-package au.org.cooperation.modules.base.integtests.generated;
+package au.org.cooperation.modules.base.fixture.generated;
 
 import java.util.Date;
 import javax.xml.bind.annotation.adapters.XmlAdapter;

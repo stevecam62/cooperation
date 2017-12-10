@@ -19,30 +19,30 @@ import lombok.Setter;
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Aim {
-	
-    @Column(allowsNull="false", name="organisation_id")
-    @Getter 
-    @Setter(value=AccessLevel.PRIVATE)
+
+	@Column(allowsNull = "false", name = "organisation_id")
+	@Getter
+	@Setter(value = AccessLevel.PRIVATE)
 	private Organisation organisation;
-    
-    @Column(allowsNull="false")
-    @Getter 
-    @Setter
+
+	@Column(allowsNull = "false", length = 100)
+	@Getter
+	@Setter
 	private String name;
-	
-    @Column(allowsNull="true")
-    @Getter 
-    @Setter
+
+	@Column(allowsNull = "true", length = 1000)
+	@Getter
+	@Setter
 	private String description;
 
-	public Aim(){
+	public Aim() {
 	}
-	
-	public Aim(Organisation organisation, String name){
+
+	public Aim(Organisation organisation, String name) {
 		setName(name);
 	}
-	
-	public String title(){
+
+	public String title() {
 		return getName();
 	}
 

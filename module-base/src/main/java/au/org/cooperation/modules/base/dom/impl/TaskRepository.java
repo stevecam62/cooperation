@@ -56,6 +56,13 @@ public class TaskRepository {
         repositoryService.persist(object);
         return object;
 	}
+
+	public SubTask createSubTask(Task task, String name) {
+        final SubTask object = new SubTask(task, name);
+        serviceRegistry.injectServicesInto(object);
+        repositoryService.persist(object);
+        return object;
+	}	
 	
 	public Task createTask(final Goal goal, final String name) {
         final Task object = new Task(goal.getOrganisation(), goal, name);
@@ -82,6 +89,7 @@ public class TaskRepository {
     RepositoryService repositoryService;
     @javax.inject.Inject
     ServiceRegistry2 serviceRegistry;
+
 
 
 }

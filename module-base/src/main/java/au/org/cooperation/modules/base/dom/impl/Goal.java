@@ -26,6 +26,7 @@ import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.Optionality;
 import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.Programmatic;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -35,38 +36,38 @@ import lombok.Setter;
 @DomainObject()
 public class Goal {
 
-    @Column(allowsNull="false", name="organisation_id")
+	@Column(allowsNull = "false", name = "organisation_id")
 	@Getter
-	@Setter(value=AccessLevel.PRIVATE)
+	@Setter(value = AccessLevel.PRIVATE)
 	protected Organisation organisation;
 
-	@Column(allowsNull = "false")
+	@Column(allowsNull = "false", length = 100)
 	@Getter
 	@Setter
 	protected String name;
-	
-	@Column(allowsNull = "true")
+
+	@Column(allowsNull = "true", length = 1000)
 	@Getter
 	@Setter
 	protected String description;
 
-	@Column(allowsNull = "false", name="aim_id")
+	@Column(allowsNull = "false", name = "aim_id")
 	@Getter
-	@Setter(value=AccessLevel.PACKAGE)
+	@Setter(value = AccessLevel.PACKAGE)
 	protected Aim aim;
-    
-	@Column(allowsNull = "true", name="plan_id")
+
+	@Column(allowsNull = "true", name = "plan_id")
 	@Getter
-	@Setter(value=AccessLevel.PACKAGE)
+	@Setter(value = AccessLevel.PACKAGE)
 	protected Plan plan;
 
 	@Persistent(mappedBy = "goal")
-	@Order(column="goal_task_idx")
+	@Order(column = "goal_task_idx")
 	@Getter
 	protected List<Task> tasks;
 
 	@Persistent(mappedBy = "goal")
-	@Order(column="goal_outcome_idx")
+	@Order(column = "goal_outcome_idx")
 	@Getter
 	protected List<Outcome> outcomes;
 
@@ -78,20 +79,30 @@ public class Goal {
 		setName(name);
 		setAim(aim);
 	}
-	
-	public String title(){
+
+	public String title() {
 		return getName();
 	}
 
-	public Goal addTask(@ParameterLayout(named="Task name") String name) {
+	public Goal addTask(@ParameterLayout(named = "Task name") String name) {
 		this.getTasks().add(taskRepository.createTask(this, name));
 		return this;
+	}
+	
+	@Programmatic
+	public Task addTask(String name, String description) {
+		Task task = taskRepository.createTask(this, name);
+		task.setDescription(description);
+		this.getTasks().add(task);
+		return task;
 	}
 
 	@Inject
 	OrganisationRepository organisationRepository;
-	
+
 	@Inject
 	TaskRepository taskRepository;
+
+
 
 }

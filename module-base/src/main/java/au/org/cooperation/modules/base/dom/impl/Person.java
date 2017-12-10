@@ -3,6 +3,8 @@ package au.org.cooperation.modules.base.dom.impl;
 import java.util.List;
 
 import javax.jdo.annotations.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import org.apache.isis.applib.annotation.*;
 import org.isisaddons.module.security.dom.user.ApplicationUser;
 
@@ -11,6 +13,7 @@ import lombok.*;
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 @DomainObject()
+@XmlJavaTypeAdapter(org.apache.isis.schema.utils.jaxbadapters.PersistentEntityAdapter.class)
 public class Person extends ApplicationUser {
 	
 	/*

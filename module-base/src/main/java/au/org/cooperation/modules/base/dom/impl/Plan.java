@@ -33,12 +33,12 @@ public class Plan {
 	@Setter(value=AccessLevel.PRIVATE)
 	protected Organisation organisation;
 
-	@Column(allowsNull = "false")
+	@Column(allowsNull = "false", length=50)
 	@Getter
 	@Setter
 	protected String name;
 	
-	@Column(allowsNull = "true")
+	@Column(allowsNull = "true", length=1000)
 	@Getter
 	@Setter
 	protected String description;

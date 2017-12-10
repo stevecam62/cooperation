@@ -123,6 +123,7 @@
 		<xsd:sequence>
 			<xsd:element name="name" type="xsd:string" minOccurs="1"
 				maxOccurs="1" />
+			<xsd:element name="description" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
 			<xsd:element name="aim" type="xsd:IDREF" minOccurs="0"
 				maxOccurs="unbounded">
 				<xsd:annotation>

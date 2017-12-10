@@ -13,7 +13,7 @@ import org.apache.isis.applib.fixturescripts.FixtureScript;
 import au.org.cooperation.modules.base.dom.impl.Person;
 import au.org.cooperation.modules.base.dom.impl.PersonMenu;
 import au.org.cooperation.modules.base.dom.impl.Persons;
-import au.org.cooperation.modules.base.integtests.generated.ObjectFactory;
+import au.org.cooperation.modules.base.fixture.generated.ObjectFactory;
 
 
 public class CreatePersons extends FixtureScript {

@@ -12,8 +12,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
+import javax.jdo.annotations.Discriminator;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.Join;
+import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -27,11 +31,14 @@ import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.joda.time.DateTime;
 
+import au.org.cooperation.modules.base.dom.impl.OrganisationPerson.OrganisationPersonStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
+@Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
+// @Discriminator(column="level", value="TASK")
 @DomainObject()
 public class Task {
 
@@ -40,10 +47,15 @@ public class Task {
 	@Setter(value = AccessLevel.PRIVATE)
 	private Organisation organisation;
 
-	@Column(allowsNull = "false")
+	@Column(allowsNull = "false", length = 50)
 	@Getter
 	@Setter
 	protected String name;
+
+	@Column(allowsNull = "true", length = 2000)
+	@Getter
+	@Setter
+	private String description;
 
 	@Column(allowsNull = "true", name = "goal_id")
 	@Getter
@@ -52,7 +64,7 @@ public class Task {
 
 	@Persistent
 	@Join
-	@Getter
+	@Getter(value = AccessLevel.PACKAGE)
 	protected List<Person> persons;
 
 	@Persistent(mappedBy = "task")
@@ -69,6 +81,11 @@ public class Task {
 	@Order(column = "task_outcome_idx")
 	@Getter
 	protected List<Outcome> outcomes;
+
+	// @Persistent(mappedBy = "parent")
+	// @Order(column = "task_subtask_idx")
+	// @Getter
+	// protected List<SubTask> subTasks;
 
 	Task() {
 	}
@@ -102,12 +119,33 @@ public class Task {
 		}
 		// check if already linked
 		List<Person> temp2 = new ArrayList<>();
-		for (Person person : persons) {
+		for (Person person : temp1) {
 			if (!this.getPersons().contains(person)) {
 				temp2.add(person);
 			}
 		}
 		return temp2;
+	}
+
+	public Task removePerson(@ParameterLayout(named = "Person") Person person) {
+		this.getPersons().remove(person);
+		return this;
+	}
+
+	public List<Person> choices0RemovePerson() {
+		return this.getPersons();
+	}
+
+	@NotPersistent
+	public List<PersonView> getPersonViews() {
+		List<PersonView> temp = new ArrayList<>();
+		for (Person person : this.getPersons()) {
+			//person should be linked to organisation but...
+			OrganisationPersonStatus status = this.getOrganisation().linkedPersonStatus(person);
+			if (status != null && status.equals(OrganisationPersonStatus.ACTIVE))
+				temp.add(new PersonView(person));
+		}
+		return temp;
 	}
 
 	public Task addEffort(@ParameterLayout(named = "Person") Person person, DateTime start, DateTime end) {
@@ -144,6 +182,12 @@ public class Task {
 		// TODO has result been added?
 		return this.getResults();
 	}
+
+	// public Task addSubTask(@ParameterLayout(named = "Task name") String name)
+	// {
+	// this.getSubTasks().add(taskRepository.createSubTask(this, name));
+	// return this;
+	// }
 
 	@Inject
 	TaskRepository taskRepository;

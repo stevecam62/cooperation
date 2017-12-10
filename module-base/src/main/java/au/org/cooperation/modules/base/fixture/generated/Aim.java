@@ -6,7 +6,7 @@
 //
 
 
-package au.org.cooperation.modules.base.integtests.generated;
+package au.org.cooperation.modules.base.fixture.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

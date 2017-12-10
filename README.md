@@ -48,13 +48,19 @@ A formal on informal group of cooperating people.
 
 A general statement of what an organisation intends to achieve through cooperation.
 
+![Aim Screen](https://github.com/stevecam62/cooperation/blob/master/module-base/images/screen/Aim.png)
+
 ### Goal
 
 A specific statement of how one or more of the Aims are going to be achieved.
 
+![Goal Screen](https://github.com/stevecam62/cooperation/blob/master/module-base/images/screen/Goal.png)
+
 ### Task
 
 A statement of ongoing or one-of work that can be assigned to individuals for completion.
+
+![Organisation Screen](https://github.com/stevecam62/cooperation/blob/master/module-base/images/screen/Task.png)
 
 ### Plan
 

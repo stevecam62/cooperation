@@ -38,12 +38,12 @@ import lombok.Setter;
 @XmlJavaTypeAdapter(org.apache.isis.schema.utils.jaxbadapters.PersistentEntityAdapter.class)
 public class Organisation {
 
-	@Column(allowsNull = "false")
+	@Column(allowsNull = "false", length=50)
 	@Getter
 	@Setter
 	protected String name;
 
-	@Column(allowsNull = "true")
+	@Column(allowsNull = "true", length=1000)
 	@Getter
 	@Setter
 	protected String description;
@@ -144,7 +144,7 @@ public class Organisation {
 	}
 	
 	@Programmatic
-	public List<OrganisationPerson> listActiveOrganisationPersons() {
+	List<OrganisationPerson> listActiveOrganisationPersons() {
 		List<OrganisationPerson> temp = new ArrayList<>();
 		for (OrganisationPerson op : this.getPersons()) {
 			if (op.getStatus().equals(OrganisationPersonStatus.ACTIVE)) {
@@ -163,6 +163,17 @@ public class Organisation {
 			}
 		}
 		return temp;
+	}
+	
+	@Programmatic
+	public OrganisationPersonStatus linkedPersonStatus(Person person) {
+		List<Person> temp = new ArrayList<>();
+		for (OrganisationPerson op : this.getPersons()) {
+			if (op.getPerson().equals(person)) {
+				return op.getStatus();
+			}
+		}
+		return null;
 	}
 	
 	@Programmatic

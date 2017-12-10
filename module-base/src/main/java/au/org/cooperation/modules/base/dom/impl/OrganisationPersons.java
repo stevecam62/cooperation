@@ -11,6 +11,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.SemanticsOf;
+
 import au.org.cooperation.modules.base.dom.impl.OrganisationPerson.OrganisationPersonStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -62,6 +65,7 @@ public class OrganisationPersons {
 		return persons;
 	}
 
+	@Action(semantics=SemanticsOf.IDEMPOTENT_ARE_YOU_SURE)
 	public OrganisationPersons inactivatePerson(OrganisationPerson person) {
 		person.setStatus(OrganisationPersonStatus.INACTIVE);
 		return this;
