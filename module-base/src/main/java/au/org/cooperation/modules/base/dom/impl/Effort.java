@@ -52,23 +52,23 @@ public class Effort extends StartAndFinishDateTime {
     @Setter(value=AccessLevel.PRIVATE)
 	private Organisation organisation;
     
-	@Column(allowsNull = "true")
+	@Column(allowsNull = "true", name="reward_id")
 	//hidden from UI
 	@Getter(value=AccessLevel.PACKAGE)
 	@Setter(value=AccessLevel.PACKAGE)
 	private Reward reward;
 
-	@Column(allowsNull = "true")
+	@Column(allowsNull = "true", name="result_id")
 	@Getter
 	@Setter(value = AccessLevel.PROTECTED)
 	private Result result;
 
-	@Column(allowsNull = "false")
+	@Column(allowsNull = "false", name="person_id")
 	@Getter
 	@Setter(value = AccessLevel.PROTECTED)
 	private Person person;
 
-	@Column(allowsNull = "true")
+	@Column(allowsNull = "true", name="task_id")
 	@Getter
 	@Setter(value = AccessLevel.PROTECTED)
 	private Task task;

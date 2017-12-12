@@ -33,7 +33,7 @@ import lombok.Setter;
 @DomainObject()
 public class Result {
 
-	@Column(allowsNull = "false")
+	@Column(allowsNull = "false", name="organisation_id")
 	@Getter
 	@Setter(value=AccessLevel.PRIVATE)
 	protected Organisation organisation;
@@ -43,7 +43,7 @@ public class Result {
     @Setter
     protected String description;
     
-    @Column(allowsNull="false")
+    @Column(allowsNull="false", name="task_id")
     @Getter 
     @Setter(value=AccessLevel.PRIVATE)
     protected Task task;

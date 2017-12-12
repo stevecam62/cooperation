@@ -38,7 +38,7 @@ import lombok.Setter;
 @DomainObject()
 public class Plan {
 
-	@Column(allowsNull = "false")
+	@Column(allowsNull = "false", name="organisation_id")
 	@Getter
 	@Setter(value=AccessLevel.PRIVATE)
 	protected Organisation organisation;

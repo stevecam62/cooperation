@@ -23,6 +23,7 @@ import java.util.List;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 
 import org.apache.isis.applib.annotation.DomainObject;
@@ -35,7 +36,7 @@ import lombok.Setter;
 @DomainObject()
 public class Success {
 
-	@Column(allowsNull = "false")
+	@Column(allowsNull = "false", name="organisation_id")
 	@Getter
 	@Setter(value=AccessLevel.PRIVATE)
 	protected Organisation organisation;
@@ -45,14 +46,16 @@ public class Success {
 	@Setter
 	protected String name;
 
-	@Column(allowsNull = "false")
+	@Column(allowsNull = "false", name="aim_id")
 	@Getter
 	@Setter
 	protected Aim aim;
 	
+	@Join
 	@Getter
 	protected List<Outcome> outcome;
 	
+	@Join
 	@Getter
 	protected List<Goal> goal;
 

@@ -41,12 +41,12 @@ public class Outcome {
 	@Setter
 	protected String description;
 
-	@Column(allowsNull = "true")
+	@Column(allowsNull = "true", name="goal_id")
 	@Getter
 	@Setter(value = AccessLevel.PACKAGE)
 	protected Goal goal;
 
-	@Column(allowsNull = "true")
+	@Column(allowsNull = "true", name="task_id")
 	@Getter
 	@Setter(value = AccessLevel.PACKAGE)
 	private Task task;

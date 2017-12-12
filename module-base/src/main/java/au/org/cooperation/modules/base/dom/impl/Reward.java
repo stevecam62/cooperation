@@ -39,12 +39,12 @@ import lombok.Setter;
 @DomainObject()
 public class Reward {
 
-	@Column(allowsNull = "false")
+	@Column(allowsNull = "false", name="organisation_id")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	protected Organisation organisation;
 
-	@Column(allowsNull = "false")
+	@Column(allowsNull = "false", name="person_id")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	private Person person;

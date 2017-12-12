@@ -10,9 +10,10 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-import au.org.cooperation.modules.base.dom.impl.Person;
+
 import au.org.cooperation.modules.base.dom.impl.PersonMenu;
-import au.org.cooperation.modules.base.dom.impl.Persons;
+import au.org.cooperation.modules.base.fixture.generated.Person;
+import au.org.cooperation.modules.base.fixture.generated.Persons;
 import au.org.cooperation.modules.base.fixture.generated.ObjectFactory;
 
 
@@ -34,7 +35,7 @@ public class CreatePersons extends FixtureScript {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			jaxbUnmarshaller.setEventHandler(new javax.xml.bind.helpers.DefaultValidationEventHandler());
 			Persons _persons = (Persons) JAXBIntrospector.getValue(jaxbUnmarshaller.unmarshal(is));
-			for (Person _person : _persons.getPersons()) {
+			for (Person _person : _persons.getPerson()) {
 				//this.person = personMenu.create("", null, null);
 			}
 		} catch (JAXBException e) {

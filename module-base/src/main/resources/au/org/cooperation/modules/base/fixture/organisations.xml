@@ -29,7 +29,7 @@
 		</tns:aim>
 		<tns:goal>
 			<tns:name>24 hours of work per week minimum.</tns:name>
-			<!--  tns:description>
+			<tns:description>
 				The objective of this goal is to allow a cooperative
 					member to
 					earn double the Newstart Allowance for the equivalent of 3
@@ -46,7 +46,7 @@
 					week. This is equivalent to $17.37 per hour for 40 hours (5 days *
 					8 hrs) effort.
 				
-			</tns:description-->
+			</tns:description>
 			<tns:aim>aim1</tns:aim>
 			<tns:task>
 				<tns:name>Gardening</tns:name>
