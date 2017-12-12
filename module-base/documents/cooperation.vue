@@ -1,14 +1,14 @@
-<!-- Tufts VUE 3.2.2 concept-map (cooperation.vue) 2017-12-11 -->
+<!-- Tufts VUE 3.2.2 concept-map (cooperation.vue) 2017-12-12 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
 <!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/D:/apps/VUE/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Mon Dec 11 22:51:31 EST 2017 by stevec on platform Windows 8 6.2 in JVM 1.7.0_21-b11 -->
+<!-- Do Not Remove: Saved date Tue Dec 12 21:27:07 EST 2017 by stevec on platform Windows 8 6.2 in JVM 1.7.0_21-b11 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built May 23 2013 at 2146 by tomadm on Linux 2.6.18-348.2.1.el5 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0" label="cooperation.vue"
     created="1504828659801" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1512993091926" size="31540"
+    <resource referenceCreated="1513074427801" size="31224"
         spec="D:\git\cooperation\module-base\documents\cooperation.vue"
         type="1" xsi:type="URLResource">
         <title>cooperation.vue</title>
@@ -96,7 +96,7 @@
         x="553.5" y="215.0" width="45.0" height="27.0" strokeWidth="1.0"
         autoSized="true" xsi:type="node">
         <fillColor>#FEFEC9</fillColor>
-        <strokeColor>#0877C0</strokeColor>
+        <strokeColor>#AF55F4</strokeColor>
         <textColor>#000000</textColor>
         <font>Arial-plain-16</font>
         <URIString>http://vue.tufts.edu/rdf/resource/5fd3a9d2c0a8000200421ef80734ae3a</URIString>
@@ -178,8 +178,8 @@
         created="1504832685237" x="598.0" y="220.0" width="109.25"
         height="17.0" strokeWidth="1.0" autoSized="false"
         controlCount="0" arrowState="2" xsi:type="link">
-        <strokeColor>#33A8F5</strokeColor>
-        <textColor>#33A8F5</textColor>
+        <strokeColor>#AF55F4</strokeColor>
+        <textColor>#AF55F4</textColor>
         <font>Arial-plain-14</font>
         <URIString>http://vue.tufts.edu/rdf/resource/5fd3a9ddc0a8000200421ef881d3da5b</URIString>
         <point1 x="706.75" y="228.5"/>
@@ -464,7 +464,7 @@
         <ID2 xsi:type="node">54</ID2>
     </child>
     <child ID="65"
-        label="KEY: Blue: Persons can record their Effort (work, time spent) and Results obtained. Purple: A formal Organisation can define its Aims, achievable Goals and Tasks to make these happen. It may develop these Goals through a process &#xa;      of developing a Plan. Orange: After the fact, an Organisation can evaluate Success in relation &#xa;      to the Aims by measuring the achievement of the Goals through Outcomes. Green: Cooperation by People is needed to form an Organisation with &#xa;      Aims, create a Plan by deciding on Goals, allocate Tasks within the Plan and work together in a coordinated way. Red: People will seek Rewards from Cooperation, these can come in many ways but all are related to overall Outcomes and often determined by the &#xa;      Effort contributed by an individual Person. Reward calculation Algorithms are needed, this is the interesting bit!"
+        label="KEY: Blue: Persons can record their Effort (work, time spent) and Results obtained. Purple: A formal Organisation can define its Aims, achievable Goals and Tasks to make these happen. It may develop these Goals through a process &#xa;      of developing a Plan. Orange: After the fact, an Organisation can evaluate Success in relation to the Aims by measuring the achievement of the Goals through Outcomes. Green: Cooperation by People is needed to form an Organisation with &#xa;      Aims, create a Plan by deciding on Goals, allocate Tasks within the Plan and work together in a coordinated way. Red: People will seek Rewards from Cooperation, these can come in many ways but all are related to overall Outcomes and often determined by the Effort contributed by an individual Person. Reward calculation Algorithms are needed, this is the interesting bit!"
         layerID="1" created="1505088241138" x="200.29999" y="402.49884"
         width="788.0" height="167.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
         <strokeColor>#404040</strokeColor>
@@ -472,56 +472,54 @@
         <font>SansSerif-plain-14</font>
         <URIString>http://vue.tufts.edu/rdf/resource/6e4d2202c0a80002002f3782426e98a2</URIString>
         <richText>&lt;html&gt;
-  &lt;head style="color: #000000" color="#000000"&gt;
+  &lt;head color="#000000" style="color: #000000"&gt;
     &lt;style type="text/css"&gt;
       &lt;!--
-        body { font-family: Arial; margin-right: 0px; margin-left: 0px; color: #000000; margin-bottom: 0px; margin-top: 0px; font-size: 13 }
-        ol { font-family: Arial; list-style-position: outside; margin-left: 30; margin-top: 6; font-size: 13; vertical-align: middle }
-        p { margin-right: 0; margin-left: 0; color: #000000; margin-bottom: 0; margin-top: 0 }
-        ul { font-family: Arial; list-style-position: outside; margin-left: 30; margin-top: 6; font-size: 13; vertical-align: middle }
+        body { margin-top: 0px; font-family: Arial; color: #000000; font-size: 13; margin-right: 0px; margin-bottom: 0px; margin-left: 0px }
+        ol { margin-top: 6; font-family: Arial; font-size: 13; vertical-align: middle; list-style-position: outside; margin-left: 30 }
+        p { margin-top: 0; color: #000000; margin-right: 0; margin-bottom: 0; margin-left: 0 }
+        ul { margin-top: 6; font-family: Arial; font-size: 13; vertical-align: middle; list-style-position: outside; margin-left: 30 }
       --&gt;
     &lt;/style&gt;
     
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;p style="color: #000000" color="#000000"&gt;
+    &lt;p color="#000000" style="color: #000000"&gt;
       KEY:
     &lt;/p&gt;
-    &lt;p style="color: #000000" color="#000000"&gt;
+    &lt;p color="#000000" style="color: #000000"&gt;
       Blue: Persons can record their Effort (work, time spent) and Results 
       obtained.
     &lt;/p&gt;
-    &lt;p style="color: #000000" color="#000000"&gt;
+    &lt;p color="#000000" style="color: #000000"&gt;
       Purple: A formal Organisation can define its Aims, achievable Goals and 
       Tasks to make these happen. It may develop these Goals through a process 
       of developing a Plan.
     &lt;/p&gt;
-    &lt;p style="color: #000000" color="#000000"&gt;
+    &lt;p color="#000000" style="color: #000000"&gt;
       Orange: After the fact, an Organisation can evaluate Success in relation 
       to the Aims by measuring the achievement of the Goals through Outcomes.
     &lt;/p&gt;
-    &lt;p style="color: #000000" color="#000000"&gt;
+    &lt;p color="#000000" style="color: #000000"&gt;
       Green: Cooperation by People is needed to form an Organisation with 
       Aims, create a Plan by deciding on Goals, allocate Tasks within the Plan 
       and work together in a coordinated way.
     &lt;/p&gt;
-    &lt;p style="color: #000000" color="#000000"&gt;
+    &lt;p color="#000000" style="color: #000000"&gt;
       Red: People will seek Rewards from Cooperation, these can come in many 
       ways but all are related to overall Outcomes and often determined by the 
       Effort contributed by an individual Person. Reward calculation 
       Algorithms are needed, this is the interesting bit!
     &lt;/p&gt;
-    &lt;p style="color: #000000" color="#000000"&gt;
+    &lt;p color="#000000" style="color: #000000"&gt;
       
     &lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </richText>
         <label>KEY: Blue: Persons can record their Effort (work, time spent) and Results obtained. Purple: A formal Organisation can define its Aims, achievable Goals and Tasks to make these happen. It may develop these Goals through a process 
-      of developing a Plan. Orange: After the fact, an Organisation can evaluate Success in relation 
-      to the Aims by measuring the achievement of the Goals through Outcomes. Green: Cooperation by People is needed to form an Organisation with 
-      Aims, create a Plan by deciding on Goals, allocate Tasks within the Plan and work together in a coordinated way. Red: People will seek Rewards from Cooperation, these can come in many ways but all are related to overall Outcomes and often determined by the 
-      Effort contributed by an individual Person. Reward calculation Algorithms are needed, this is the interesting bit!</label>
+      of developing a Plan. Orange: After the fact, an Organisation can evaluate Success in relation to the Aims by measuring the achievement of the Goals through Outcomes. Green: Cooperation by People is needed to form an Organisation with 
+      Aims, create a Plan by deciding on Goals, allocate Tasks within the Plan and work together in a coordinated way. Red: People will seek Rewards from Cooperation, these can come in many ways but all are related to overall Outcomes and often determined by the Effort contributed by an individual Person. Reward calculation Algorithms are needed, this is the interesting bit!</label>
     </child>
     <layer ID="1" label="Layer 1" created="1504828659811" x="0.0"
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
