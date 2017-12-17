@@ -155,6 +155,19 @@ public class Organisation {
 	}
 	
 	@Programmatic
+	public List<PersonView> listActivePersonViews() {
+		List<PersonView> temp = new ArrayList<>();
+		for (OrganisationPerson op : this.getPersons()) {
+			if (op.getStatus().equals(OrganisationPersonStatus.ACTIVE)) {
+				temp.add(new PersonView(op.getPerson()));
+			}
+		}
+		return temp;
+	}
+	
+	
+	
+	@Programmatic
 	List<OrganisationPerson> listActiveOrganisationPersons() {
 		List<OrganisationPerson> temp = new ArrayList<>();
 		for (OrganisationPerson op : this.getPersons()) {
@@ -171,6 +184,17 @@ public class Organisation {
 		for (OrganisationPerson op : this.getPersons()) {
 			if (op.getStatus().equals(OrganisationPersonStatus.INACTIVE)) {
 				temp.add(op.getPerson());
+			}
+		}
+		return temp;
+	}
+	
+	@Programmatic
+	public List<PersonView> listInactivePersonViews() {
+		List<PersonView> temp = new ArrayList<>();
+		for (OrganisationPerson op : this.getPersons()) {
+			if (op.getStatus().equals(OrganisationPersonStatus.INACTIVE)) {
+				temp.add(new PersonView(op.getPerson()));
 			}
 		}
 		return temp;

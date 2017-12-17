@@ -34,7 +34,7 @@ import lombok.Setter;
 
 //@XmlAccessorType(XmlAccessType.FIELD)
 //@XmlType(name = "Organisation", propOrder = { "name", "description", "aims", "plans", "goals" })
-@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
+@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation", table="organisation_person")
 @DomainObject()
 public class OrganisationPerson {
 

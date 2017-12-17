@@ -26,20 +26,23 @@ public class OrganisationsTearDown extends FixtureScript {
 
     @Override
     protected void execute(ExecutionContext executionContext) {
-    	isisJdoSupport.executeUpdate("update cooperation.effort set result_result_id_oid = null");
-    	isisJdoSupport.executeUpdate("update cooperation.outcome set result_result_id_oid = null");
+    	isisJdoSupport.executeUpdate("delete from cooperation.reward");
+    	isisJdoSupport.executeUpdate("delete from cooperation.result_outcomes");
+    	isisJdoSupport.executeUpdate("delete from cooperation.outcome_results");
     	isisJdoSupport.executeUpdate("delete from cooperation.result");
-    	isisJdoSupport.executeUpdate("delete from cooperation.effort");
     	isisJdoSupport.executeUpdate("delete from cooperation.outcome");
+    	isisJdoSupport.executeUpdate("delete from cooperation.effort");
+    	isisJdoSupport.executeUpdate("delete from cooperation.person_tasks");
+    	isisJdoSupport.executeUpdate("delete from cooperation.task_persons");
+    	isisJdoSupport.executeUpdate("delete from cooperation.person");
     	isisJdoSupport.executeUpdate("delete from cooperation.task");
     	isisJdoSupport.executeUpdate("delete from cooperation.goal");
     	isisJdoSupport.executeUpdate("delete from cooperation.aim");
     	isisJdoSupport.executeUpdate("delete from cooperation.plan");
-    	isisJdoSupport.executeUpdate("delete from cooperation.organisationperson");
-    	isisJdoSupport.executeUpdate("delete from cooperation.person where id <> 1"); 
+    	isisJdoSupport.executeUpdate("delete from cooperation.organisation");
+        isisJdoSupport.executeUpdate("delete from cooperation.person where id <> 1");
         isisJdoSupport.executeUpdate("delete from cooperation.applicationuserroles where userid <> 1");
         isisJdoSupport.executeUpdate("delete from cooperation.applicationuser where id <> 1");
-    	isisJdoSupport.executeUpdate("delete from cooperation.organisation");
     }
 
 

@@ -9,6 +9,7 @@
     </tns:aim>
     <tns:goal>
       <tns:name>tns:name</tns:name>
+      <tns:description>tns:description</tns:description>
       <tns:aim>idvalue0</tns:aim>
       <tns:task>
         <tns:name>tns:name</tns:name>
@@ -28,6 +29,7 @@
       <tns:description>tns:description</tns:description>
       <tns:goal>
         <tns:name>tns:name</tns:name>
+        <tns:description>tns:description</tns:description>
         <tns:aim>idvalue0</tns:aim>
         <tns:task>
           <tns:name>tns:name</tns:name>
@@ -44,10 +46,13 @@
       <tns:family-name>tns:family-name</tns:family-name>
       <tns:given-name>tns:given-name</tns:given-name>
       <tns:date-of-birth>2001-01-01</tns:date-of-birth>
+      <tns:username>tns:username</tns:username>
+      <tns:password>tns:password</tns:password>
+      <tns:email>tns:email</tns:email>
       <tns:effort>
         <tns:result>
           <tns:name>tns:name</tns:name>
-          <tns:outcome>
+          <tns:outcome id="idvalue1">
             <tns:name>tns:name</tns:name>
           </tns:outcome>
         </tns:result>
@@ -68,7 +73,7 @@
           <tns:start>2001-12-31T12:00:00</tns:start>
           <tns:end>2001-12-31T12:00:00</tns:end>
         </tns:effort>
-        <tns:outcome>
+        <tns:outcome id="idvalue2">
           <tns:name>tns:name</tns:name>
           <tns:description>tns:description</tns:description>
         </tns:outcome>

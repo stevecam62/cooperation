@@ -59,13 +59,13 @@ public class OrganisationPersons {
 	}
 
 	@XmlTransient
-	public List<Person> getActivePersons() {
-		return this.getOrganisation().listActivePersons();
+	public List<PersonView> getActivePersons() {
+		return this.getOrganisation().listActivePersonViews();
 	}
 
 	@XmlTransient
-	public List<Person> getInactivePersons() {
-		return this.getOrganisation().listInactivePersons();
+	public List<PersonView> getInactivePersons() {
+		return this.getOrganisation().listInactivePersonViews();
 	}
 
 	public OrganisationPersons addPerson(Person person) {

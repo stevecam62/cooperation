@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tns:organisations xmlns:tns="http://au.org.cooperation/base"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://au.org.cooperation/base cooperation.xsd ">
+<tns:organisations xmlns:tns="http://au.org.cooperation/base" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://au.org.cooperation/base cooperation.xsd ">
 	<tns:organisation>
 		<tns:name>Our Cooperative Organisation</tns:name>
 		<tns:description>An organisation that exists to provide work
@@ -30,64 +28,49 @@
 		<tns:goal>
 			<tns:name>24 hours of work per week minimum.</tns:name>
 			<tns:description>
-				The objective of this goal is to allow a cooperative
-					member to
-					earn double the Newstart Allowance for the equivalent of 3
-					days work
-					in a week.
-				
-				The Newstart Allowance for a single person is
-					$269.40 per week, so
-					double that is $538.80 or $22.45 per hour for
-					24 hours (3 days * 8
-					hrs) effort.
-				
-				The guaranteed minimum wage in Australia is presently $694.90 per
-					week. This is equivalent to $17.37 per hour for 40 hours (5 days *
-					8 hrs) effort.
-				
+<![CDATA[The objective of this goal is to allow a cooperative member to earn double the Newstart Allowance for the equivalent of 3 days work in a week.
+
+The Newstart Allowance for a single person is $269.40 per week, so double that is $538.80 or $22.45 per hour for 24 hours (3 days * 8 hrs) effort.
+ 
+The guaranteed minimum wage in Australia is presently $694.90 per week. This is equivalent to $17.37 per hour for 40 hours (5 days * 8 hrs) effort.]]>
 			</tns:description>
 			<tns:aim>aim1</tns:aim>
-			<tns:task>
+			<tns:task id="task1">
 				<tns:name>Gardening</tns:name>
-				<tns:description>All garden preparation, planting and tending of crops.</tns:description>
+				<tns:description>All garden preparation, planting and tending of
+					crops.
+				</tns:description>
 			</tns:task>
-			<tns:task>
+			<tns:task id="task2">
 				<tns:name>Produce Harvest and Processing</tns:name>
-				<tns:description>Harvesting and processing of crops grown to marketable produce state.</tns:description>
+				<tns:description>Harvesting and processing of crops grown to
+					marketable produce state.
+				</tns:description>
 			</tns:task>
-			<tns:task>
+			<tns:task id="task3">
 				<tns:name>Food Preparation</tns:name>
-				<tns:description>Value adding in kitchen facilities to saleable prepared and/or cooked foods .</tns:description>
+				<tns:description>Value adding in kitchen facilities to saleable
+					prepared and/or cooked foods .
+				</tns:description>
 			</tns:task>
-			<tns:task>
+			<tns:task id="task4">
 				<tns:name>Food Sales and Service</tns:name>
-				<tns:description>Selling grown produce and prepared foods, and other customer service at markets and eateries.</tns:description>
+				<tns:description>Selling grown produce and prepared foods, and other
+					customer service at markets and eateries.
+				</tns:description>
 			</tns:task>
 		</tns:goal>
 		<tns:goal>
 			<tns:name>Optional 6 months unpaid leave per year.</tns:name>
 			<tns:aim>aim1</tns:aim>
-			<tns:task>
-				<tns:name>tns:name</tns:name>
-				<tns:description>tns:description</tns:description>
-			</tns:task>
 		</tns:goal>
 		<tns:goal>
 			<tns:name>Mandatory 4 weeks paid leave per year.</tns:name>
 			<tns:aim>aim1</tns:aim>
-			<tns:task>
-				<tns:name>tns:name</tns:name>
-				<tns:description>tns:description</tns:description>
-			</tns:task>
 		</tns:goal>
 		<tns:goal>
 			<tns:name>2017 New Opportunities.</tns:name>
 			<tns:aim>aim1</tns:aim>
-			<tns:task>
-				<tns:name>tns:name</tns:name>
-				<tns:description>tns:description</tns:description>
-			</tns:task>
 		</tns:goal>
 		<tns:plan>
 			<tns:name>2017 Strategic Plan</tns:name>
@@ -98,9 +81,59 @@
 			<tns:description>tns:description</tns:description>
 		</tns:plan>
 		<tns:person>
-			<tns:family-name>tns:family-name</tns:family-name>
-			<tns:given-name>tns:given-name</tns:given-name>
-			<tns:date-of-birth>2001-01-01</tns:date-of-birth>
+			<tns:family-name>Nykvist</tns:family-name>
+			<tns:given-name>Sven</tns:given-name>
+			<tns:date-of-birth>1922-12-03</tns:date-of-birth>
+			<tns:username>sven</tns:username>
+			<tns:password>pass</tns:password>
+			<tns:email>sven@gmail.coml</tns:email>
+			<tns:effort>
+				<tns:result>
+					<tns:name>tns:name</tns:name>
+					<tns:outcome>
+						<tns:name>tns:name</tns:name>
+						<tns:description>tns:description</tns:description>
+					</tns:outcome>
+				</tns:result>
+				<tns:start>2001-12-31T12:00:00</tns:start>
+				<tns:end>2001-12-31T12:00:00</tns:end>
+			</tns:effort>
+			<tns:reward>
+				<tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
+				<tns:value>0.0</tns:value>
+				<tns:description>tns:description</tns:description>
+			</tns:reward>
+			<tns:algorithm>
+				<tns:name>tns:name</tns:name>
+				<tns:effort>
+					<tns:result>
+						<tns:name>tns:name</tns:name>
+						<tns:outcome>
+							<tns:name>tns:name</tns:name>
+							<tns:description>tns:description</tns:description>
+						</tns:outcome>
+					</tns:result>
+					<tns:start>2001-12-31T12:00:00</tns:start>
+					<tns:end>2001-12-31T12:00:00</tns:end>
+				</tns:effort>
+				<tns:outcome>
+					<tns:name>tns:name</tns:name>
+					<tns:description>tns:description</tns:description>
+				</tns:outcome>
+				<tns:reward>
+					<tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
+					<tns:value>0.0</tns:value>
+					<tns:description>tns:description</tns:description>
+				</tns:reward>
+			</tns:algorithm>
+		</tns:person>
+		<tns:person>
+			<tns:family-name>Cameron</tns:family-name>
+			<tns:given-name>James</tns:given-name>
+			<tns:date-of-birth>1954-08-16</tns:date-of-birth>
+			<tns:username>jim</tns:username>
+			<tns:password>pass</tns:password>
+			<tns:email>jim@gmail.com</tns:email>
 			<tns:effort>
 				<tns:result>
 					<tns:name>tns:name</tns:name>
