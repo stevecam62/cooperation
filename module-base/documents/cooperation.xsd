@@ -17,21 +17,13 @@
 	</xsd:annotation>
 	<xsd:complexType name="Organisation">
 		<xsd:sequence>
-			<xsd:element name="name" type="xsd:string" minOccurs="1"
-				maxOccurs="1" />
-			<xsd:element name="description" type="xsd:string"
-				maxOccurs="1" minOccurs="0">
-			</xsd:element>
-			<xsd:element name="aim" type="tns:Aim" minOccurs="0"
-				maxOccurs="unbounded" />
-			<xsd:element name="goal" type="tns:Goal" maxOccurs="unbounded"
-				minOccurs="0">
-			</xsd:element>
-			<xsd:element name="plan" type="tns:Plan" minOccurs="0"
-				maxOccurs="unbounded" />
-			<xsd:element name="person" type="tns:Person" maxOccurs="unbounded"
-				minOccurs="0">
-			</xsd:element>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="description" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+			<xsd:element name="aim" type="tns:Aim" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="goal" type="tns:Goal" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+			<xsd:element name="plan" type="tns:Plan" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="person" type="tns:Person" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+			<xsd:element name="creator" type="xsd:string"></xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="Person">
@@ -73,10 +65,17 @@
 	</xsd:complexType>
 	<xsd:complexType name="Result">
 		<xsd:sequence>
-			<xsd:element name="name" type="xsd:string" minOccurs="1"
-				maxOccurs="1" />
-			<xsd:element name="outcome" type="tns:Outcome" minOccurs="0"
-				maxOccurs="unbounded" />
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="task" type="xsd:IDREF" maxOccurs="1" minOccurs="1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<jaxb:property>
+							<jaxb:baseType name="Task" />
+						</jaxb:property>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="outcome" type="tns:Outcome" minOccurs="0" maxOccurs="unbounded" />
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="Cooperation">
@@ -97,14 +96,10 @@
 	</xsd:complexType>
 	<xsd:complexType name="Task">
 		<xsd:sequence>
-			<xsd:element name="name" type="xsd:string" minOccurs="1"
-				maxOccurs="1" />
-			<xsd:element name="description" type="xsd:string"
-				minOccurs="0" maxOccurs="1"></xsd:element>
-			<xsd:element name="effort" type="tns:Effort" minOccurs="0"
-				maxOccurs="unbounded">
-			</xsd:element>
+			<xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
 		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string"></xsd:attribute>
 	</xsd:complexType>
 	<xsd:complexType name="Aim">
 		<xsd:sequence>

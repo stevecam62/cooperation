@@ -49,34 +49,34 @@ import lombok.Setter;
 @XmlJavaTypeAdapter(org.apache.isis.schema.utils.jaxbadapters.PersistentEntityAdapter.class)
 public class Organisation {
 
-	@Column(allowsNull = "false", length=50)
+	@Column(allowsNull = "false", length = 50)
 	@Getter
 	@Setter
-	protected String name;
+	private String name;
 
-	@Column(allowsNull = "true", length=1000)
+	@Column(allowsNull = "true", length = 1000)
 	@Getter
 	@Setter
-	protected String description;
+	private String description;
 
 	@Persistent(mappedBy = "organisation", column = "aim_id")
 	@Order(column = "org_aim_idx")
 	@Getter
-	protected List<Aim> aims;
+	private List<Aim> aims;
 
 	@Persistent(mappedBy = "organisation", column = "goal_id")
 	@Order(column = "org_goal_idx")
 	@Getter
-	protected List<Goal> goals;
+	private List<Goal> goals;
 
 	@Persistent(mappedBy = "organisation")
 	@Getter(value = AccessLevel.PRIVATE)
-	protected List<OrganisationPerson> persons;
+	private List<OrganisationPerson> persons;
 
 	@Persistent(mappedBy = "organisation", column = "plan_id")
 	@Order(column = "org_plan_idx")
 	@Getter
-	protected List<Plan> plans;
+	private List<Plan> plans;
 
 	public Organisation() {
 	}
@@ -122,7 +122,39 @@ public class Organisation {
 				.add(organisationRepository.createOrganisationPerson(this, person, OrganisationPersonStatus.ACTIVE));
 		return this;
 	}
+
+	@Programmatic
+	public boolean isCreator(Person person) {
+		if (this.getPersons().size() == 0) {
+			OrganisationPerson orgPerson = organisationRepository.createOrganisationPerson(this, person,
+					OrganisationPersonStatus.ACTIVE);
+			this.getPersons().add(orgPerson);
+			orgPerson.setCreator(true);
+			orgPerson.setAdministrator(true);
+			return true;
+		}else{
+			for (OrganisationPerson orgPerson : this.getPersons()) {
+				if (orgPerson.getPerson().equals(person)) {
+					return orgPerson.isCreator();
+				}
+				if (orgPerson.isCreator()) {
+					return false;
+				}
+			}
+			return false;
+		}
+	}
 	
+	@Programmatic
+	public boolean isAdministrator(Person person) {
+		for (OrganisationPerson orgPerson : this.getPersons()) {
+			if (orgPerson.getPerson().equals(person)) {
+				return orgPerson.isAdministrator();
+			}
+		}
+		return false;
+	}
+
 	public Integer getActiveLinkedPersonCount() {
 		return this.listActiveOrganisationPersons().size();
 	}
@@ -130,7 +162,7 @@ public class Organisation {
 	public OrganisationPersons showLinkedPersons() {
 		return new OrganisationPersons(this);
 	}
-	
+
 	@Programmatic
 	public boolean hasLinkedPerson(Person person) {
 		boolean found = false;
@@ -153,7 +185,7 @@ public class Organisation {
 		}
 		return temp;
 	}
-	
+
 	@Programmatic
 	public List<PersonView> listActivePersonViews() {
 		List<PersonView> temp = new ArrayList<>();
@@ -164,9 +196,7 @@ public class Organisation {
 		}
 		return temp;
 	}
-	
-	
-	
+
 	@Programmatic
 	List<OrganisationPerson> listActiveOrganisationPersons() {
 		List<OrganisationPerson> temp = new ArrayList<>();
@@ -177,7 +207,7 @@ public class Organisation {
 		}
 		return temp;
 	}
-	
+
 	@Programmatic
 	public List<Person> listInactivePersons() {
 		List<Person> temp = new ArrayList<>();
@@ -188,7 +218,7 @@ public class Organisation {
 		}
 		return temp;
 	}
-	
+
 	@Programmatic
 	public List<PersonView> listInactivePersonViews() {
 		List<PersonView> temp = new ArrayList<>();
@@ -199,7 +229,7 @@ public class Organisation {
 		}
 		return temp;
 	}
-	
+
 	@Programmatic
 	public OrganisationPersonStatus linkedPersonStatus(Person person) {
 		List<Person> temp = new ArrayList<>();
@@ -210,7 +240,7 @@ public class Organisation {
 		}
 		return null;
 	}
-	
+
 	@Programmatic
 	public List<OrganisationPerson> listInactiveOrganisationPersons() {
 		List<OrganisationPerson> temp = new ArrayList<>();
@@ -221,7 +251,7 @@ public class Organisation {
 		}
 		return temp;
 	}
-	
+
 	@Inject
 	OrganisationRepository organisationRepository;
 

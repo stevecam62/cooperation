@@ -29,9 +29,11 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.query.QueryDefault;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
+import org.apache.isis.applib.services.user.UserService;
 import org.apache.isis.applib.value.DateTime;
 import org.apache.isis.applib.value.Password;
 import org.isisaddons.module.security.dom.role.ApplicationRoleRepository;
+import org.isisaddons.module.security.dom.user.ApplicationUser;
 import org.isisaddons.module.security.dom.user.ApplicationUserRepository;
 
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Person.class)
@@ -59,6 +61,14 @@ public class PersonRepository {
 		repositoryService.persist(object);
 		return object;
 	}
+	
+	public Person currentPerson() {
+		ApplicationUser user = userRepository.findByUsernameCached(users.getUser().getName());
+		if (user != null && user instanceof Person)
+			return (Person) user;
+		else
+			return null;
+	}
 
 	@Inject
 	RepositoryService repositoryService;
@@ -67,5 +77,8 @@ public class PersonRepository {
 	@Inject
 	ApplicationUserRepository userRepository;
 	@Inject
+	UserService users;
+	@Inject
 	ApplicationRoleRepository roleRepository;
+
 }

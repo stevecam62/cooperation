@@ -32,23 +32,29 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-//@XmlAccessorType(XmlAccessType.FIELD)
-//@XmlType(name = "Organisation", propOrder = { "name", "description", "aims", "plans", "goals" })
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation", table="organisation_person")
 @DomainObject()
 public class OrganisationPerson {
 
-	// @XmlElement(required = true)
 	@Column(allowsNull = "false", name="organisation_id")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	protected Organisation organisation;
 
-	// @XmlElement
 	@Column(allowsNull = "false", name="person_id")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	protected Person person;
+	
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter
+	protected boolean isAdministrator;
+	
+	@Column(allowsNull = "false")
+	@Getter
+	@Setter
+	protected boolean isCreator;
 
 	@Column(allowsNull = "false")
 	@Getter
@@ -63,6 +69,8 @@ public class OrganisationPerson {
 		setOrganisation(organisation);
 		setPerson(person);
 		setStatus(status);
+		setAdministrator(false);
+		setCreator(false);
 	}
 	
 	public String title(){

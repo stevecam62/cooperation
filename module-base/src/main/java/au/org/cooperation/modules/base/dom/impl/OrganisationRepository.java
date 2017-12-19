@@ -51,6 +51,13 @@ public class OrganisationRepository {
 		final Organisation object = new Organisation(name);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
+		ApplicationUser user = userRepo.findByUsernameCached(users.getUser().getName());
+		if (user != null && user instanceof Person) {
+			//link creator to organisation
+			object.isCreator((Person) user);
+			//make current organisation of Person
+			((Person) user).setOrganisation(object);
+		}
 		return object;
 	}
 
@@ -59,7 +66,7 @@ public class OrganisationRepository {
 		final OrganisationPerson object = new OrganisationPerson(organisation, person, status);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
-		if(person.getOrganisation() == null)
+		if (person.getOrganisation() == null)
 			person.setOrganisation(organisation);
 		return object;
 	}
