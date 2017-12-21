@@ -18,6 +18,7 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.isis.applib.annotation.Action;
@@ -31,25 +32,79 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
-@DomainService(
-        nature = NatureOfService.VIEW_MENU_ONLY,
-        objectType = "cooperation.AdminitratorMenu",
-        repositoryFor = Organisation.class
-)
-@DomainServiceLayout(
-        named = "Organisations",
-        menuOrder = "20"
-)
+@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.AdminitratorMenu", repositoryFor = Organisation.class)
+@DomainServiceLayout(named = "Organisations", menuOrder = "20")
 public class AdministratorMenu {
 
-    @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(bookmarking = BookmarkPolicy.NEVER)
-    @MemberOrder(sequence = "1")
-    public Organisation current(Organisation organisation) {
-        return organisationRepo.currentOrganisation();
-    }
+	@Action(semantics = SemanticsOf.NON_IDEMPOTENT)
+	@ActionLayout(bookmarking = BookmarkPolicy.NEVER)
+	@MemberOrder(sequence = "1")
+	public Organisation current() {
+		return organisationRepo.currentOrganisation();
+	}
 
-    @javax.inject.Inject
-    OrganisationRepository organisationRepo;
+	@Action(semantics = SemanticsOf.NON_IDEMPOTENT)
+	@ActionLayout(bookmarking = BookmarkPolicy.NEVER)
+	@MemberOrder(sequence = "2")
+	public List<PersonView> listAdministrators() {
+		List<PersonView> temp = new ArrayList<>();
+		for (Person p : organisationRepo.currentOrganisation().listAdministrators()) {
+			temp.add(new PersonView(p));
+		}
+		return temp;
+	}
+	
+	public boolean hideListAdministrators(){
+		return !organisationRepo.currentOrganisation().isAdministrator(personRepo.currentPerson());
+	}
+
+	@Action(semantics = SemanticsOf.NON_IDEMPOTENT)
+	@ActionLayout(bookmarking = BookmarkPolicy.NEVER)
+	@MemberOrder(sequence = "2")
+	public OrganisationPersonView addAdministrator(OrganisationPerson orgPerson) {
+		orgPerson.setAdministrator(true);
+		return new OrganisationPersonView(orgPerson);
+	}
+
+	public List<OrganisationPerson> choices0AddAdministrator() {
+		List<OrganisationPerson> temp = new ArrayList<>();
+		for (OrganisationPerson op : organisationRepo.currentOrganisation().listActiveOrganisationPersons()) {
+			if (!op.isAdministrator) {
+				temp.add(op);
+			}
+		}
+		return temp;
+	}
+	
+	public boolean hideAddAdministrator(){
+		return !organisationRepo.currentOrganisation().isAdministrator(personRepo.currentPerson());
+	}
+
+	@Action(semantics = SemanticsOf.NON_IDEMPOTENT)
+	@ActionLayout(bookmarking = BookmarkPolicy.NEVER)
+	@MemberOrder(sequence = "3")
+	public OrganisationPersonView removeAdministrator(OrganisationPerson orgPerson) {
+		orgPerson.setAdministrator(false);
+		return new OrganisationPersonView(orgPerson);
+	}
+
+	public List<OrganisationPerson> choices0RemoveAdministrator() {
+		List<OrganisationPerson> temp = new ArrayList<>();
+		for (OrganisationPerson op : organisationRepo.currentOrganisation().listActiveOrganisationPersons()) {
+			if (op.isAdministrator) {
+				temp.add(op);
+			}
+		}
+		return temp;
+	}
+	
+	public boolean hideRemoveAdministrator(){
+		return !organisationRepo.currentOrganisation().isAdministrator(personRepo.currentPerson());
+	}
+
+	@javax.inject.Inject
+	OrganisationRepository organisationRepo;
+	@javax.inject.Inject
+	PersonRepository personRepo;
 
 }

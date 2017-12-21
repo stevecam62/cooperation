@@ -34,60 +34,68 @@ import lombok.*;
 @DomainObject()
 @XmlJavaTypeAdapter(org.apache.isis.schema.utils.jaxbadapters.PersistentEntityAdapter.class)
 public class Person extends ApplicationUser {
-	
+
 	/*
 	 * Allow a default Organisation to be set on the current user.
 	 * 
-	 * Organisations have a list of linked users/Persons, but one user might link to
-	 * multiple Organisations, but we want to restrict the visibility to one Organisation at a time.
+	 * Organisations have a list of linked users/Persons, but one user might
+	 * link to multiple Organisations, but we want to restrict the visibility to
+	 * one Organisation at a time.
 	 * 
-	 * We restrict access to all data, but this requires
-	 * a current Organisation, that is set here at login, by the user having only one link to an 
-	 * Organisation, or, the user selecting one specifically. In the later case the currently operating
-	 * one will be saved from session to session.
+	 * We restrict access to all data, but this requires a current Organisation,
+	 * that is set here at login, by the user having only one link to an
+	 * Organisation, or, the user selecting one specifically. In the later case
+	 * the currently operating one will be saved from session to session.
 	 * 
 	 */
-    @Column(allowsNull="true", name="organisation_id")
-    @Getter 
-    @Setter(value=AccessLevel.PACKAGE)
-	private Organisation organisation;
+	@Column(allowsNull = "true", name = "org_person_id")
+	@Getter(value = AccessLevel.PACKAGE)
+	@Setter(value = AccessLevel.PACKAGE)
+	private OrganisationPerson orgPerson;
 
-    @Column(allowsNull="true") //really false but security module adds 1 user
-    @Getter 
-    @Setter
-    private String familyName;
-    
-    @Column(allowsNull="true") //really false but security module adds 1 user
-    @Getter 
-    @Setter
-    private String givenName;
-    
-    @Column(allowsNull="true") //really false but security module adds 1 user
-    @Getter 
-    @Setter
-    private java.sql.Date dateOfBirth;
+	@Column(allowsNull = "true") // really false but security module adds 1 user
+	@Getter
+	@Setter
+	private String familyName;
 
-    //@XmlElement
-    //@Column(allowsNull="true")
-    //@Getter 
-    //@Setter
-    //private Algorithm algorithm;
-    
+	@Column(allowsNull = "true") // really false but security module adds 1 user
+	@Getter
+	@Setter
+	private String givenName;
+
+	@Column(allowsNull = "true") // really false but security module adds 1 user
+	@Getter
+	@Setter
+	private java.sql.Date dateOfBirth;
+
+	// @XmlElement
+	// @Column(allowsNull="true")
+	// @Getter
+	// @Setter
+	// private Algorithm algorithm;
+
 	@Persistent
 	@Join
 	@Getter
 	private List<Task> tasks;
-	
-	@Persistent(mappedBy="person")
+
+	@Persistent(mappedBy = "person")
 	@Getter
 	private List<Effort> efforts;
-	
-	@Persistent(mappedBy="person")
+
+	@Persistent(mappedBy = "person")
 	@Getter
 	private List<Reward> rewards;
-    
-    public String title(){
-    	return this.getGivenName() + " " + getFamilyName();
-    }
+
+	public String title() {
+		return this.getGivenName() + " " + getFamilyName();
+	}
+
+	public Organisation getCurrentOrganisation() {
+		if (this.getOrgPerson() != null)
+			return this.getOrgPerson().getOrganisation();
+		else
+			return null;
+	}
 
 }

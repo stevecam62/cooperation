@@ -43,7 +43,7 @@ import lombok.Setter;
 public class OrganisationPersons {
 
 	@XmlElement(required = true)
-	@Getter(value=AccessLevel.PRIVATE)
+	@Getter(value = AccessLevel.PRIVATE)
 	@Setter()
 	private Organisation organisation;
 
@@ -53,23 +53,31 @@ public class OrganisationPersons {
 	public OrganisationPersons(Organisation organisation) {
 		this.setOrganisation(organisation);
 	}
-	
-	public String title(){
+
+	public String title() {
 		return "People linked to: " + this.getOrganisation().title();
 	}
 
 	@XmlTransient
-	public List<PersonView> getActivePersons() {
+	public List<OrganisationPersonView> getActivePersons() {
 		return this.getOrganisation().listActivePersonViews();
 	}
 
 	@XmlTransient
-	public List<PersonView> getInactivePersons() {
+	public List<OrganisationPersonView> getInactivePersons() {
 		return this.getOrganisation().listInactivePersonViews();
+	}
+	
+	public boolean hideInactivePersons() {
+		if (!this.getOrganisation().isAdministrator(personRepository.currentPerson())) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public OrganisationPersons addPerson(Person person) {
-		this.getOrganisation().addPerson(person);
+		this.getOrganisation().addPerson(person, false, false);
 		return this;
 	}
 
@@ -82,16 +90,16 @@ public class OrganisationPersons {
 		}
 		return persons;
 	}
-	
-	public String disableAddPerson() {
-		if(this.getOrganisation().isAdministrator(personRepository.currentPerson())){
-			return null;
-		}else{
-			return "User is not an Organisation Administrator";
+
+	public boolean hideAddPerson() {
+		if (!this.getOrganisation().isAdministrator(personRepository.currentPerson())) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
-	@Action(semantics=SemanticsOf.IDEMPOTENT_ARE_YOU_SURE)
+	@Action(semantics = SemanticsOf.IDEMPOTENT_ARE_YOU_SURE)
 	public OrganisationPersons inactivatePerson(OrganisationPerson person) {
 		person.setStatus(OrganisationPersonStatus.INACTIVE);
 		return this;
@@ -100,12 +108,12 @@ public class OrganisationPersons {
 	public List<OrganisationPerson> choices0InactivatePerson() {
 		return this.getOrganisation().listActiveOrganisationPersons();
 	}
-	
-	public String disableInactivatePerson() {
-		if(this.getOrganisation().isAdministrator(personRepository.currentPerson())){
-			return null;
-		}else{
-			return "User is not an Organisation Administrator";
+
+	public boolean hideInactivatePerson() {
+		if (!this.getOrganisation().isAdministrator(personRepository.currentPerson())) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -116,22 +124,20 @@ public class OrganisationPersons {
 
 	public List<OrganisationPerson> choices0ActivatePerson() {
 		return this.getOrganisation().listInactiveOrganisationPersons();
-	}	
-	
-	public String disableActivatePerson() {
-		if(this.getOrganisation().isAdministrator(personRepository.currentPerson())){
-			return null;
-		}else{
-			return "User is not an Organisation Administrator";
+	}
+
+	public boolean hideActivatePerson() {
+		if (!this.getOrganisation().isAdministrator(personRepository.currentPerson())) {
+			return true;
+		} else {
+			return false;
 		}
 	}
-	
-	
 
 	@XmlTransient
 	@Inject
 	PersonRepository personRepository;
-	
+
 	@XmlTransient
 	@Inject
 	OrganisationRepository organisationRepository;

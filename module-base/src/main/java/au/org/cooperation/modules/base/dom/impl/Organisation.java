@@ -28,6 +28,8 @@ import javax.jdo.annotations.Join;
 import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.Queries;
+import javax.jdo.annotations.Query;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -116,35 +118,31 @@ public class Organisation {
 		return this;
 	}
 
+
 	@Programmatic
-	public Organisation addPerson(Person person) {
-		this.getPersons()
-				.add(organisationRepository.createOrganisationPerson(this, person, OrganisationPersonStatus.ACTIVE));
-		return this;
+	public OrganisationPerson addPerson(Person person, boolean isCreator, boolean isAdministrator) {
+		OrganisationPerson orgPerson = organisationRepository.createOrganisationPerson(this, person,
+				OrganisationPersonStatus.ACTIVE);
+		orgPerson.setCreator(isCreator);
+		orgPerson.setAdministrator(isAdministrator);
+		this.getPersons().add(orgPerson);
+		person.setOrgPerson(orgPerson);
+		return orgPerson;
 	}
 
 	@Programmatic
 	public boolean isCreator(Person person) {
-		if (this.getPersons().size() == 0) {
-			OrganisationPerson orgPerson = organisationRepository.createOrganisationPerson(this, person,
-					OrganisationPersonStatus.ACTIVE);
-			this.getPersons().add(orgPerson);
-			orgPerson.setCreator(true);
-			orgPerson.setAdministrator(true);
-			return true;
-		}else{
-			for (OrganisationPerson orgPerson : this.getPersons()) {
-				if (orgPerson.getPerson().equals(person)) {
-					return orgPerson.isCreator();
-				}
-				if (orgPerson.isCreator()) {
-					return false;
-				}
+		for (OrganisationPerson orgPerson : this.getPersons()) {
+			if (orgPerson.getPerson().equals(person)) {
+				return orgPerson.isCreator();
 			}
-			return false;
+			if (orgPerson.isCreator()) {
+				return false;
+			}
 		}
+		return false;
 	}
-	
+
 	@Programmatic
 	public boolean isAdministrator(Person person) {
 		for (OrganisationPerson orgPerson : this.getPersons()) {
@@ -187,11 +185,11 @@ public class Organisation {
 	}
 
 	@Programmatic
-	public List<PersonView> listActivePersonViews() {
-		List<PersonView> temp = new ArrayList<>();
+	public List<OrganisationPersonView> listActivePersonViews() {
+		List<OrganisationPersonView> temp = new ArrayList<>();
 		for (OrganisationPerson op : this.getPersons()) {
 			if (op.getStatus().equals(OrganisationPersonStatus.ACTIVE)) {
-				temp.add(new PersonView(op.getPerson()));
+				temp.add(new OrganisationPersonView(op));
 			}
 		}
 		return temp;
@@ -220,11 +218,11 @@ public class Organisation {
 	}
 
 	@Programmatic
-	public List<PersonView> listInactivePersonViews() {
-		List<PersonView> temp = new ArrayList<>();
+	public List<OrganisationPersonView> listInactivePersonViews() {
+		List<OrganisationPersonView> temp = new ArrayList<>();
 		for (OrganisationPerson op : this.getPersons()) {
 			if (op.getStatus().equals(OrganisationPersonStatus.INACTIVE)) {
-				temp.add(new PersonView(op.getPerson()));
+				temp.add(new OrganisationPersonView(op));
 			}
 		}
 		return temp;
@@ -252,11 +250,21 @@ public class Organisation {
 		return temp;
 	}
 
+	@Programmatic
+	public List<Person> listAdministrators() {
+		ArrayList<Person> admins = new ArrayList<>();
+		for (OrganisationPerson op : this.listActiveOrganisationPersons()) {
+			if (op.isAdministrator()) {
+				admins.add(op.getPerson());
+			}
+		}
+		return admins;
+	}
+
 	@Inject
 	OrganisationRepository organisationRepository;
 
 	@Inject
 	PersonRepository personRepository;
-
 
 }

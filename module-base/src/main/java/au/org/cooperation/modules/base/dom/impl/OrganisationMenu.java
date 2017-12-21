@@ -31,46 +31,41 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
-@DomainService(
-        nature = NatureOfService.VIEW_MENU_ONLY,
-        objectType = "cooperation.OrganisationMenu",
-        repositoryFor = Organisation.class
-)
-@DomainServiceLayout(
-        named = "Organisations",
-        menuOrder = "10"
-)
+@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.OrganisationMenu", repositoryFor = Organisation.class)
+@DomainServiceLayout(named = "Organisations", menuOrder = "10")
 public class OrganisationMenu {
 
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    @MemberOrder(sequence = "1")
-    public List<Organisation> listAll() {
-        return organisationRepo.listAll();
-    }
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+	@MemberOrder(sequence = "1")
+	public List<Organisation> listAll() {
+		return organisationRepo.listAll();
+	}
 
-    /*@Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    @MemberOrder(sequence = "2")
-    public List<Organisation> findByName(
-            @ParameterLayout(named="Name")
-            final String name
-    ) {
-        return simpleObjectRepository.findByName(name);
-    }
-    */
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+	@MemberOrder(sequence = "2")
+	public Organisation SwitchOrganisation(Organisation organisation) {
+		personRepo.currentPerson()
+				.setOrgPerson(organisationRepo.findOrganisationPerson(organisation, personRepo.currentPerson()));
+		return organisation;
+	}
 
-    public static class CreateDomainEvent extends ActionDomainEvent<OrganisationMenu> {}
-    @Action(domainEvent = CreateDomainEvent.class)
-    @MemberOrder(sequence = "3")
-    public Organisation create(
-            @ParameterLayout(named="Name")
-            final String name) {
-        return organisationRepo.createOrganisation(name);
-    }
+	public List<Organisation> choices0SwitchOrganisation() {
+		return organisationRepo.listOrganisationsLinkedToPerson(personRepo.currentPerson());
+	}
 
+	public static class CreateDomainEvent extends ActionDomainEvent<OrganisationMenu> {
+	}
 
-    @javax.inject.Inject
-    OrganisationRepository organisationRepo;
+	@Action(domainEvent = CreateDomainEvent.class)
+	@MemberOrder(sequence = "3")
+	public Organisation create(@ParameterLayout(named = "Name") final String name) {
+		return organisationRepo.createOrganisation(name);
+	}
 
+	@javax.inject.Inject
+	OrganisationRepository organisationRepo;
+	@javax.inject.Inject
+	PersonRepository personRepo;
 }

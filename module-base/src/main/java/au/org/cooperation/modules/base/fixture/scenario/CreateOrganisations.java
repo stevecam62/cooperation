@@ -81,7 +81,7 @@ public class CreateOrganisations extends FixtureScript {
 							new java.sql.Date(_person.getDateOfBirth().getTime()), _person.getUsername(),
 							new Password(_person.getPassword()), new Password(_person.getPassword()),
 							_person.getEmail());
-					organisation.addPerson(person);
+					organisation.addPerson(person, false, false);
 				}
 			}
 		} catch (JAXBException e) {

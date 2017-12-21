@@ -22,7 +22,7 @@ public class TenancyPathEvaluatorForCooperation implements ApplicationTenancyEva
 
 	@Override
 	public String hides(Object arg0, ApplicationUser arg1) {
-		if (((Organisation) arg0).equals(((Person) arg1).getOrganisation()))
+		if (((Organisation) arg0).equals(((Person) arg1).getCurrentOrganisation()))
 			return null;
 		else
 			return "Organisation access prevented";

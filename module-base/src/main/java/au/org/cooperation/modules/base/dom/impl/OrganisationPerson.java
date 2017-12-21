@@ -25,6 +25,9 @@ import javax.jdo.annotations.PersistenceCapable;
 //import javax.xml.bind.annotation.XmlAccessorType;
 //import javax.xml.bind.annotation.XmlElement;
 //import javax.xml.bind.annotation.XmlType;
+import javax.jdo.annotations.Queries;
+import javax.jdo.annotations.Query;
+import javax.jdo.annotations.Unique;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
@@ -32,25 +35,31 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation", table="organisation_person")
+@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation", table = "organisation_person")
+@Queries({
+		@Query(name = "find", value = "SELECT FROM au.org.cooperation.modules.base.dom.impl.OrganisationPerson "
+				+ "WHERE organisation == :organisation && person == :person "),
+		@Query(name = "findLinkedToPerson", value = "SELECT FROM au.org.cooperation.modules.base.dom.impl.OrganisationPerson "
+				+ "WHERE person == :person ") })
+@Unique(name = "SimpleObject_name_UNQ", members = { "organisation", "person" })
 @DomainObject()
 public class OrganisationPerson {
 
-	@Column(allowsNull = "false", name="organisation_id")
+	@Column(allowsNull = "false", name = "organisation_id")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	protected Organisation organisation;
 
-	@Column(allowsNull = "false", name="person_id")
+	@Column(allowsNull = "false", name = "person_id")
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
 	protected Person person;
-	
+
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter
 	protected boolean isAdministrator;
-	
+
 	@Column(allowsNull = "false")
 	@Getter
 	@Setter
@@ -60,20 +69,20 @@ public class OrganisationPerson {
 	@Getter
 	@Setter(value = AccessLevel.PACKAGE)
 	protected OrganisationPersonStatus status;
-	
-	OrganisationPerson(){
-		
+
+	OrganisationPerson() {
+
 	}
-	
-	public OrganisationPerson(Organisation organisation, Person person, OrganisationPersonStatus status){
+
+	public OrganisationPerson(Organisation organisation, Person person, OrganisationPersonStatus status) {
 		setOrganisation(organisation);
 		setPerson(person);
 		setStatus(status);
 		setAdministrator(false);
 		setCreator(false);
 	}
-	
-	public String title(){
+
+	public String title() {
 		return this.getPerson().title();
 	}
 
