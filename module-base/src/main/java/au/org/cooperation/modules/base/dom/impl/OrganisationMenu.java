@@ -52,7 +52,7 @@ public class OrganisationMenu {
 	}
 
 	public List<Organisation> choices0SwitchOrganisation() {
-		return organisationRepo.listOrganisationsLinkedToPerson(personRepo.currentPerson());
+		return personRepo.currentPerson().getLinkedOrganisations(false, false);
 	}
 
 	public static class CreateDomainEvent extends ActionDomainEvent<OrganisationMenu> {

@@ -29,18 +29,19 @@ import au.org.cooperation.modules.base.dom.impl.simple.SimpleObjectRepository;
 
 @DomainObject(
         nature = Nature.VIEW_MODEL,
-        objectType = "domainapp.application.services.homepage.HomePageViewModel"
+        objectType = "cooperation.HomePageViewModel"
 )
 public class HomePageViewModel {
 
-    public TranslatableString title() {
-        return TranslatableString.tr("{num} objects", "num", getObjects().size());
+    public String title() {
+        //return TranslatableString.tr("{num} objects", "num", getObjects().size());
+    	return "TEST";
     }
 
-    public List<SimpleObject> getObjects() {
+    /*public List<SimpleObject> getObjects() {
         return simpleObjectRepository.listAll();
     }
 
     @javax.inject.Inject
-    SimpleObjectRepository simpleObjectRepository;
+    SimpleObjectRepository simpleObjectRepository;*/
 }

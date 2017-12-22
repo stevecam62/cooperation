@@ -126,7 +126,7 @@ public class Organisation {
 		orgPerson.setCreator(isCreator);
 		orgPerson.setAdministrator(isAdministrator);
 		this.getPersons().add(orgPerson);
-		person.setOrgPerson(orgPerson);
+		person.addOrganisation(orgPerson);
 		return orgPerson;
 	}
 

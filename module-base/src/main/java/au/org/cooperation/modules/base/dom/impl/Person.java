@@ -19,6 +19,7 @@
 
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.annotations.*;
@@ -27,6 +28,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.apache.isis.applib.annotation.*;
 import org.isisaddons.module.security.dom.user.ApplicationUser;
 
+import au.org.cooperation.modules.base.dom.impl.OrganisationPerson.OrganisationPersonStatus;
 import lombok.*;
 
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
@@ -34,24 +36,6 @@ import lombok.*;
 @DomainObject()
 @XmlJavaTypeAdapter(org.apache.isis.schema.utils.jaxbadapters.PersistentEntityAdapter.class)
 public class Person extends ApplicationUser {
-
-	/*
-	 * Allow a default Organisation to be set on the current user.
-	 * 
-	 * Organisations have a list of linked users/Persons, but one user might
-	 * link to multiple Organisations, but we want to restrict the visibility to
-	 * one Organisation at a time.
-	 * 
-	 * We restrict access to all data, but this requires a current Organisation,
-	 * that is set here at login, by the user having only one link to an
-	 * Organisation, or, the user selecting one specifically. In the later case
-	 * the currently operating one will be saved from session to session.
-	 * 
-	 */
-	@Column(allowsNull = "true", name = "org_person_id")
-	@Getter(value = AccessLevel.PACKAGE)
-	@Setter(value = AccessLevel.PACKAGE)
-	private OrganisationPerson orgPerson;
 
 	@Column(allowsNull = "true") // really false but security module adds 1 user
 	@Getter
@@ -87,15 +71,53 @@ public class Person extends ApplicationUser {
 	@Getter
 	private List<Reward> rewards;
 
+	@Persistent(mappedBy = "person")
+	@Getter(value = AccessLevel.PRIVATE)
+	private List<OrganisationPerson> organisations;
+
+	/*
+	 * Allow a default Organisation to be set on the current user.
+	 */
+	@Column(allowsNull = "true", name = "org_person_id")
+	@Getter(value = AccessLevel.PACKAGE)
+	@Setter(value = AccessLevel.PACKAGE)
+	private OrganisationPerson orgPerson;
+
 	public String title() {
 		return this.getGivenName() + " " + getFamilyName();
 	}
 
+	@Programmatic
 	public Organisation getCurrentOrganisation() {
-		if (this.getOrgPerson() != null)
+		if (this.getOrgPerson() != null) {
 			return this.getOrgPerson().getOrganisation();
-		else
-			return null;
+		} else if (this.getOrganisations().size() > 0) {
+			//return first active found
+			for(OrganisationPerson op : this.getOrganisations()){
+				if(op.getStatus().equals(OrganisationPersonStatus.ACTIVE)){
+					return op.getOrganisation();
+				}
+			}
+		}
+		return null;
+	}
+
+	@Programmatic
+	void addOrganisation(OrganisationPerson orgPerson) {
+		this.getOrganisations().add(orgPerson);
+		this.setOrgPerson(orgPerson);
+	}
+
+	@Programmatic
+	public List<Organisation> getLinkedOrganisations(boolean includeInactive, boolean includeCurrent) {
+		List<Organisation> list = new ArrayList<>();
+		for (OrganisationPerson op : this.getOrganisations()) {
+			if (includeInactive || op.getStatus().equals(OrganisationPersonStatus.ACTIVE)) {
+				if (includeCurrent || !this.getOrgPerson().equals(op))
+					list.add(op.getOrganisation());
+			}
+		}
+		return list;
 	}
 
 }

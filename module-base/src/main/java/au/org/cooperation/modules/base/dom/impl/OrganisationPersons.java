@@ -100,8 +100,11 @@ public class OrganisationPersons {
 	}
 
 	@Action(semantics = SemanticsOf.IDEMPOTENT_ARE_YOU_SURE)
-	public OrganisationPersons inactivatePerson(OrganisationPerson person) {
-		person.setStatus(OrganisationPersonStatus.INACTIVE);
+	public OrganisationPersons inactivatePerson(OrganisationPerson orgPerson) {
+		orgPerson.setStatus(OrganisationPersonStatus.INACTIVE);
+		if(orgPerson.getPerson().getOrgPerson().equals(orgPerson)){
+			orgPerson.getPerson().setOrgPerson(null);
+		}
 		return this;
 	}
 
