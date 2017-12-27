@@ -23,18 +23,15 @@ import javax.jdo.annotations.*;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
+import au.org.cooperation.modules.base.dom.OrganisationContext;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @DomainObject()
-public class Outcome {
-
-	@Column(allowsNull = "false", name = "organisation_id")
-	@Getter
-	@Setter(value = AccessLevel.PRIVATE)
-	private Organisation organisation;
+public class Outcome extends OrganisationContext {
 
 	@Column(allowsNull = "true", length = 5000)
 	@Getter

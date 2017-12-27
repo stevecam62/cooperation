@@ -29,6 +29,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.services.bookmark.BookmarkService;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.OrganisationMenu", repositoryFor = Organisation.class)
@@ -45,9 +46,10 @@ public class OrganisationMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 	@MemberOrder(sequence = "2")
-	public Organisation SwitchOrganisation(Organisation organisation) {
+	public Organisation switchOrganisation(Organisation organisation) {
 		personRepo.currentPerson()
 				.setOrgPerson(organisationRepo.findOrganisationPerson(organisation, personRepo.currentPerson()));
+		//bookmarks.
 		return organisation;
 	}
 
@@ -68,4 +70,6 @@ public class OrganisationMenu {
 	OrganisationRepository organisationRepo;
 	@javax.inject.Inject
 	PersonRepository personRepo;
+	@javax.inject.Inject
+	BookmarkService bookmarks;
 }

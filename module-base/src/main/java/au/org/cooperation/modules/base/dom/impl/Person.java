@@ -89,12 +89,13 @@ public class Person extends ApplicationUser {
 
 	@Programmatic
 	public Organisation getCurrentOrganisation() {
-		if (this.getOrgPerson() != null) {
+		if (this.getOrgPerson() != null) { //setting to inactive can also set current to null
 			return this.getOrgPerson().getOrganisation();
 		} else if (this.getOrganisations().size() > 0) {
 			//return first active found
 			for(OrganisationPerson op : this.getOrganisations()){
 				if(op.getStatus().equals(OrganisationPersonStatus.ACTIVE)){
+					this.setOrgPerson(op);
 					return op.getOrganisation();
 				}
 			}

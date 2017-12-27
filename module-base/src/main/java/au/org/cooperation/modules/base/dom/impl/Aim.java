@@ -20,28 +20,20 @@ package au.org.cooperation.modules.base.dom.impl;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.VersionStrategy;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
-import lombok.AccessLevel;
+import au.org.cooperation.modules.base.dom.OrganisationContext;
 import lombok.Getter;
 import lombok.Setter;
 
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @DomainObject()
-public class Aim {
-
-	@Column(allowsNull = "false", name = "organisation_id")
-	@Getter
-	@Setter(value = AccessLevel.PRIVATE)
-	private Organisation organisation;
+public class Aim extends OrganisationContext {
 
 	@Column(allowsNull = "false", length = 100)
 	@Getter
@@ -63,5 +55,4 @@ public class Aim {
 	public String title() {
 		return getName();
 	}
-
 }

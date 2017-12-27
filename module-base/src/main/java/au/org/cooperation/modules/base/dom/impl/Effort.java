@@ -46,14 +46,8 @@ import lombok.Setter;
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 public class Effort extends StartAndFinishDateTime {
-	
-    @Column(allowsNull="false", name="organisation_id")
-    @Getter 
-    @Setter(value=AccessLevel.PRIVATE)
-	private Organisation organisation;
     
 	@Column(allowsNull = "true", name="reward_id")
-	//hidden from UI
 	@Getter(value=AccessLevel.PACKAGE)
 	@Setter(value=AccessLevel.PACKAGE)
 	private Reward reward;

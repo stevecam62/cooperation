@@ -23,7 +23,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
-import javax.jdo.annotations.Discriminator;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
@@ -32,31 +31,21 @@ import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.joda.time.DateTime;
 
+import au.org.cooperation.modules.base.dom.OrganisationContext;
 import au.org.cooperation.modules.base.dom.impl.OrganisationPerson.OrganisationPersonStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
-@Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
-// @Discriminator(column="level", value="TASK")
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @DomainObject()
-public class Task {
-
-	@Column(allowsNull = "false", name = "organisation_id")
-	@Getter
-	@Setter(value = AccessLevel.PRIVATE)
-	private Organisation organisation;
+public class Task extends OrganisationContext{
 
 	@Column(allowsNull = "true", name = "parent_task_id")
 	@Getter

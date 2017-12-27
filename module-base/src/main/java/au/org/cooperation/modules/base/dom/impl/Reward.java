@@ -24,6 +24,8 @@ import java.util.List;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -31,18 +33,15 @@ import javax.jdo.annotations.Persistent;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.Programmatic;
 
+import au.org.cooperation.modules.base.dom.OrganisationContext;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @DomainObject()
-public class Reward {
-
-	@Column(allowsNull = "false", name="organisation_id")
-	@Getter
-	@Setter(value = AccessLevel.PRIVATE)
-	protected Organisation organisation;
+public class Reward extends OrganisationContext{
 
 	@Column(allowsNull = "false", name="person_id")
 	@Getter

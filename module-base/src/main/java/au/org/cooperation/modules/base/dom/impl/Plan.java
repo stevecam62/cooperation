@@ -17,12 +17,13 @@
  *  under the License.
  */package au.org.cooperation.modules.base.dom.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.Order;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -30,18 +31,14 @@ import javax.jdo.annotations.Persistent;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
-import lombok.AccessLevel;
+import au.org.cooperation.modules.base.dom.OrganisationContext;
 import lombok.Getter;
 import lombok.Setter;
 
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @DomainObject()
-public class Plan {
-
-	@Column(allowsNull = "false", name="organisation_id")
-	@Getter
-	@Setter(value=AccessLevel.PRIVATE)
-	protected Organisation organisation;
+public class Plan extends OrganisationContext{
 
 	@Column(allowsNull = "false", length=50)
 	@Getter
