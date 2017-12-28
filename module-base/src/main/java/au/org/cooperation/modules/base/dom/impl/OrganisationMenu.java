@@ -33,7 +33,7 @@ import org.apache.isis.applib.services.bookmark.BookmarkService;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.OrganisationMenu", repositoryFor = Organisation.class)
-@DomainServiceLayout(named = "Organisations", menuOrder = "10")
+@DomainServiceLayout(named = "My Organisations", menuOrder = "10")
 public class OrganisationMenu {
 
 	@Action(semantics = SemanticsOf.SAFE)

@@ -33,7 +33,7 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
-@DomainService(
+/*@DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
         objectType = "cooperation.TaskMenu",
         repositoryFor = Task.class
@@ -41,7 +41,7 @@ import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 @DomainServiceLayout(
         named = "Tasks",
         menuOrder = "20"
-)
+)*/
 public class TaskMenu {
 
     @Action(semantics = SemanticsOf.SAFE)

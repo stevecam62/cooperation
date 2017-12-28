@@ -18,7 +18,6 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,16 +25,12 @@ import javax.inject.Inject;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
-import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.NatureOfService;
-import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
-@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.RewardMenu", repositoryFor = Reward.class)
-@DomainServiceLayout(named = "Reward", menuOrder = "40")
+//@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.RewardMenu", repositoryFor = Reward.class)
+//@DomainServiceLayout(named = "Reward", menuOrder = "40")
 public class RewardMenu {
 
 	@Action(semantics = SemanticsOf.SAFE)

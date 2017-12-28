@@ -31,8 +31,8 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 import org.joda.time.DateTime;
 
-@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.EffortMenu", repositoryFor = Effort.class)
-@DomainServiceLayout(named = "Effort", menuOrder = "40")
+//@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.EffortMenu", repositoryFor = Effort.class)
+//@DomainServiceLayout(named = "Effort", menuOrder = "40")
 public class EffortMenu {
 
 	@Action(semantics = SemanticsOf.SAFE)
