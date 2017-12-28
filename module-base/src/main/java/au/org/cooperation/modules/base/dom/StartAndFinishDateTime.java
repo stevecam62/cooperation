@@ -18,7 +18,7 @@ import org.joda.time.Duration;
  * 
  */
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
-public abstract class StartAndFinishDateTime  extends OrganisationContext {
+public abstract class StartAndFinishDateTime  extends AbstractOrganisationContext {
 
 	protected DateTime startDateTime;
 	protected DateTime endDateTime;

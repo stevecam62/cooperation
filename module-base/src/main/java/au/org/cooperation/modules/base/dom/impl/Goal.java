@@ -34,7 +34,7 @@ import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Programmatic;
 
-import au.org.cooperation.modules.base.dom.OrganisationContext;
+import au.org.cooperation.modules.base.dom.AbstractOrganisationContext;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -42,7 +42,7 @@ import lombok.Setter;
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @DomainObject()
-public class Goal extends OrganisationContext{
+public class Goal extends AbstractOrganisationContext{
 
 	@Column(allowsNull = "false", length = 100)
 	@Getter

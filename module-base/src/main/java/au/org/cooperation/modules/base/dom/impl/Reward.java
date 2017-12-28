@@ -33,7 +33,7 @@ import javax.jdo.annotations.Persistent;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.Programmatic;
 
-import au.org.cooperation.modules.base.dom.OrganisationContext;
+import au.org.cooperation.modules.base.dom.AbstractOrganisationContext;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,7 +41,7 @@ import lombok.Setter;
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @DomainObject()
-public class Reward extends OrganisationContext{
+public class Reward extends AbstractOrganisationContext{
 
 	@Column(allowsNull = "false", name="person_id")
 	@Getter

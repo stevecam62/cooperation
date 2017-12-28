@@ -31,14 +31,14 @@ import javax.jdo.annotations.Persistent;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
-import au.org.cooperation.modules.base.dom.OrganisationContext;
+import au.org.cooperation.modules.base.dom.AbstractOrganisationContext;
 import lombok.Getter;
 import lombok.Setter;
 
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @DomainObject()
-public class Plan extends OrganisationContext{
+public class Plan extends AbstractOrganisationContext{
 
 	@Column(allowsNull = "false", length=50)
 	@Getter

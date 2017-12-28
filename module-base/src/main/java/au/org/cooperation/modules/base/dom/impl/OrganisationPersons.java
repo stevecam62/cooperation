@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
+import au.org.cooperation.modules.base.dom.OrganisationContext;
 import au.org.cooperation.modules.base.dom.impl.OrganisationPerson.OrganisationPersonStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -40,11 +41,11 @@ import lombok.Setter;
 @XmlRootElement(name = "OrganisationPersons")
 @XmlType(propOrder = { "organisation" })
 @XmlAccessorType(XmlAccessType.FIELD)
-public class OrganisationPersons {
+public class OrganisationPersons implements OrganisationContext{
 
 	@XmlElement(required = true)
-	@Getter(value = AccessLevel.PRIVATE)
-	@Setter()
+	@Getter()
+	@Setter(value=AccessLevel.PACKAGE)
 	private Organisation organisation;
 
 	public OrganisationPersons() {

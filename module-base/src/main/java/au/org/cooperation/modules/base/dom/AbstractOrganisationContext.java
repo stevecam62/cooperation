@@ -13,7 +13,7 @@ import lombok.Setter;
 
 @PersistenceCapable()
 @Inheritance(strategy=InheritanceStrategy.SUBCLASS_TABLE)
-public abstract class OrganisationContext {
+public abstract class AbstractOrganisationContext implements OrganisationContext{
 
 		@Column(allowsNull = "false", name = "organisation_id")
 		@Getter

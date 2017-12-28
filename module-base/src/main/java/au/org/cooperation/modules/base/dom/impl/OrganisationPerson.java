@@ -31,6 +31,7 @@ import javax.jdo.annotations.Unique;
 
 import org.apache.isis.applib.annotation.DomainObject;
 
+import au.org.cooperation.modules.base.dom.OrganisationContext;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,7 +44,7 @@ import lombok.Setter;
 				+ "WHERE person == :person ") })
 @Unique(name = "SimpleObject_name_UNQ", members = { "organisation", "person" })
 @DomainObject()
-public class OrganisationPerson {
+public class OrganisationPerson implements OrganisationContext {
 
 	@Column(allowsNull = "false", name = "organisation_id")
 	@Getter

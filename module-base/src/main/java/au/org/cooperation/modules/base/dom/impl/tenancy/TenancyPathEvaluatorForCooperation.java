@@ -9,6 +9,7 @@ import org.isisaddons.module.security.dom.user.ApplicationUser;
 
 import au.org.cooperation.modules.base.dom.impl.Person;
 import au.org.cooperation.modules.base.dom.impl.Result;
+import au.org.cooperation.modules.base.dom.impl.Task;
 import au.org.cooperation.modules.base.dom.OrganisationContext;
 import au.org.cooperation.modules.base.dom.impl.Effort;
 import au.org.cooperation.modules.base.dom.impl.Organisation;
@@ -43,8 +44,8 @@ public class TenancyPathEvaluatorForCooperation implements ApplicationTenancyEva
 				if (currentOrg.isAdministrator((Person) user)) {
 					return null;
 				} else {
-					// ordinary users have access to Effort and Result only
-					if (obj instanceof Effort || obj instanceof Result) {
+					// ordinary users have access to Task (some actions), Effort and Result only
+					if (obj instanceof Task || obj instanceof Effort || obj instanceof Result) {
 						return null;
 					} else {
 						return "User is not an administrator of this Organisation";
@@ -53,7 +54,6 @@ public class TenancyPathEvaluatorForCooperation implements ApplicationTenancyEva
 			}
 		}
 		return "No access allowed, relates to wrong Organisation";
-
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class TenancyPathEvaluatorForCooperation implements ApplicationTenancyEva
 			if (((OrganisationContext) obj).getOrganisation().equals(currentOrg))
 				return null;
 		}
-		return "No access allowed, wrong Organisation";
+		return "No access allowed, relates to wrong Organisation";
 	}
 
 	@Inject

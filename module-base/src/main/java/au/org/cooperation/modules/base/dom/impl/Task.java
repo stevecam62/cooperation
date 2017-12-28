@@ -36,7 +36,7 @@ import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.joda.time.DateTime;
 
-import au.org.cooperation.modules.base.dom.OrganisationContext;
+import au.org.cooperation.modules.base.dom.AbstractOrganisationContext;
 import au.org.cooperation.modules.base.dom.impl.OrganisationPerson.OrganisationPersonStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -45,7 +45,7 @@ import lombok.Setter;
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @DomainObject()
-public class Task extends OrganisationContext{
+public class Task extends AbstractOrganisationContext{
 
 	@Column(allowsNull = "true", name = "parent_task_id")
 	@Getter
