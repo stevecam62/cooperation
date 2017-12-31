@@ -30,6 +30,7 @@ import javax.jdo.annotations.Query;
 import javax.jdo.annotations.Unique;
 
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.Programmatic;
 
 import au.org.cooperation.modules.base.dom.OrganisationContext;
 import lombok.AccessLevel;
@@ -93,6 +94,20 @@ public class OrganisationPerson implements OrganisationContext {
 		public String title() {
 			return this.name();
 		}
+	}
+
+	@Override
+	@Programmatic
+	public String disables(OrganisationPerson orgPerson) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	@Programmatic
+	public String hides(OrganisationPerson orgPerson) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

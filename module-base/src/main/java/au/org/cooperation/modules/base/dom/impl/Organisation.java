@@ -41,6 +41,7 @@ import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Programmatic;
 
+import au.org.cooperation.modules.base.dom.OrganisationContext;
 import au.org.cooperation.modules.base.dom.impl.OrganisationPerson.OrganisationPersonStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -49,7 +50,7 @@ import lombok.Setter;
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
 @DomainObject()
 @XmlJavaTypeAdapter(org.apache.isis.schema.utils.jaxbadapters.PersistentEntityAdapter.class)
-public class Organisation {
+public class Organisation implements OrganisationContext{
 
 	@Column(allowsNull = "false", length = 50)
 	@Getter
@@ -86,6 +87,34 @@ public class Organisation {
 	public Organisation(String name) {
 		setName(name);
 	}
+	
+	//implements OrganisationContext
+	@Override
+	@Programmatic
+	public Organisation getOrganisation() {
+		return this;
+	}
+	
+	@Override
+	@Programmatic
+	public String disables(OrganisationPerson orgPerson) {
+		if (orgPerson == null) {
+			return "No access allowed";
+		} else {
+			return (orgPerson.isAdministrator()) ? null : "User is not an administrator of this Organisation";
+		}
+	}
+
+	@Override
+	@Programmatic
+	public String hides(OrganisationPerson orgPerson) {
+		if (orgPerson == null) {
+			return "No access allowed";
+		} else {
+			return  null;
+		}
+	}
+	//end implements OrganisationContext
 
 	public String title() {
 		return getName();
@@ -266,5 +295,8 @@ public class Organisation {
 
 	@Inject
 	PersonRepository personRepository;
+
+
+
 
 }

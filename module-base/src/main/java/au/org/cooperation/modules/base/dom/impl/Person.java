@@ -79,7 +79,7 @@ public class Person extends ApplicationUser {
 	 * Allow a default Organisation to be set on the current user.
 	 */
 	@Column(allowsNull = "true", name = "org_person_id")
-	@Getter(value = AccessLevel.PACKAGE)
+	@Getter()
 	@Setter(value = AccessLevel.PACKAGE)
 	private OrganisationPerson orgPerson;
 

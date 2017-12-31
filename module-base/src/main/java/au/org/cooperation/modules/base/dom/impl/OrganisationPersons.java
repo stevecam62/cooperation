@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
 import au.org.cooperation.modules.base.dom.OrganisationContext;
@@ -145,5 +146,19 @@ public class OrganisationPersons implements OrganisationContext{
 	@XmlTransient
 	@Inject
 	OrganisationRepository organisationRepository;
+
+	@Override
+	@Programmatic
+	public String disables(OrganisationPerson orgPerson) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	@Programmatic
+	public String hides(OrganisationPerson orgPerson) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
