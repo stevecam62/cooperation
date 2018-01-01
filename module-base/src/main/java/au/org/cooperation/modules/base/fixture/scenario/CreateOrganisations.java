@@ -75,7 +75,8 @@ public class CreateOrganisations extends FixtureScript {
 					wrap(organisation).addPlan(_plan.getName());
 				}
 				// people
-				for (Person _person : _organisation.getPerson()) {
+				for (Organisation.Person _orgPerson : _organisation.getPerson()) {
+					Person _person = (Person) JAXBIntrospector.getValue(_orgPerson.getPerson());
 					au.org.cooperation.modules.base.dom.impl.Person person = wrap(personMenu).create(
 							_person.getGivenName(), _person.getFamilyName(),
 							new java.sql.Date(_person.getDateOfBirth().getTime()), _person.getUsername(),

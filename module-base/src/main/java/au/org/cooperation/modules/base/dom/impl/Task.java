@@ -19,6 +19,7 @@
 package au.org.cooperation.modules.base.dom.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -34,18 +35,21 @@ import javax.jdo.annotations.Persistent;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.Programmatic;
+import org.apache.isis.applib.services.i18n.TranslatableString;
 import org.joda.time.DateTime;
 
 import au.org.cooperation.modules.base.dom.AbstractOrganisationContext;
+import au.org.cooperation.modules.base.dom.StartAndFinishDateTime;
 import au.org.cooperation.modules.base.dom.impl.OrganisationPerson.OrganisationPersonStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "cooperation")
-@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
+@Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 @DomainObject()
-public class Task extends AbstractOrganisationContext{
+public class Task extends AbstractOrganisationContext {
 
 	@Column(allowsNull = "true", name = "parent_task_id")
 	@Getter
@@ -160,7 +164,8 @@ public class Task extends AbstractOrganisationContext{
 		return temp;
 	}
 
-	public Task addEffort(@ParameterLayout(named = "Person") Person person, DateTime start, DateTime end) {
+	public Task addEffort(@ParameterLayout(named = "Person") Person person,
+			@ParameterLayout(named = "Start time") DateTime start, @ParameterLayout(named = "end time") DateTime end) {
 		Effort effort = taskRepository.createEffort(this, person, start, end);
 		this.getEfforts().add(effort);
 		person.getEfforts().add(effort);
@@ -168,12 +173,71 @@ public class Task extends AbstractOrganisationContext{
 	}
 
 	public List<Person> choices0AddEffort() {
-		return this.getPersons();
+		Person person = personRepository.currentPerson();
+		OrganisationPerson orgPerson = person.getOrgPerson(this.getOrganisation());
+		if (orgPerson.isAdministrator()) {
+			return this.getPersons();
+		} else {
+			for (Person p : this.getPersons()) {
+				if (p.equals(person))
+					return Arrays.asList(person);
+			}
+			return null;
+		}
+	}
+
+	public Person default0AddEffort() {
+		Person person = personRepository.currentPerson();
+		for (Person p : this.getPersons()) {
+			if (p.equals(person))
+				return person;
+		}
+		return null;
+	}
+
+	public String validateAddEffort(Person person, DateTime start, DateTime end) {
+		return StartAndFinishDateTime.validateStartAndFinishDateTimes(start, end);
+	}
+
+	public TranslatableString disableAddEffort() {
+		if (this.getPersons().size() == 0) {
+			return TranslatableString.tr("No Persons are linked to this Task");
+		} else {
+			Person person = personRepository.currentPerson();
+			OrganisationPerson orgPerson = person.getOrgPerson(this.getOrganisation());
+			if (orgPerson.isAdministrator()) {
+				return null;
+			} else {
+				for (Person p : this.getPersons()) {
+					if (p.equals(person))
+						return null;
+				}
+				return TranslatableString.tr("User is not yet linked to this Task");
+			}
+		}
 	}
 
 	public Task addResult(@ParameterLayout(named = "Result description") String description) {
 		this.getResults().add(taskRepository.createResult(this, description));
 		return this;
+	}
+
+	public TranslatableString disableAddResult() {
+		if (this.getPersons().size() == 0) {
+			return TranslatableString.tr("No Persons are linked to this Task");
+		} else {
+			Person person = personRepository.currentPerson();
+			OrganisationPerson orgPerson = person.getOrgPerson(this.getOrganisation());
+			if (orgPerson.isAdministrator()) {
+				return null;
+			} else {
+				for (Person p : this.getPersons()) {
+					if (p.equals(person))
+						return null;
+				}
+				return TranslatableString.tr("User is not yet linked to this Task");
+			}
+		}
 	}
 
 	public Task addOutcome(@ParameterLayout(named = "Outcome description") String description,
@@ -198,6 +262,47 @@ public class Task extends AbstractOrganisationContext{
 	public Task addSubTask(@ParameterLayout(named = "Task name") String name) {
 		this.getSubTasks().add(taskRepository.createSubTask(this, name));
 		return this;
+	}
+
+	public TranslatableString disableName() {
+		return isUserAnOrganisationAdministrator();
+	}
+
+	public TranslatableString disableDescription() {
+		return isUserAnOrganisationAdministrator();
+	}
+
+	public TranslatableString disableAddPerson() {
+		return isUserAnOrganisationAdministrator();
+	}
+
+	public TranslatableString disableRemovePerson() {
+		return isUserAnOrganisationAdministrator();
+	}
+
+	public TranslatableString disableAddSubTask() {
+		return isUserAnOrganisationAdministrator();
+	}
+
+	public TranslatableString disableAddOutcome() {
+		return isUserAnOrganisationAdministrator();
+	}
+
+	private TranslatableString isUserAnOrganisationAdministrator() {
+		Person person = personRepository.currentPerson();
+		OrganisationPerson orgPerson = person.getOrgPerson(this.getOrganisation());
+		return (orgPerson != null && orgPerson.isAdministrator()) ? null
+				: TranslatableString.tr("User is not an administrator of this Organisation");
+	}
+
+	@Override
+	@Programmatic
+	public String disables(OrganisationPerson orgPerson) {
+		if (orgPerson == null) {
+			return "No access";
+		} else {
+			return null;
+		}
 	}
 
 	@Inject

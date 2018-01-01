@@ -55,7 +55,11 @@ public class AdministratorMenu {
 	}
 	
 	public boolean hideListAdministrators(){
-		return !organisationRepo.currentOrganisation().isAdministrator(personRepo.currentPerson());
+		Person person = personRepo.currentPerson();
+		if(person.isSystemAdmin())
+			return true;
+		else
+			return (person.getOrgPerson(null) != null) ? !person.getOrgPerson(null).isAdministrator() : true;
 	}
 
 	@Action(semantics = SemanticsOf.NON_IDEMPOTENT)
@@ -77,7 +81,11 @@ public class AdministratorMenu {
 	}
 	
 	public boolean hideAddAdministrator(){
-		return !organisationRepo.currentOrganisation().isAdministrator(personRepo.currentPerson());
+		Person person = personRepo.currentPerson();
+		if(person.isSystemAdmin())
+			return true;
+		else
+			return (person.getOrgPerson(null) != null) ? !person.getOrgPerson(null).isAdministrator() : true;
 	}
 
 	@Action(semantics = SemanticsOf.NON_IDEMPOTENT)
@@ -99,7 +107,11 @@ public class AdministratorMenu {
 	}
 	
 	public boolean hideRemoveAdministrator(){
-		return !organisationRepo.currentOrganisation().isAdministrator(personRepo.currentPerson());
+		Person person = personRepo.currentPerson();
+		if(person.isSystemAdmin())
+			return true;
+		else
+			return (person.getOrgPerson(null) != null) ? !person.getOrgPerson(null).isAdministrator() : true;
 	}
 
 	@javax.inject.Inject

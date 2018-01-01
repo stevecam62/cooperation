@@ -24,6 +24,7 @@ import javax.jdo.annotations.*;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.Programmatic;
 
 import au.org.cooperation.modules.base.dom.AbstractOrganisationContext;
 import lombok.AccessLevel;
@@ -66,6 +67,16 @@ public class Result extends AbstractOrganisationContext{
     	Outcome outcome = organisationRepository.createOutcome(this, description);
     	return this;
     }
+    
+	@Override
+	@Programmatic
+	public String disables(OrganisationPerson orgPerson) {
+		if (orgPerson == null) {
+			return "No access";
+		} else {
+			return null;
+		}
+	}
     
 	@Inject
 	OrganisationRepository organisationRepository;

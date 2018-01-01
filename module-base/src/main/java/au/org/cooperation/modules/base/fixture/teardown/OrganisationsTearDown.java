@@ -19,34 +19,42 @@
 
 package au.org.cooperation.modules.base.fixture.teardown;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
 
 public class OrganisationsTearDown extends FixtureScript {
 
-    @Override
-    protected void execute(ExecutionContext executionContext) {
-    	isisJdoSupport.executeUpdate("delete from cooperation.reward");
-    	isisJdoSupport.executeUpdate("delete from cooperation.result_outcomes");
-    	isisJdoSupport.executeUpdate("delete from cooperation.outcome_results");
-    	isisJdoSupport.executeUpdate("delete from cooperation.result");
-    	isisJdoSupport.executeUpdate("delete from cooperation.outcome");
-    	isisJdoSupport.executeUpdate("delete from cooperation.effort");
-    	isisJdoSupport.executeUpdate("delete from cooperation.person_tasks");
-    	isisJdoSupport.executeUpdate("delete from cooperation.task_persons");
-    	isisJdoSupport.executeUpdate("delete from cooperation.person");
-    	isisJdoSupport.executeUpdate("delete from cooperation.task");
-    	isisJdoSupport.executeUpdate("delete from cooperation.goal");
-    	isisJdoSupport.executeUpdate("delete from cooperation.aim");
-    	isisJdoSupport.executeUpdate("delete from cooperation.plan");
-    	isisJdoSupport.executeUpdate("delete from cooperation.organisation");
-        isisJdoSupport.executeUpdate("delete from cooperation.person where id <> 1");
-        isisJdoSupport.executeUpdate("delete from cooperation.applicationuserroles where userid <> 1");
-        isisJdoSupport.executeUpdate("delete from cooperation.applicationuser where id <> 1");
-    }
+	@Override
+	protected void execute(ExecutionContext executionContext) {
+		try {
+			Integer result = isisJdoSupport.executeUpdate("delete from cooperation.reward");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.result_outcomes");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.outcome_results");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.result");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.outcome");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.effort");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.person_tasks");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.task_persons");
+			// isisJdoSupport.executeUpdate("delete from cooperation.person");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.task");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.goal");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.aim");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.plan");
+			result = isisJdoSupport.executeUpdate("update cooperation.person set org_person_id = null");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.organisation_person");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.organisation");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.person where id <> 1");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.applicationuserroles where userid <> 1");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.applicationuser where id <> 1");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-
-    @javax.inject.Inject
-    private IsisJdoSupport isisJdoSupport;
+	@javax.inject.Inject
+	private IsisJdoSupport isisJdoSupport;
 
 }

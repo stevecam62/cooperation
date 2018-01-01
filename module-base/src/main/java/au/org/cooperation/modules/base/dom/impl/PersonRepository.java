@@ -57,6 +57,7 @@ public class PersonRepository {
 		object.setGivenName(givenName);
 		object.setFamilyName(familyName);
 		object.setDateOfBirth(dateOfBirth);
+		object.setSystemAdmin(false);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;

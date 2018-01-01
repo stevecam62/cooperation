@@ -33,8 +33,8 @@ public class TenancyPathEvaluatorForCooperation implements ApplicationTenancyEva
 		OrganisationContext context = (OrganisationContext) obj;
 		Organisation organisation = context.getOrganisation();
 		OrganisationPerson orgPerson = null;
-		if(person.getCurrentOrganisation().equals(organisation))
-			orgPerson= person.getOrgPerson();
+		if(person.getCurrentOrganisation() != null && person.getCurrentOrganisation().equals(organisation))
+			orgPerson= person.getOrgPerson(null);
 		else
 			orgPerson = organisationRepo.findOrganisationPerson(organisation, person);
 		return context.disables(orgPerson);
@@ -46,11 +46,11 @@ public class TenancyPathEvaluatorForCooperation implements ApplicationTenancyEva
 		OrganisationContext context = (OrganisationContext) obj;
 		Organisation organisation = context.getOrganisation();
 		OrganisationPerson orgPerson = null;
-		if(person.getCurrentOrganisation().equals(organisation))
-			orgPerson= person.getOrgPerson();
+		if(person.getCurrentOrganisation() != null && person.getCurrentOrganisation().equals(organisation))
+			orgPerson= person.getOrgPerson(null);
 		else
 			orgPerson = organisationRepo.findOrganisationPerson(organisation, person);
-		return context.disables(orgPerson);
+		return context.hides(orgPerson);
 	}
 
 	@Inject

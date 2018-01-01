@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.Programmatic;
 import org.joda.time.DateTime;
 
 import au.org.cooperation.modules.base.dom.StartAndFinishDateTime;
@@ -123,6 +124,16 @@ public class Effort extends StartAndFinishDateTime {
 		this.setResult(result);
 		this.getTask().getResults().add(result);
 		return this;
+	}
+	
+	@Override
+	@Programmatic
+	public String disables(OrganisationPerson orgPerson) {
+		if (orgPerson == null) {
+			return "No access";
+		} else {
+			return null;
+		}
 	}
 	
 	@Inject

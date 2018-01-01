@@ -52,6 +52,12 @@ public class Person extends ApplicationUser {
 	@Setter
 	private java.sql.Date dateOfBirth;
 
+	//mainly used to control visibilitu of menu items
+	@Column(allowsNull = "false", defaultValue = "1")
+	@Getter(value = AccessLevel.PACKAGE)
+	@Setter(value = AccessLevel.PACKAGE)
+	private boolean isSystemAdmin;
+
 	// @XmlElement
 	// @Column(allowsNull="true")
 	// @Getter
@@ -79,22 +85,34 @@ public class Person extends ApplicationUser {
 	 * Allow a default Organisation to be set on the current user.
 	 */
 	@Column(allowsNull = "true", name = "org_person_id")
-	@Getter()
+	@Getter(value = AccessLevel.PRIVATE)
 	@Setter(value = AccessLevel.PACKAGE)
 	private OrganisationPerson orgPerson;
 
 	public String title() {
 		return this.getGivenName() + " " + getFamilyName();
 	}
+	
+	//a check to make sure current OrganisationPerson of a Person corresponds to the Organisation 'context' at the time!
+	@Programmatic
+	public OrganisationPerson getOrgPerson(Organisation organisation){
+		if(organisation == null)
+			return this.getOrgPerson();
+		else if(this.getOrgPerson() != null && this.getOrgPerson().getOrganisation().equals(organisation))
+			return this.getOrgPerson();
+		else
+			throw new IllegalArgumentException();
+	}
 
 	@Programmatic
 	public Organisation getCurrentOrganisation() {
-		if (this.getOrgPerson() != null) { //setting to inactive can also set current to null
+		if (this.getOrgPerson() != null) { // setting to inactive can also set
+											// current to null
 			return this.getOrgPerson().getOrganisation();
 		} else if (this.getOrganisations().size() > 0) {
-			//return first active found
-			for(OrganisationPerson op : this.getOrganisations()){
-				if(op.getStatus().equals(OrganisationPersonStatus.ACTIVE)){
+			// return first active found
+			for (OrganisationPerson op : this.getOrganisations()) {
+				if (op.getStatus().equals(OrganisationPersonStatus.ACTIVE)) {
 					this.setOrgPerson(op);
 					return op.getOrganisation();
 				}

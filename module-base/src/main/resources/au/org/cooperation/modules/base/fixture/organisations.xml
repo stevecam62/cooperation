@@ -1,34 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tns:organisations xmlns:tns="http://au.org.cooperation/base" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://au.org.cooperation/base cooperation.xsd ">
+	<tns:person id="person1">
+		<tns:family-name>Nykvist</tns:family-name>
+		<tns:given-name>Sven</tns:given-name>
+		<tns:date-of-birth>1922-12-03</tns:date-of-birth>
+		<tns:username>sven</tns:username>
+		<tns:password>pass</tns:password>
+		<tns:email>sven@gmail.coml</tns:email>
+		<tns:algorithm>algorithm1</tns:algorithm>
+		<tns:reward>
+			<tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
+			<tns:value>0.0</tns:value>
+			<tns:description>tns:description</tns:description>
+		</tns:reward>
+	</tns:person>
+	<tns:person id="person1">
+		<tns:family-name>Cameron</tns:family-name>
+		<tns:given-name>James</tns:given-name>
+		<tns:date-of-birth>1954-08-16</tns:date-of-birth>
+		<tns:username>jim</tns:username>
+		<tns:password>pass</tns:password>
+		<tns:email>jim@gmail.com</tns:email>
+		<tns:algorithm>algorithm2</tns:algorithm>
+		<tns:reward>
+			<tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
+			<tns:value>0.0</tns:value>
+			<tns:description>tns:description</tns:description>
+		</tns:reward>
+	</tns:person>
+	<tns:algorithm id="algorithm1">
+		<tns:name>tns:name</tns:name>
+	</tns:algorithm>
+	<tns:algorithm id="algorithm2">
+		<tns:name>tns:name</tns:name>
+	</tns:algorithm>
 	<tns:organisation>
 		<tns:name>Our Cooperative Organisation</tns:name>
-		<tns:description>An organisation that exists to provide work
-			opportunities for its members.
+		<tns:description><![CDATA[An organisation that exists to provide work opportunities for its members.]]>
 		</tns:description>
 		<tns:aim id="aim1">
 			<tns:name>Provide existing work for all existing members.</tns:name>
-			<tns:description>The primary aim is to provide employment for members
-				of the cooperative. The cooperative model provides the flexibility
-				to make this possible, in contrast to a profit maximising
-				organisation.
+			<tns:description><![CDATA[The primary aim is to provide employment for members of the cooperative. 
+				
+The cooperative model provides the flexibility to make this possible, in contrast to a profit maximising organisation.]]>
 			</tns:description>
 		</tns:aim>
 		<tns:aim id="aim2">
 			<tns:name>Provide work opportunities for new members.</tns:name>
-			<tns:description>tns:description</tns:description>
+			<tns:description><![CDATA[tns:description]]>
+			</tns:description>
 		</tns:aim>
 		<tns:aim id="aim3">
 			<tns:name>Maximise use of renewable energy.</tns:name>
-			<tns:description>tns:description</tns:description>
+			<tns:description><![CDATA[tns:description]]>
+			</tns:description>
 		</tns:aim>
 		<tns:aim id="aim4">
 			<tns:name>Minimise greenhouse gas emissions.</tns:name>
-			<tns:description>tns:description</tns:description>
+			<tns:description><![CDATA[tns:description]]>
+			</tns:description>
 		</tns:aim>
 		<tns:goal>
 			<tns:name>24 hours of work per week minimum.</tns:name>
-			<tns:description>
-<![CDATA[The objective of this goal is to allow a cooperative member to earn double the Newstart Allowance for the equivalent of 3 days work in a week.
+			<tns:description><![CDATA[The objective of this goal is to allow a cooperative member to earn double the Newstart Allowance for the equivalent of 3 days work in a week.
 
 The Newstart Allowance for a single person is $269.40 per week, so double that is $538.80 or $22.45 per hour for 24 hours (3 days * 8 hrs) effort.
  
@@ -37,26 +71,22 @@ The guaranteed minimum wage in Australia is presently $694.90 per week. This is 
 			<tns:aim>aim1</tns:aim>
 			<tns:task id="task1">
 				<tns:name>Gardening</tns:name>
-				<tns:description>All garden preparation, planting and tending of
-					crops.
+				<tns:description><![CDATA[All garden preparation, planting and tending of crops.]]>
 				</tns:description>
 			</tns:task>
 			<tns:task id="task2">
 				<tns:name>Produce Harvest and Processing</tns:name>
-				<tns:description>Harvesting and processing of crops grown to
-					marketable produce state.
+				<tns:description><![CDATA[Harvesting and processing of crops grown to marketable produce state.]]>
 				</tns:description>
 			</tns:task>
 			<tns:task id="task3">
 				<tns:name>Food Preparation</tns:name>
-				<tns:description>Value adding in kitchen facilities to saleable
-					prepared and/or cooked foods .
+				<tns:description><![CDATA[Value adding in kitchen facilities to saleable prepared and/or cooked foods .]]>
 				</tns:description>
 			</tns:task>
 			<tns:task id="task4">
 				<tns:name>Food Sales and Service</tns:name>
-				<tns:description>Selling grown produce and prepared foods, and other
-					customer service at markets and eateries.
+				<tns:description><![CDATA[Selling grown produce and prepared foods, and other customer service at markets and eateries.]]>
 				</tns:description>
 			</tns:task>
 		</tns:goal>
@@ -74,105 +104,25 @@ The guaranteed minimum wage in Australia is presently $694.90 per week. This is 
 		</tns:goal>
 		<tns:plan>
 			<tns:name>2017 Strategic Plan</tns:name>
-			<tns:description>tns:description</tns:description>
+			<tns:description><![CDATA[tns:description]]>
+			</tns:description>
 		</tns:plan>
 		<tns:plan>
 			<tns:name>2017 Operational Plan</tns:name>
-			<tns:description>tns:description</tns:description>
+			<tns:description><![CDATA[tns:description]]>
+			</tns:description>
 		</tns:plan>
 		<tns:person>
-			<tns:family-name>Nykvist</tns:family-name>
-			<tns:given-name>Sven</tns:given-name>
-			<tns:date-of-birth>1922-12-03</tns:date-of-birth>
-			<tns:username>sven</tns:username>
-			<tns:password>pass</tns:password>
-			<tns:email>sven@gmail.coml</tns:email>
-			<tns:effort>
-				<tns:result>
-					<tns:name>tns:name</tns:name>
-					<tns:outcome>
-						<tns:name>tns:name</tns:name>
-						<tns:description>tns:description</tns:description>
-					</tns:outcome>
-				</tns:result>
-				<tns:start>2001-12-31T12:00:00</tns:start>
-				<tns:end>2001-12-31T12:00:00</tns:end>
-			</tns:effort>
-			<tns:reward>
-				<tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
-				<tns:value>0.0</tns:value>
-				<tns:description>tns:description</tns:description>
-			</tns:reward>
-			<tns:algorithm>
-				<tns:name>tns:name</tns:name>
-				<tns:effort>
-					<tns:result>
-						<tns:name>tns:name</tns:name>
-						<tns:outcome>
-							<tns:name>tns:name</tns:name>
-							<tns:description>tns:description</tns:description>
-						</tns:outcome>
-					</tns:result>
-					<tns:start>2001-12-31T12:00:00</tns:start>
-					<tns:end>2001-12-31T12:00:00</tns:end>
-				</tns:effort>
-				<tns:outcome>
-					<tns:name>tns:name</tns:name>
-					<tns:description>tns:description</tns:description>
-				</tns:outcome>
-				<tns:reward>
-					<tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
-					<tns:value>0.0</tns:value>
-					<tns:description>tns:description</tns:description>
-				</tns:reward>
-			</tns:algorithm>
+			<tns:isCreator>true</tns:isCreator>
+			<tns:isAdministrator>true</tns:isAdministrator>
+			<tns:person>person1</tns:person>
+			<tns:algorithm>algorithm1</tns:algorithm>
 		</tns:person>
 		<tns:person>
-			<tns:family-name>Cameron</tns:family-name>
-			<tns:given-name>James</tns:given-name>
-			<tns:date-of-birth>1954-08-16</tns:date-of-birth>
-			<tns:username>jim</tns:username>
-			<tns:password>pass</tns:password>
-			<tns:email>jim@gmail.com</tns:email>
-			<tns:effort>
-				<tns:result>
-					<tns:name>tns:name</tns:name>
-					<tns:outcome>
-						<tns:name>tns:name</tns:name>
-						<tns:description>tns:description</tns:description>
-					</tns:outcome>
-				</tns:result>
-				<tns:start>2001-12-31T12:00:00</tns:start>
-				<tns:end>2001-12-31T12:00:00</tns:end>
-			</tns:effort>
-			<tns:reward>
-				<tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
-				<tns:value>0.0</tns:value>
-				<tns:description>tns:description</tns:description>
-			</tns:reward>
-			<tns:algorithm>
-				<tns:name>tns:name</tns:name>
-				<tns:effort>
-					<tns:result>
-						<tns:name>tns:name</tns:name>
-						<tns:outcome>
-							<tns:name>tns:name</tns:name>
-							<tns:description>tns:description</tns:description>
-						</tns:outcome>
-					</tns:result>
-					<tns:start>2001-12-31T12:00:00</tns:start>
-					<tns:end>2001-12-31T12:00:00</tns:end>
-				</tns:effort>
-				<tns:outcome>
-					<tns:name>tns:name</tns:name>
-					<tns:description>tns:description</tns:description>
-				</tns:outcome>
-				<tns:reward>
-					<tns:timestamp>2001-12-31T12:00:00</tns:timestamp>
-					<tns:value>0.0</tns:value>
-					<tns:description>tns:description</tns:description>
-				</tns:reward>
-			</tns:algorithm>
+			<tns:isCreator>false</tns:isCreator>
+			<tns:isAdministrator>false</tns:isAdministrator>
+			<tns:person>person2</tns:person>
+			<tns:algorithm>algorithm2</tns:algorithm>
 		</tns:person>
 	</tns:organisation>
 </tns:organisations>
