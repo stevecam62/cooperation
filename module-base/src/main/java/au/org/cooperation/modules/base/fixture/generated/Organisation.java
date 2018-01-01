@@ -275,7 +275,7 @@ public class Organisation {
         @XmlElement(required = true, type = Object.class)
         @XmlIDREF
         @XmlSchemaType(name = "IDREF")
-        protected Person person;
+        protected au.org.cooperation.modules.base.fixture.generated.Person person;
         @XmlElement(type = Object.class)
         @XmlIDREF
         @XmlSchemaType(name = "IDREF")
@@ -321,7 +321,7 @@ public class Organisation {
          *     {@link Object }
          *     
          */
-        public Person getPerson() {
+        public au.org.cooperation.modules.base.fixture.generated.Person getPerson() {
             return person;
         }
 
@@ -333,7 +333,7 @@ public class Organisation {
          *     {@link Object }
          *     
          */
-        public void setPerson(Person value) {
+        public void setPerson(au.org.cooperation.modules.base.fixture.generated.Person value) {
             this.person = value;
         }
 

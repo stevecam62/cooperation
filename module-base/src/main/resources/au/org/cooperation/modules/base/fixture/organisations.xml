@@ -14,7 +14,7 @@
 			<tns:description>tns:description</tns:description>
 		</tns:reward>
 	</tns:person>
-	<tns:person id="person1">
+	<tns:person id="person2">
 		<tns:family-name>Cameron</tns:family-name>
 		<tns:given-name>James</tns:given-name>
 		<tns:date-of-birth>1954-08-16</tns:date-of-birth>
