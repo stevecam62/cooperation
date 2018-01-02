@@ -13,10 +13,12 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.value.Password;
+import org.joda.time.DateTime;
 
 import au.org.cooperation.modules.base.dom.impl.OrganisationMenu;
 import au.org.cooperation.modules.base.dom.impl.PersonMenu;
 import au.org.cooperation.modules.base.fixture.generated.*;
+import au.org.cooperation.modules.base.fixture.generated.Organisation.Orgperson;
 
 public class CreateOrganisations extends FixtureScript {
 
@@ -37,7 +39,17 @@ public class CreateOrganisations extends FixtureScript {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			jaxbUnmarshaller.setEventHandler(new javax.xml.bind.helpers.DefaultValidationEventHandler());
 			Organisations _organisations = (Organisations) JAXBIntrospector.getValue(jaxbUnmarshaller.unmarshal(is));
+			// people
+			Map<String, au.org.cooperation.modules.base.dom.impl.Person> persons = new HashMap<>();
+			for (Person _person : _organisations.getPerson()) {
+				au.org.cooperation.modules.base.dom.impl.Person person = wrap(personMenu).create(_person.getGivenName(),
+						_person.getFamilyName(), new java.sql.Date(_person.getDateOfBirth().getTime()),
+						_person.getUsername(), new Password(_person.getPassword()), new Password(_person.getPassword()),
+						_person.getEmail());
+				persons.put(_person.getId(), person);
+			}
 			for (Organisation _organisation : _organisations.getOrganisation()) {
+
 				organisation = wrap(organisationMenu).create(_organisation.getName());
 				organisation.setDescription(_organisation.getDescription());
 				for (Aim _aim : _organisation.getAim()) {
@@ -68,21 +80,28 @@ public class CreateOrganisations extends FixtureScript {
 					for (Task _task : _goal.getTask()) {
 						au.org.cooperation.modules.base.dom.impl.Task task = goal.addTask(_task.getName(),
 								_task.getDescription());
+						for (Task _subtask : _task.getSubtask()) {
+							au.org.cooperation.modules.base.dom.impl.Task subtask = task.addSubTask(_subtask.getName(),
+									_subtask.getDescription());
+						}
+						for (Effort _effort : _task.getEffort()) {
+							au.org.cooperation.modules.base.dom.impl.Effort effort = task.addEffort(persons.get(_effort.getPerson().getId()), 
+									new DateTime(_effort.getStart()), 
+									new DateTime(_effort.getEnd()),
+									_effort.getResult().getName());
+						} 
+						for (Outcome _outcome : _task.getOutcome()) {
+							task.addOutcome(_outcome.getName(), null);
+						} 
 					}
 				}
 				// plans
 				for (Plan _plan : _organisation.getPlan()) {
 					wrap(organisation).addPlan(_plan.getName());
 				}
-				// people
-				for (Organisation.Person _orgPerson : _organisation.getPerson()) {
-					Person _person = (Person) JAXBIntrospector.getValue(_orgPerson.getPerson());
-					au.org.cooperation.modules.base.dom.impl.Person person = wrap(personMenu).create(
-							_person.getGivenName(), _person.getFamilyName(),
-							new java.sql.Date(_person.getDateOfBirth().getTime()), _person.getUsername(),
-							new Password(_person.getPassword()), new Password(_person.getPassword()),
-							_person.getEmail());
-					organisation.addPerson(person, _orgPerson.isIsCreator(), _orgPerson.isIsAdministrator());
+				// org-people
+				for (Orgperson _orgPerson : _organisation.getOrgperson()) { 
+					organisation.addPerson(persons.get(_orgPerson.getPerson().getId()), _orgPerson.isIsCreator(), _orgPerson.isIsAdministrator());
 				}
 			}
 		} catch (JAXBException e) {

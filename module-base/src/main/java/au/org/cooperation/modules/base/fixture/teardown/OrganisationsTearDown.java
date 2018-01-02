@@ -33,12 +33,13 @@ public class OrganisationsTearDown extends FixtureScript {
 			Integer result = isisJdoSupport.executeUpdate("delete from cooperation.reward");
 			result = isisJdoSupport.executeUpdate("delete from cooperation.result_outcomes");
 			result = isisJdoSupport.executeUpdate("delete from cooperation.outcome_results");
+			result = isisJdoSupport.executeUpdate("delete from cooperation.effort");
 			result = isisJdoSupport.executeUpdate("delete from cooperation.result");
 			result = isisJdoSupport.executeUpdate("delete from cooperation.outcome");
-			result = isisJdoSupport.executeUpdate("delete from cooperation.effort");
 			result = isisJdoSupport.executeUpdate("delete from cooperation.person_tasks");
 			result = isisJdoSupport.executeUpdate("delete from cooperation.task_persons");
 			// isisJdoSupport.executeUpdate("delete from cooperation.person");
+			result = isisJdoSupport.executeUpdate("update cooperation.task set parent_task_id = null");
 			result = isisJdoSupport.executeUpdate("delete from cooperation.task");
 			result = isisJdoSupport.executeUpdate("delete from cooperation.goal");
 			result = isisJdoSupport.executeUpdate("delete from cooperation.aim");

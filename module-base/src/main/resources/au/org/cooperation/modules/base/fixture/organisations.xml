@@ -73,6 +73,48 @@ The guaranteed minimum wage in Australia is presently $694.90 per week. This is 
 				<tns:name>Gardening</tns:name>
 				<tns:description><![CDATA[All garden preparation, planting and tending of crops.]]>
 				</tns:description>
+				<tns:subtask id="task1.1">
+					<tns:name>Soil management</tns:name>
+					<tns:description><![CDATA[Soil enhancement and seed-bed preparation.]]>
+					</tns:description>
+				</tns:subtask>
+				<tns:subtask id="task1.2">
+					<tns:name>Sowing</tns:name>
+					<tns:description><![CDATA[Sowing seeds or transplanting seedlings.]]>
+					</tns:description>
+				</tns:subtask>
+				<tns:subtask id="task1.3">
+					<tns:name>Thinning</tns:name>
+					<tns:description><![CDATA[Hand thinning of establised seedlings to optimal density.]]>
+					</tns:description>
+				</tns:subtask>
+				<tns:subtask id="task1.4">
+					<tns:name>Weeding</tns:name>
+					<tns:description><![CDATA[Removal of unwanted plant species, competing with crop species.]]>
+					</tns:description>
+				</tns:subtask>
+				<tns:subtask id="task1.5">
+					<tns:name>Watering</tns:name>
+					<tns:description><![CDATA[Maintenance of optimal soil moisture levels.]]>
+					</tns:description>
+				</tns:subtask>
+				<tns:subtask id="task1.6">
+					<tns:name>Pest and Disease Control</tns:name>
+					<tns:description><![CDATA[Wholistic management of insect pests and plant diseases.]]>
+					</tns:description>
+				</tns:subtask>
+				<tns:effort>
+				    <tns:person>person1</tns:person>
+					<tns:start>2017-12-31T09:00:00</tns:start>
+					<tns:end>2017-12-31T17:30:00</tns:end>
+					<tns:result>
+						<tns:name>Seeded 1 hectare with carrots.</tns:name>
+					</tns:result>
+				</tns:effort>
+				<tns:outcome id="idvalue3">
+					<tns:name>Raised 1 hectare of carrots.</tns:name>
+					<tns:description></tns:description>
+				</tns:outcome>
 			</tns:task>
 			<tns:task id="task2">
 				<tns:name>Produce Harvest and Processing</tns:name>
@@ -112,17 +154,17 @@ The guaranteed minimum wage in Australia is presently $694.90 per week. This is 
 			<tns:description><![CDATA[tns:description]]>
 			</tns:description>
 		</tns:plan>
-		<tns:person>
+		<tns:orgperson>
 			<tns:isCreator>true</tns:isCreator>
 			<tns:isAdministrator>true</tns:isAdministrator>
 			<tns:person>person1</tns:person>
 			<tns:algorithm>algorithm1</tns:algorithm>
-		</tns:person>
-		<tns:person>
+		</tns:orgperson>
+		<tns:orgperson>
 			<tns:isCreator>false</tns:isCreator>
 			<tns:isAdministrator>false</tns:isAdministrator>
 			<tns:person>person2</tns:person>
 			<tns:algorithm>algorithm2</tns:algorithm>
-		</tns:person>
+		</tns:orgperson>
 	</tns:organisation>
 </tns:organisations>

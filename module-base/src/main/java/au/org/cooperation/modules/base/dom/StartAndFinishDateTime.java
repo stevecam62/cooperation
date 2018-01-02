@@ -17,6 +17,7 @@ import org.joda.time.Duration;
  * Implements time accounting requirements
  * 
  */
+@PersistenceCapable()
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class StartAndFinishDateTime  extends AbstractOrganisationContext {
 

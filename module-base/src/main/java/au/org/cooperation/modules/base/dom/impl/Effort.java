@@ -18,21 +18,13 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.ParameterLayout;
@@ -59,7 +51,7 @@ public class Effort extends StartAndFinishDateTime {
 	private Result result;
 
 	@Column(allowsNull = "false", name="person_id")
-	@Getter
+	@Getter(value = AccessLevel.PROTECTED)
 	@Setter(value = AccessLevel.PROTECTED)
 	private Person person;
 
@@ -67,22 +59,6 @@ public class Effort extends StartAndFinishDateTime {
 	@Getter
 	@Setter(value = AccessLevel.PROTECTED)
 	private Task task;
-
-	/*@XmlElement(required = true, type = String.class)
-	@XmlJavaTypeAdapter(Adapter1.class)
-	@XmlSchemaType(name = "dateTime")
-	@Column(allowsNull = "true")
-	@Getter
-	@Setter
-	protected Date start;
-
-	@XmlElement(required = true, type = String.class)
-	@XmlJavaTypeAdapter(Adapter1.class)
-	@XmlSchemaType(name = "dateTime")
-	@Column(allowsNull = "true")
-	@Getter
-	@Setter
-	protected Date end;*/
 
 	Effort() {
 	}
@@ -97,6 +73,11 @@ public class Effort extends StartAndFinishDateTime {
 	
 	public String title(){
 		return "Effort by " + this.getPerson().title();
+	}
+	
+	@NotPersistent
+	public PersonView getPersonView(){
+		return new PersonView(this.getPerson());
 	}
 
 	public Effort assignToResult(Result result) {

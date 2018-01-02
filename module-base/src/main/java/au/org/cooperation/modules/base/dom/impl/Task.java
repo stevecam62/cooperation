@@ -34,6 +34,8 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.services.i18n.TranslatableString;
@@ -111,7 +113,6 @@ public class Task extends AbstractOrganisationContext {
 
 	public Task(Task task, String name) {
 		this.setOrganisation(task.getOrganisation());
-		this.setGoal(task.getGoal());
 		this.setParentTask(task);
 		this.setName(name);
 	}
@@ -165,11 +166,21 @@ public class Task extends AbstractOrganisationContext {
 	}
 
 	public Task addEffort(@ParameterLayout(named = "Person") Person person,
-			@ParameterLayout(named = "Start time") DateTime start, @ParameterLayout(named = "end time") DateTime end) {
+			@ParameterLayout(named = "Start time") DateTime start,
+			@Parameter(optionality = Optionality.OPTIONAL) @ParameterLayout(named = "End time") DateTime end) {
 		Effort effort = taskRepository.createEffort(this, person, start, end);
 		this.getEfforts().add(effort);
 		person.getEfforts().add(effort);
 		return this;
+	}
+
+	@Programmatic
+	public Effort addEffort(Person person, DateTime start, DateTime end, String resultName) {
+		Effort effort = taskRepository.createEffort(this, person, start, end);
+		this.getEfforts().add(effort);
+		person.getEfforts().add(effort);
+		effort.addResult(resultName);
+		return effort;
 	}
 
 	public List<Person> choices0AddEffort() {
@@ -264,6 +275,14 @@ public class Task extends AbstractOrganisationContext {
 		return this;
 	}
 
+	@Programmatic
+	public Task addSubTask(String name, String description) {
+		Task subtask = taskRepository.createSubTask(this, name);
+		subtask.setDescription(description);
+		this.getSubTasks().add(subtask);
+		return subtask;
+	}
+
 	public TranslatableString disableName() {
 		return isUserAnOrganisationAdministrator();
 	}
@@ -313,4 +332,5 @@ public class Task extends AbstractOrganisationContext {
 
 	@Inject
 	PersonRepository personRepository;
+
 }

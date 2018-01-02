@@ -32,8 +32,21 @@
         <tns:name>tns:name</tns:name>
         <tns:description>tns:description</tns:description>
         <tns:person>idvalue0</tns:person>
+        <tns:subtask id=""/>
+        <tns:effort>
+          <tns:person>idvalue0</tns:person>
+          <tns:start>2001-12-31T12:00:00</tns:start>
+          <tns:end>2001-12-31T12:00:00</tns:end>
+          <tns:result>
+            <tns:name>tns:name</tns:name>
+            <tns:task>idvalue0</tns:task>
+          </tns:result>
+        </tns:effort>
+        <tns:outcome id="idvalue3">
+          <tns:name>tns:name</tns:name>
+          <tns:description>tns:description</tns:description>
+        </tns:outcome>
       </tns:task>
-      <tns:outcome>idvalue0</tns:outcome>
     </tns:goal>
     <tns:plan>
       <tns:name>tns:name</tns:name>
@@ -46,15 +59,23 @@
           <tns:name>tns:name</tns:name>
           <tns:description>tns:description</tns:description>
           <tns:person>idvalue0</tns:person>
+          <tns:subtask id=""/>
+          <tns:effort>
+            <tns:person>idvalue0</tns:person>
+            <tns:start>2001-12-31T12:00:00</tns:start>
+            <tns:end>2001-12-31T12:00:00</tns:end>
+          </tns:effort>
+          <tns:outcome id="idvalue4">
+            <tns:name>tns:name</tns:name>
+          </tns:outcome>
         </tns:task>
-        <tns:outcome>idvalue0</tns:outcome>
       </tns:goal>
     </tns:plan>
-    <tns:person>
+    <tns:orgperson>
       <tns:isCreator>true</tns:isCreator>
       <tns:isAdministrator>true</tns:isAdministrator>
       <tns:person>idvalue0</tns:person>
       <tns:algorithm>idvalue0</tns:algorithm>
-    </tns:person>
+    </tns:orgperson>
   </tns:organisation>
 </tns:organisations>
