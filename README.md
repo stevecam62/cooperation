@@ -1,16 +1,14 @@
-# Cooperation
 
-* The action or process of working together to the same end.
-* Assistance, especially by complying readily with requests.
-* The formation and operation of cooperatives.
-
-# Conceptual Model
-
-![Conceptual Model](https://github.com/stevecam62/cooperation/blob/master/module-base/documents/cooperation.png)
 
 # Description
 
 ## Introduction
+
+Cooperation
+
+* The action or process of working together to the same end.
+* Assistance, especially by complying readily with requests.
+* The formation and operation of cooperatives.
 
 The essential core of this project is the idea that all cooperative effort must have well defined aims and that translate into goals and thence to tasks, which the persons cooperating perform to achieve those goals and aims. 
 
@@ -30,6 +28,10 @@ In all cooperation 'human nature' is a factor, put simply individuals are strong
 
 Another aspect of fairness is reward. Getting fair rewards from cooperation is probably more flexible than fairness in contributed effort, people will volunteer time to some organisations. Individuals may see a cooperative as a way to gain non-financial rewards that they cannot achieve individually. So in terms of cooperation generally and in forming and operating a cooperative specifically, this flexibility in rewards needs to be considered and managed carefully.
 
+# Conceptual Model
+
+![Conceptual Model](https://github.com/stevecam62/cooperation/blob/master/module-base/documents/cooperation.png)
+
 ## Implementation
 
 This project uses the Java web-application framework [Apache Isis](http://isis.apache.org).
@@ -40,7 +42,7 @@ It can be enhanced relatively easily by customising its Java Domain Model and/or
 
 ### Organisation
 
-A formal on informal group of cooperating people.
+A formal on informal group of cooperating people. Individual Persons are linked to specific Organisations and view one linked Organisation at a time.
 
 ![Organisation Screen](https://github.com/stevecam62/cooperation/blob/master/module-base/images/screen/Organisation.png)
 
@@ -70,7 +72,7 @@ A named grouping of Goals with an associated set of Tasks, most likely relating 
 
 ### Person
 
-An individual cooperating person.
+An individual cooperating person. Each person has a single user 'account' in the system.
 
 ### Effort
 
