@@ -66,6 +66,8 @@ A statement of ongoing or one-of work that can be assigned to individuals for co
 
 A named grouping of Goals with an associated set of Tasks, most likely relating to a time period.
 
+![Plan Screen](https://github.com/stevecam62/cooperation/blob/master/module-base/images/screen/Plan.png)
+
 ### Person
 
 An individual cooperating person.
