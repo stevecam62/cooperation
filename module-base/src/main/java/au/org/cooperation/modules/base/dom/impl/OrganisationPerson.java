@@ -43,7 +43,7 @@ import lombok.Setter;
 				+ "WHERE organisation == :organisation && person == :person "),
 		@Query(name = "findLinkedToPerson", value = "SELECT FROM au.org.cooperation.modules.base.dom.impl.OrganisationPerson "
 				+ "WHERE person == :person ") })
-@Unique(name = "SimpleObject_name_UNQ", members = { "organisation", "person" })
+@Unique(name = "OrganisationPerson_org_pers_UNQ", members = { "organisation", "person" })
 @DomainObject()
 public class OrganisationPerson implements OrganisationContext {
 

@@ -20,12 +20,15 @@
 	</parent>
 
 	<artifactId>cooperation-application</artifactId>
-	<name>SimpleApp Application</name>
+	<name>Cooperation Application</name>
 
 	<description>This defines the application (manifest) and runs application-level fixtures and integration (smoke) tests</description>
 
 	<packaging>jar</packaging>
 
+	<properties>
+		<isis-maven-plugin.validate.appManifest>cooperation.application.manifest.CooperationAppAppManifest</isis-maven-plugin.validate.appManifest>
+	</properties>
 	<build>
 		<resources>
 			<resource>
@@ -82,6 +85,34 @@
 					</mixins>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.isis.tool</groupId>
+				<artifactId>isis-maven-plugin</artifactId>
+				<version>${isis.version}</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>validate</goal>
+						</goals>
+						<configuration>
+							<appManifest>${isis-maven-plugin.validate.appManifest}</appManifest>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>${project.groupId}</groupId>
+						<artifactId>${project.artifactId}</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.hsqldb</groupId>
+						<artifactId>hsqldb</artifactId>
+						<version>2.3.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -92,11 +123,13 @@
 			<artifactId>cooperation-module-base</artifactId>
 		</dependency>
 
+<!--
 		<dependency>
 			<groupId>au.com.scds</groupId>
 			<artifactId>cooperation-module-hvw-astute</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+-->
 
 		<dependency>
 			<groupId>org.apache.isis.core</groupId>
