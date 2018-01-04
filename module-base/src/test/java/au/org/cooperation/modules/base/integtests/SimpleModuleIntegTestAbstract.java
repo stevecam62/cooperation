@@ -31,10 +31,6 @@ public abstract class SimpleModuleIntegTestAbstract extends IntegrationTestAbstr
 			CooperationBaseModuleDomSubmodule.class,
             org.isisaddons.module.security.SecurityModule.class)
 		.withConfigurationProperty("isis.objects.editing", "true")
-		//.withConfigurationProperty("au.com.vuse.onecloud.fixtures.companyinputfile",
-		//		"C:\\Users\\stevec\\eclipse\\neon3\\workspace\\OneId-temp\\doc\\onecloud.xml")
-		//.withConfigurationProperty("au.com.vuse.onecloud.fixtures.invitesinputfile",
-		//		"C:\\Users\\stevec\\eclipse\\neon3\\workspace\\OneId-temp\\doc\\invites.xml")
 		.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionDriverName",
 				"com.mysql.jdbc.Driver")
 		.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionURL",
