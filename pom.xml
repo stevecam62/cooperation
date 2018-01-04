@@ -29,7 +29,7 @@
     <artifactId>cooperation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>SimpleApp Parent</name>
+    <name>Cooperation Parent</name>
 
     <packaging>pom</packaging>
 

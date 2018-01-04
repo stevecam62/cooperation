@@ -29,7 +29,6 @@
     <name>Cooperation Base Module</name>
 
     <properties>
-        <isis-maven-plugin.validate.appManifest>cooperation.application.manifest.CooperationAppAppManifest</isis-maven-plugin.validate.appManifest>
 
         <maven-checkstyle-plugin.configLocation>${project.parent.basedir}/_checks/checkstyle.xml</maven-checkstyle-plugin.configLocation>
         <maven-pmd-plugin.ruleset>${project.parent.basedir}/_checks/pmd.xml</maven-pmd-plugin.ruleset>
@@ -98,34 +97,6 @@
                         </mixin>
                     </mixins>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.isis.tool</groupId>
-                <artifactId>isis-maven-plugin</artifactId>
-                <version>${isis.version}</version>
-                <executions>
-                    <execution>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>validate</goal>
-                        </goals>
-                        <configuration>
-                            <appManifest>${isis-maven-plugin.validate.appManifest}</appManifest>
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>${project.groupId}</groupId>
-                        <artifactId>${project.artifactId}</artifactId>
-                        <version>${project.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.hsqldb</groupId>
-                        <artifactId>hsqldb</artifactId>
-                        <version>2.3.1</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
