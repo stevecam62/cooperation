@@ -18,30 +18,36 @@
  */
 package cooperation.application.services.homepage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.Nature;
 import org.apache.isis.applib.services.i18n.TranslatableString;
 
+import au.org.cooperation.modules.base.dom.impl.Organisation;
+import au.org.cooperation.modules.base.dom.impl.OrganisationRepository;
 import au.org.cooperation.modules.base.dom.impl.simple.SimpleObject;
 import au.org.cooperation.modules.base.dom.impl.simple.SimpleObjectRepository;
 
-@DomainObject(
-        nature = Nature.VIEW_MODEL,
-        objectType = "cooperation.HomePageViewModel"
-)
+@DomainObject(nature = Nature.VIEW_MODEL, objectType = "cooperation.HomePageViewModel")
 public class HomePageViewModel {
 
-    public String title() {
-        //return TranslatableString.tr("{num} objects", "num", getObjects().size());
-    	return "TEST";
-    }
+	public String title() {
+		// return TranslatableString.tr("{num} objects", "num",
+		// getObjects().size());
+		return "TEST";
+	}
 
-    /*public List<SimpleObject> getObjects() {
-        return simpleObjectRepository.listAll();
-    }
+	public List<Organisation> getObjects() {
+		Organisation o = organisationRepo.currentOrganisation();
+		List<Organisation> list = new ArrayList<>();
+		if (o != null)
+			list.add(o);
+		return list;
+	}
 
-    @javax.inject.Inject
-    SimpleObjectRepository simpleObjectRepository;*/
+	@javax.inject.Inject
+	OrganisationRepository organisationRepo;
 }

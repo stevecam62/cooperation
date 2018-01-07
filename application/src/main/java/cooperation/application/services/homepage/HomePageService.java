@@ -18,26 +18,31 @@
  */
 package cooperation.application.services.homepage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.HomePage;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.SemanticsOf;
-import org.apache.isis.applib.services.factory.FactoryService;
+
+import au.org.cooperation.modules.base.dom.impl.Organisation;
+import au.org.cooperation.modules.base.dom.impl.OrganisationRepository;
 
 @DomainService(
-        nature = NatureOfService.DOMAIN, // trick to suppress the actions from the top-level menu
-        objectType = "homepage.HomePageService"
+        nature = NatureOfService.DOMAIN , // trick to suppress the actions from the top-level menu
+        objectType = "cooperation.HomePageService"
 )
 public class HomePageService {
 
     @Action(semantics = SemanticsOf.SAFE)
     @HomePage
-    public HomePageViewModel homePage() {
-        return factoryService.instantiate(HomePageViewModel.class);
+    public Organisation homePage() {
+        return organisationRepo.currentOrganisation();
     }
 
-
     @javax.inject.Inject
-    FactoryService factoryService;
+    OrganisationRepository organisationRepo;
+
 }

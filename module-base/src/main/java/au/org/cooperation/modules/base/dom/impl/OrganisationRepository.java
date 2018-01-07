@@ -43,19 +43,30 @@ public class OrganisationRepository {
 		return repositoryService.allInstances(Organisation.class);
 	}
 
-	/*
-	 * public List<Organisation> findByName(final String name) { return
-	 * repositoryService.allMatches( new QueryDefault<>( Organisation.class,
-	 * "findByName", "name", name)); }
-	 */
-
 	public Organisation createOrganisation(final String name) {
-		final Organisation object = new Organisation(name);
-		serviceRegistry.injectServicesInto(object);
-		repositoryService.persist(object);
+		Organisation object = null;
 		ApplicationUser user = userRepo.findByUsernameCached(users.getUser().getName());
 		if (user != null && user instanceof Person) {
-			object.addPerson((Person) user, true, true);
+			Person person = (Person) user;
+			List<OrganisationPerson> list = repositoryService
+					.allMatches(new QueryDefault<>(OrganisationPerson.class, "findLinkedToPerson", "person", person));
+			int count = 0;
+			for (OrganisationPerson op : list) {
+				if (op.isCreator)
+					count++;
+			}
+			if (count < 6) {
+				object = new Organisation(name);
+				serviceRegistry.injectServicesInto(object);
+				repositoryService.persist(object);
+				object.addPerson(person, true, true);
+			} else {
+				return null;
+			}
+		}else{
+			object = new Organisation(name);
+			serviceRegistry.injectServicesInto(object);
+			repositoryService.persist(object);
 		}
 		return object;
 	}
@@ -144,27 +155,20 @@ public class OrganisationRepository {
 		else
 			return null;
 	}
-	
+
 	public List<Organisation> listOrganisationsLinkedToPerson(Person person) {
-		List<OrganisationPerson> list =  repositoryService.allMatches(
-	                new QueryDefault<>(
-	                		OrganisationPerson.class,
-	                        "findLinkedToPerson",
-	                        "person", person));
+		List<OrganisationPerson> list = repositoryService
+				.allMatches(new QueryDefault<>(OrganisationPerson.class, "findLinkedToPerson", "person", person));
 		List<Organisation> temp = new ArrayList<>();
-		for(OrganisationPerson op : list){
+		for (OrganisationPerson op : list) {
 			temp.add(op.getOrganisation());
 		}
 		return temp;
 	}
-	
+
 	public OrganisationPerson findOrganisationPerson(Organisation organisation, Person person) {
 		return repositoryService.firstMatch(
-                new QueryDefault<>(
-                		OrganisationPerson.class,
-                        "find",
-                        "organisation", organisation,
-                        "person", person));
+				new QueryDefault<>(OrganisationPerson.class, "find", "organisation", organisation, "person", person));
 	}
 
 	@Inject
@@ -175,7 +179,5 @@ public class OrganisationRepository {
 	ApplicationUserRepository userRepo;
 	@Inject
 	UserService users;
-
-
 
 }

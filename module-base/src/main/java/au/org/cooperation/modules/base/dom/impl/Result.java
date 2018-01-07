@@ -17,6 +17,7 @@
  *  under the License.
  */package au.org.cooperation.modules.base.dom.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -49,7 +50,7 @@ public class Result extends AbstractOrganisationContext{
     @Join()
     @Getter
     @Setter
-    protected List<Outcome> outcomes;
+    protected List<Outcome> outcomes  = new ArrayList<>();
     
     Result(){}
     

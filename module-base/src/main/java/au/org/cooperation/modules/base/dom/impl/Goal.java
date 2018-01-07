@@ -67,12 +67,12 @@ public class Goal extends AbstractOrganisationContext{
 	@Persistent(mappedBy = "goal")
 	@Order(column = "goal_task_idx")
 	@Getter
-	protected List<Task> tasks;
+	protected List<Task> tasks = new ArrayList<>();
 
 	@Persistent(mappedBy = "goal")
 	@Order(column = "goal_outcome_idx")
 	@Getter
-	protected List<Outcome> outcomes;
+	protected List<Outcome> outcomes = new ArrayList<>();
 
 	Goal() {
 	}

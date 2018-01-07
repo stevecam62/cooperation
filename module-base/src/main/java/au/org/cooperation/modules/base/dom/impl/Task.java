@@ -76,27 +76,27 @@ public class Task extends AbstractOrganisationContext {
 	@Persistent
 	@Join
 	@Getter(value = AccessLevel.PACKAGE)
-	protected List<Person> persons;
+	protected List<Person> persons  = new ArrayList<>();
 
 	@Persistent(mappedBy = "task")
 	@Order(column = "task_effort_idx")
 	@Getter
-	protected List<Effort> efforts;
+	protected List<Effort> efforts  = new ArrayList<>();
 
 	@Persistent(mappedBy = "task")
 	@Order(column = "task_result_idx")
 	@Getter
-	protected List<Result> results;
+	protected List<Result> results  = new ArrayList<>();
 
 	@Persistent(mappedBy = "task")
 	@Order(column = "task_outcome_idx")
 	@Getter
-	protected List<Outcome> outcomes;
+	protected List<Outcome> outcomes  = new ArrayList<>();
 
 	@Persistent(mappedBy = "parentTask")
 	@Order(column = "task_subtask_idx")
 	@Getter
-	protected List<Task> subTasks;
+	protected List<Task> subTasks  = new ArrayList<>();
 
 	Task() {
 	}

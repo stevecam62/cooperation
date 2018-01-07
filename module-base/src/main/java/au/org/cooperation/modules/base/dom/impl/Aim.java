@@ -49,6 +49,7 @@ public class Aim extends AbstractOrganisationContext {
 	}
 
 	public Aim(Organisation organisation, String name) {
+		setOrganisation(organisation);
 		setName(name);
 	}
 

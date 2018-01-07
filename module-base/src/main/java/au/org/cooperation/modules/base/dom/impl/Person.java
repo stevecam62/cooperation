@@ -71,15 +71,15 @@ public class Person extends ApplicationUser {
 
 	@Persistent(mappedBy = "person")
 	@Getter
-	private List<Effort> efforts;
+	private List<Effort> efforts  = new ArrayList<>();
 
 	@Persistent(mappedBy = "person")
 	@Getter
-	private List<Reward> rewards;
+	private List<Reward> rewards  = new ArrayList<>();
 
 	@Persistent(mappedBy = "person")
 	@Getter(value = AccessLevel.PRIVATE)
-	private List<OrganisationPerson> organisations;
+	private List<OrganisationPerson> organisations  = new ArrayList<>();
 
 	/*
 	 * Allow a default Organisation to be set on the current user.

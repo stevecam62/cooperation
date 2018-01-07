@@ -28,14 +28,14 @@ import org.junit.Test;
 import au.org.cooperation.modules.base.dom.impl.PersonMenu;
 import au.org.cooperation.modules.base.fixture.scenario.CreateOrganisations;
 import au.org.cooperation.modules.base.fixture.teardown.OrganisationsTearDown;
-import au.org.cooperation.modules.base.integtests.SimpleModuleIntegTestAbstract;
+import au.org.cooperation.modules.base.integtests.BaseModuleIntegTestAbstract;
 
 import org.apache.isis.applib.fixturescripts.FixtureScripts;
 import org.apache.isis.applib.services.xactn.TransactionService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Organisations_IntegTest extends SimpleModuleIntegTestAbstract {
+public class Organisations_IntegTest extends BaseModuleIntegTestAbstract {
 
 	   @Inject
 	    FixtureScripts fixtureScripts;
@@ -49,7 +49,7 @@ public class Organisations_IntegTest extends SimpleModuleIntegTestAbstract {
 	    @Before
 	    public void setUp() throws Exception {
 	        // given
-	        fixtureScripts.runFixtureScript(new OrganisationsTearDown(), null);
+	        //fixtureScripts.runFixtureScript(new OrganisationsTearDown(), null);
 	        CreateOrganisations fs = new CreateOrganisations();
 	        fixtureScripts.runFixtureScript(fs, null);
 	        transactionService.nextTransaction();

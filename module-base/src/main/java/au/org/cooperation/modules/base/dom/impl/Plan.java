@@ -17,6 +17,7 @@
  *  under the License.
  */package au.org.cooperation.modules.base.dom.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -53,7 +54,7 @@ public class Plan extends AbstractOrganisationContext{
 	@Persistent(mappedBy="plan")
 	@Order(column="plan_goal_idx")
 	@Getter
-	protected List<Goal> goals;
+	protected List<Goal> goals  = new ArrayList<>();
 
 	Plan() {
 	}

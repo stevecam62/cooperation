@@ -22,8 +22,8 @@ import javax.annotation.Nullable;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-import au.org.cooperation.modules.base.fixture.scenario.CreateSimpleObjects;
-import cooperation.application.fixture.teardown.CooperationAppTearDown;
+import au.org.cooperation.modules.base.fixture.scenario.CreateOrganisations;
+import au.org.cooperation.modules.base.fixture.teardown.OrganisationsTearDown;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,8 +41,8 @@ public class CooperationAppDemo extends FixtureScript {
     protected void execute(final ExecutionContext ec) {
 
         // execute
-        ec.executeChild(this, new CooperationAppTearDown());
-        ec.executeChild(this, new CreateSimpleObjects().setNumber(number));
+        ec.executeChild(this, new OrganisationsTearDown());
+        ec.executeChild(this, new CreateOrganisations());
 
     }
 }

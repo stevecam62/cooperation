@@ -17,6 +17,7 @@
  *  under the License.
  */package au.org.cooperation.modules.base.dom.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.annotations.*;
@@ -52,7 +53,7 @@ public class Outcome extends AbstractOrganisationContext {
 	@Join
 	@Getter
 	@Setter(value = AccessLevel.PRIVATE)
-	protected List<Result> results;
+	protected List<Result> results  = new ArrayList<>();
 
 	Outcome() {
 	}

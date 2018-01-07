@@ -33,8 +33,8 @@ public class CooperationAppAppManifest extends AppManifestAbstract {
 
     public static final Builder BUILDER = Builder.forModules(
                     CooperationBaseModuleDomSubmodule.class,
-                    CooperationAppApplicationModuleFixtureSubmodule.class,
                     CooperationAppApplicationModuleServicesSubmodule.class,
+                    CooperationAppApplicationModuleFixtureSubmodule.class,
                     org.isisaddons.module.security.SecurityModule.class
             )
             .withConfigurationPropertiesFile(CooperationAppAppManifest.class,

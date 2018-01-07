@@ -65,21 +65,21 @@ public class Organisation implements OrganisationContext{
 	@Persistent(mappedBy = "organisation", column = "aim_id")
 	@Order(column = "org_aim_idx")
 	@Getter
-	private List<Aim> aims;
+	private List<Aim> aims  = new ArrayList<>();
 
 	@Persistent(mappedBy = "organisation", column = "goal_id")
 	@Order(column = "org_goal_idx")
 	@Getter
-	private List<Goal> goals;
+	private List<Goal> goals = new ArrayList<>();
 
 	@Persistent(mappedBy = "organisation")
 	@Getter(value = AccessLevel.PRIVATE)
-	private List<OrganisationPerson> persons;
+	private List<OrganisationPerson> persons = new ArrayList<>();
 
 	@Persistent(mappedBy = "organisation", column = "plan_id")
 	@Order(column = "org_plan_idx")
 	@Getter
-	private List<Plan> plans;
+	private List<Plan> plans = new ArrayList<>();
 
 	public Organisation() {
 	}

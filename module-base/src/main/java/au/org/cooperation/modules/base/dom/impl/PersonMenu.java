@@ -18,6 +18,7 @@
  */
 package au.org.cooperation.modules.base.dom.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.isis.applib.annotation.Action;
@@ -39,15 +40,15 @@ public class PersonMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 	@MemberOrder(sequence = "1")
-	public List<Person> listAll() {
-		return personRepo.listAll();
+	public List<PersonView> listAll() {
+		List<PersonView> list = new ArrayList<>();
+		for (Person person : personRepo.listAll()) {
+			list.add(new PersonView(person));
+		}
+		return list;
 	}
 
-	public static class CreateDomainEvent extends ActionDomainEvent<PersonMenu> {
-	}
-
-	@Action(domainEvent = CreateDomainEvent.class)
-	@MemberOrder(sequence = "3")
+	@MemberOrder(sequence = "2")
 	public Person create(@ParameterLayout(named = "Given Name") final String givenName,
 			@ParameterLayout(named = "Family Name") final String familyName,
 			@ParameterLayout(named = "Date of Birth") final java.sql.Date dateOfBirth, String username,
