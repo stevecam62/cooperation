@@ -48,6 +48,8 @@ People entities are actually application users, created by self-registering [to 
 
 Anyone can create an Organisation and in doing so becomes an Administrator of that Organisation. Administrators have write control over the organisations details and the ability to link People to the organisation. The creator of an Organisation can add other People as Administrators via the top menu.
 
+A Person has access to just one Organisations (which they created or have been linked) at a time, but they can switch their 'current' Organisation via the top menu.
+
 As described in the Introduction above, an Organisation (whatever that may consist of) has Aims and Goals, the Goals once achieved satisfy the Aims. Goals may be created singly or as part of a named Plan. There is a 1-1 relation between an Goal and an 'Primary Aim' at the moment, but a Goal could derive from several Aims.
 
 Tasks are created from the Goals to work towards achieving the Goals. Tasks can be allocated to one or more People, those that can be chosen for allocation are those linked to the Organisation.
