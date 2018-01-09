@@ -32,25 +32,20 @@ Another aspect of fairness is reward. Getting fair rewards from cooperation is p
 
 ![Conceptual Model](https://github.com/stevecam62/cooperation/blob/master/module-base/documents/cooperation.png)
 
-## Implementation
-
-This project uses the Java web-application framework [Apache Isis](http://isis.apache.org).
-
-It can be enhanced relatively easily by customising its Java Domain Model and/or integrating standard modules from the [Incode Platform](http://platform.incode.org).
 
 ## Explanation
 
-The Application is essentially a data-management tool with a focus on facilitating cooperation. The data-model entities (from the conceptual model) are described, and screen dumps shown, in the following section.
+The Application is essentially a data-management tool with a focus on facilitating cooperation. The data-model entities (from the conceptual model) are described, and screen dumps shown, in the Entities section below.
 
 The essential first step is to create an Organisation, and then one or more People are linked to an Organisation.  
 
-People entities are actually application users, created by self-registering [to come] or via the menu. 
+People entities are actually application users, created by self-registering [to come] or via the menu. So a logged-in user is both a Person entity and an application user.
 
 Anyone can create an Organisation and in doing so becomes an Administrator of that Organisation. Administrators have write control over the organisations details and the ability to link People to the organisation. The creator of an Organisation can add other People as Administrators via the top menu.
 
 A Person has access to just one Organisations (which they created or have been linked) at a time, but they can switch their 'current' Organisation via the top menu.
 
-As described in the Introduction above, an Organisation (whatever that may consist of) has Aims and Goals, the Goals once achieved satisfy the Aims. Goals may be created singly or as part of a named Plan. There is a 1-1 relation between an Goal and an 'Primary Aim' at the moment, but a Goal could derive from several Aims.
+As described in the Introduction above, an Organisation (whatever that may consist of) can have Aims and Goals, the Goals once achieved satisfy the Aims. Goals may be created singly or as part of a named Plan. There is a 1-1 relation between an Goal and an 'Primary Aim' at the moment, but a Goal could derive from several Aims.
 
 Tasks are created from the Goals to work towards achieving the Goals. Tasks can be allocated to one or more People, those that can be chosen for allocation are those linked to the Organisation.
 
@@ -131,6 +126,11 @@ An achievement (or not) that can be related back to a goal, likely relating to s
 An allocation of cash (or some other non-monetary thing of value, or a combination) as payment to a Person for their Effort in a period.
 
 
+## Implementation
+
+This project uses the Java web-application framework [Apache Isis](http://isis.apache.org).
+
+It can be enhanced relatively easily by customising its Java Domain Model and/or integrating standard modules from the [Incode Platform](http://platform.incode.org).
 
 
 
