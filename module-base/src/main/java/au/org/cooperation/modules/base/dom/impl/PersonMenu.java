@@ -38,7 +38,6 @@ import org.apache.isis.applib.value.Password;
 public class PersonMenu {
 
 	@Action(semantics = SemanticsOf.SAFE)
-	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 	@MemberOrder(sequence = "1")
 	public List<PersonView> listAll() {
 		List<PersonView> list = new ArrayList<>();
@@ -48,11 +47,15 @@ public class PersonMenu {
 		return list;
 	}
 
+	@Action(semantics = SemanticsOf.NON_IDEMPOTENT)
 	@MemberOrder(sequence = "2")
 	public Person create(@ParameterLayout(named = "Given Name") final String givenName,
 			@ParameterLayout(named = "Family Name") final String familyName,
-			@ParameterLayout(named = "Date of Birth") final java.sql.Date dateOfBirth, String username,
-			Password password, Password passwordRepeat, String emailAddress) {
+			@ParameterLayout(named = "Date of Birth") final java.sql.Date dateOfBirth,
+			@ParameterLayout(named = "Username") String username,
+			@ParameterLayout(named = "Password") Password password,
+			@ParameterLayout(named = "Repeat Password") Password passwordRepeat,
+			@ParameterLayout(named = "Email Address") String emailAddress) {
 		return personRepo.createPerson(givenName, familyName, dateOfBirth, username, password, passwordRepeat,
 				emailAddress);
 	}

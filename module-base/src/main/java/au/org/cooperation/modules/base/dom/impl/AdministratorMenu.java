@@ -36,12 +36,12 @@ import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 @DomainServiceLayout(named = "My Organisations", menuOrder = "20")
 public class AdministratorMenu {
 
-	@Action(semantics = SemanticsOf.NON_IDEMPOTENT)
+	/*@Action(semantics = SemanticsOf.NON_IDEMPOTENT)
 	@ActionLayout(bookmarking = BookmarkPolicy.NEVER)
 	@MemberOrder(sequence = "1")
 	public Organisation current() {
 		return organisationRepo.currentOrganisation();
-	}
+	}*/
 
 	@Action(semantics = SemanticsOf.NON_IDEMPOTENT)
 	@ActionLayout(bookmarking = BookmarkPolicy.NEVER)

@@ -38,6 +38,38 @@ This project uses the Java web-application framework [Apache Isis](http://isis.a
 
 It can be enhanced relatively easily by customising its Java Domain Model and/or integrating standard modules from the [Incode Platform](http://platform.incode.org).
 
+## Explanation
+
+The Application is essentially a data-management tool with a focus on facilitating cooperation. The data-model entities (from the conceptual model) are described, and screen dumps shown, in the following section.
+
+The essential first step is to create an Organisation, and then one or more People are linked to an Organisation.  
+
+People entities are actually application users, created by self-registering [to come] or via the menu. 
+
+Anyone can create an Organisation and in doing so becomes an Administrator of that Organisation. Administrators have write control over the organisations details and the ability to link People to the organisation. The creator of an Organisation can add other People as Administrators via the top menu.
+
+As described in the Introduction above, an Organisation (whatever that may consist of) has Aims and Goals, the Goals once achieved satisfy the Aims. Goals may be created singly or as part of a named Plan. There is a 1-1 relation between an Goal and an 'Primary Aim' at the moment, but a Goal could derive from several Aims.
+
+Tasks are created from the Goals to work towards achieving the Goals. Tasks can be allocated to one or more People, those that can be chosen for allocation are those linked to the Organisation.
+
+A Person allocated to a Task can log Effort, which is simply a time interval record for work done on that Task.
+
+An Result is something achieved in the process of working on a Task. The relationship between Efforts and Results is flexible, Results can be created independently of Effort records, or from an Effort record, or an new Effort record can be linked to an existing Result.
+
+An Outcome is somewhat similar to a Result, but more significant. Outcomes are expected to be used for determining the achievement of Goals, also [as a later feature] the determination of Rewards for People.
+
+## Usage
+
+The most simple usage possible is to log Effort against some Tasks belonging to an Organisation [need to be able to export Effort data easily], maybe this can be thought of as a top-down management use.
+
+In terms of encouraging cooperation within a self-managing (horizontal management) group, having agreed Aims and Goals is essential for long-term success. The intention is to develop this aspect further.
+
+An aspect of the application not yet developed is Rewards. This aspect was a primary motivation for building the application, but is not done as yet.
+
+## Future Directions
+
+Depends on expressions of interest.
+
 ## Entities
 
 ### Organisation
