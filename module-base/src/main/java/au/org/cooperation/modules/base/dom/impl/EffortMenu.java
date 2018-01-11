@@ -36,7 +36,7 @@ import org.joda.time.DateTime;
 public class EffortMenu {
 
 	@Action(semantics = SemanticsOf.SAFE)
-	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+	//@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 	@MemberOrder(sequence = "1")
 	public List<Effort> listAll() {
 		return taskRepo.listAllEfforts();

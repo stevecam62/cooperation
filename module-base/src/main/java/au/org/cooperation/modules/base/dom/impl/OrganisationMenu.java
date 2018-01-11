@@ -30,26 +30,28 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.bookmark.BookmarkService;
+import org.apache.isis.applib.services.bookmarkui.BookmarkUiService;
 import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "cooperation.OrganisationMenu", repositoryFor = Organisation.class)
 @DomainServiceLayout(named = "My Organisations", menuOrder = "10")
 public class OrganisationMenu {
 
-	@Action(semantics = SemanticsOf.SAFE)
-	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+	/*@Action(semantics = SemanticsOf.SAFE)
+	// @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 	@MemberOrder(sequence = "1")
 	public List<Organisation> listAll() {
 		return organisationRepo.listAll();
-	}
+	}*/
 
 	@Action(semantics = SemanticsOf.SAFE)
-	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+	// @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 	@MemberOrder(sequence = "2")
 	public Organisation switchOrganisation(Organisation organisation) {
 		personRepo.currentPerson()
 				.setOrgPerson(organisationRepo.findOrganisationPerson(organisation, personRepo.currentPerson()));
-		//bookmarks.
+		if (bookmarksUiService != null)
+			bookmarksUiService.clear();
 		return organisation;
 	}
 
@@ -63,6 +65,8 @@ public class OrganisationMenu {
 	@Action(domainEvent = CreateDomainEvent.class)
 	@MemberOrder(sequence = "3")
 	public Organisation create(@ParameterLayout(named = "Name") final String name) {
+		if (bookmarksUiService != null)
+			bookmarksUiService.clear();
 		return organisationRepo.createOrganisation(name);
 	}
 
@@ -71,5 +75,5 @@ public class OrganisationMenu {
 	@javax.inject.Inject
 	PersonRepository personRepo;
 	@javax.inject.Inject
-	BookmarkService bookmarks;
+	BookmarkUiService bookmarksUiService;
 }

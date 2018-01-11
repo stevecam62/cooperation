@@ -20,37 +20,30 @@ package au.org.cooperation.modules.base.integtests;
 
 import org.junit.BeforeClass;
 
+import au.org.cooperation.modules.base.BaseModule;
 import au.org.cooperation.modules.base.dom.CooperationBaseModuleDomSubmodule;
 
-import org.apache.isis.applib.AppManifestAbstract.Builder;
-import org.apache.isis.core.integtestsupport.IntegrationTestAbstract2;
+import org.apache.isis.core.integtestsupport.IntegrationTestAbstract3;
 
-public abstract class BaseModuleIntegTestAbstract extends IntegrationTestAbstract2 {
+public abstract class BaseModuleIntegTestAbstract extends IntegrationTestAbstract3 {
 
-	public static final Builder BUILDER = Builder.forModules(
-			CooperationBaseModuleDomSubmodule.class,
-            org.isisaddons.module.security.SecurityModule.class)
-		.withConfigurationProperty("isis.objects.editing", "true")
-		//.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionDriverName",
-		//		"com.mysql.jdbc.Driver")
-		//.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionURL",
-		//		"jdbc:mysql://localhost:3306/cooperation?zeroDateTimeBehavior=convertToNull")
-		//.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionUserName",
-		//		"cooperation")
-		//.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionPassword",
-		//		"password");
-	.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionDriverName",
-			"org.hsqldb.jdbcDriver")
-	.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionURL",
-			"jdbc:hsqldb:mem:test")
-	.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionUserName",
-			"sa")
-	.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionPassword",
-			"");
-
-	@BeforeClass
-	public static void initSystem() {
-		bootstrapUsing(BUILDER);
+	public BaseModuleIntegTestAbstract() {
+		super(new BaseModule().withAdditionalModules(org.isisaddons.module.security.SecurityModule.class)
+				.withConfigurationProperty("isis.objects.editing", "true")
+				// .withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionDriverName",
+				// "com.mysql.jdbc.Driver")
+				// .withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionURL",
+				// "jdbc:mysql://localhost:3306/cooperation?zeroDateTimeBehavior=convertToNull")
+				// .withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionUserName",
+				// "cooperation")
+				// .withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionPassword",
+				// "password");
+				.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionDriverName",
+						"org.hsqldb.jdbcDriver")
+				.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionURL",
+						"jdbc:hsqldb:mem:test")
+				.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionUserName", "sa")
+				.withConfigurationProperty("isis.persistor.datanucleus.impl.javax.jdo.option.ConnectionPassword", ""));
 	}
 
 }

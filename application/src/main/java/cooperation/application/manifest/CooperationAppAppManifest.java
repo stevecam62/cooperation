@@ -18,20 +18,23 @@
  */
 package cooperation.application.manifest;
 
-import org.apache.isis.applib.AppManifestAbstract;
+import org.apache.isis.applib.AppManifestAbstract2;
 
 import com.google.common.collect.ImmutableMap;
 
 import au.org.cooperation.modules.base.dom.CooperationBaseModuleDomSubmodule;
+import cooperation.application.CooperationAppApplicationModule;
 import cooperation.application.fixture.CooperationAppApplicationModuleFixtureSubmodule;
 import cooperation.application.services.CooperationAppApplicationModuleServicesSubmodule;
+
 
 /**
  * Bootstrap the application.
  */
-public class CooperationAppAppManifest extends AppManifestAbstract {
+public class CooperationAppAppManifest extends AppManifestAbstract2 {
 
-    public static final Builder BUILDER = Builder.forModules(
+    public static final Builder BUILDER = Builder.forModule(new CooperationAppApplicationModule())
+    		.withAdditionalModules(
                     CooperationBaseModuleDomSubmodule.class,
                     CooperationAppApplicationModuleServicesSubmodule.class,
                     CooperationAppApplicationModuleFixtureSubmodule.class,

@@ -67,6 +67,8 @@ An aspect of the application not yet developed is Rewards. This aspect was a pri
 
 Depends on expressions of interest.
 
+Some ideas include adding Task Scheduling and simple Task Lifecycle capabilities.
+
 ## Entities
 
 ### Organisation

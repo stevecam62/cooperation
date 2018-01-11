@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bs3:grid
+	xsi:schemaLocation="http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/grid/bootstrap3 http://isis.apache.org/applib/layout/grid/bootstrap3/bootstrap3.xsd"
+	xmlns:c="http://isis.apache.org/applib/layout/component" xmlns:bs3="http://isis.apache.org/applib/layout/grid/bootstrap3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<bs3:row>
+		<bs3:col span="12" unreferencedActions="true">
+			<c:domainObject bookmarking="NEVER" />
+		</bs3:col>
+	</bs3:row>
+	<bs3:row>
+		<bs3:col span="6">
+			<c:fieldSet name="General" unreferencedProperties="true">
+				<c:property id="organisation" namedEscaped="true" />
+			</c:fieldSet>
+		</bs3:col>
+		<bs3:col span="6" unreferencedCollections="true">
+			<c:collection id="administrators" defaultView="table">
+				<c:action id="addAdministrator">
+					<c:named>Add</c:named>
+					<c:describedAs>Add an Organisation Administrator</c:describedAs>
+				</c:action>
+				<c:action id="removeAdministrator">
+					<c:named>Remove</c:named>
+					<c:describedAs>Add an Organisation Administrator</c:describedAs>
+				</c:action>
+			</c:collection>
+		</bs3:col>
+	</bs3:row>
+</bs3:grid>

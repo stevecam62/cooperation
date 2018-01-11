@@ -16,8 +16,23 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package au.org.cooperation.modules.base.fixture;
+package au.org.cooperation.modules.base;
 
-public final class SimpleModuleFixtureSubmodule {
-    private SimpleModuleFixtureSubmodule(){}
+import org.apache.isis.applib.AppManifestAbstract2;
+import org.apache.isis.applib.AppManifestAbstract2.Builder;
+
+import au.org.cooperation.modules.base.dom.CooperationBaseModuleDomSubmodule;
+import au.org.cooperation.modules.base.fixture.BaseModuleFixtureSubmodule;
+
+/**
+ * Used by <code>isis-maven-plugin</code> (build-time validation of the module) and also by module-level integration tests.
+ */
+public class BaseModuleManifest extends AppManifestAbstract2 {
+
+    public static final Builder BUILDER = Builder.forModule(new BaseModule())
+    		.withAdditionalModules(CooperationBaseModuleDomSubmodule.class,BaseModuleFixtureSubmodule.class);
+
+    public BaseModuleManifest() {
+        super(BUILDER);
+    }
 }

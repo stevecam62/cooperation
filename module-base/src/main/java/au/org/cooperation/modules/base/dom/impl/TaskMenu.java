@@ -45,7 +45,7 @@ import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 public class TaskMenu {
 
     @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+    //@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "1")
     public List<Task> listAll() {
         return taskRepo.listAllTasks();

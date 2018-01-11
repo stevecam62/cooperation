@@ -119,6 +119,18 @@ public class Organisation implements OrganisationContext{
 	public String title() {
 		return getName();
 	}
+	
+	public OrganisationAdmin showAdmin() {
+		return new OrganisationAdmin(this);
+	}
+	
+	public boolean hideShowAdmin() {
+		Person person = personRepository.currentPerson();
+		if(person.isSystemAdmin())
+			return true;
+		else
+			return (person.getOrgPerson(null) != null) ? !person.getOrgPerson(null).isAdministrator() : true;
+	}
 
 	public Organisation addAim(@ParameterLayout(named = "Aim name") String name) {
 		this.getAims().add(organisationRepository.createAim(this, name));
